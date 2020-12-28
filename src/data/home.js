@@ -61,7 +61,7 @@ export default {
     },
     
     star: {
-      title: 'Community Value',
+      title: 'Community Star',
       summary: 'The TiDB Community Organization brings together development enthusiasts interested in TiDB and surrounding open source software to explore the future of distributed databases using TiDB as a hands-on project.',
       items: [
         {
@@ -123,28 +123,6 @@ export default {
           step: 5,
           title: 'Maintainer',
           summary: '开源推广者',
-        },
-      ]
-    },
-    
-    communityStar: {
-      title: 'Community Star',
-      items: [
-        {
-          name: 'Alfred Sandoval',
-          text: '此处应该放采访文案。。。孙晓光，知乎搜索后端负责人，目前承担知乎搜索后端架构设计以及工程团队的管理工作。曾多年从事私有云相关产品开发工作关注云原生技术，TiKV 项目 Committer。',
-        },
-        {
-          name: 'Alfred Sandoval',
-          text: '此处应该放采访文案。。。孙晓光，知乎搜索后端负责人，目前承担知乎搜索后端架构设计以及工程团队的管理工作。曾多年从事私有云相关产品开发工作关注云原生技术，TiKV 项目 Committer。',
-        },
-        {
-          name: 'Alfred Sandoval',
-          text: '此处应该放采访文案。。。孙晓光，知乎搜索后端负责人，目前承担知乎搜索后端架构设计以及工程团队的管理工作。曾多年从事私有云相关产品开发工作关注云原生技术，TiKV 项目 Committer。',
-        },
-        {
-          name: 'Alfred Sandoval',
-          text: '此处应该放采访文案。。。孙晓光，知乎搜索后端负责人，目前承担知乎搜索后端架构设计以及工程团队的管理工作。曾多年从事私有云相关产品开发工作关注云原生技术，TiKV 项目 Committer。',
         },
       ]
     },

@@ -1,0 +1,24 @@
+@import "src/styles/common";
+
+.wrapper {
+
+}
+
+.container {
+}
+
+.title {
+  @include H0;
+  padding: 6rem 0;
+  color: $M2;
+}
+
+.list {
+  //display: flex;
+  //flex-wrap: wrap;
+  margin: 6rem 0;
+}
+
+.item {
+  @include card;
+}

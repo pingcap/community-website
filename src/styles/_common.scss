@@ -1,0 +1,39 @@
+@import '../../node_modules/bulma/sass/utilities/all';
+
+@import "variable";
+@import "typography";
+
+// TODO: remove font-face before deploy because of Adobe font license !!! u cant store any ttf file on the server's disk or import font file by CDN !
+@font-face {
+  font-family: 'Source Sans Pro';
+  //font-family: 'ssp';
+  src: url("/font/SourceSansPro-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+$socials: github twitter linkedin facebook reddit slack youtube yc;
+
+// Use in navbar and footer item
+@mixin has-item-active($bottom: false) {
+  position: relative;
+  color: $B4;
+
+  &:hover {
+    background: none;
+    color: $primary;
+
+    @if type-of($bottom) == number {
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: $bottom;
+        left: 50%;
+        width: 20px;
+        height: 3px;
+        background: $primary;
+        transform: translateX(-50%);
+      }
+    }
+  }
+}

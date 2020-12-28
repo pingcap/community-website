@@ -1,0 +1,39 @@
+@import "src/styles/common";
+
+.wrapper {
+  padding-top: 6rem;
+}
+
+.container {
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  @include H1;
+}
+
+.summary {
+  @include P1;
+  margin-top: 2rem;
+}
+
+.list {
+  margin-top: 4rem;
+  &_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &_image {
+
+    }
+    &_text {
+      text-align: center;
+      margin-top: 2rem;
+    }
+  }
+}

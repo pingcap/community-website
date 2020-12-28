@@ -1,0 +1,79 @@
+@import "src/styles/common";
+
+.wrapper {
+  padding: {
+    top: 6rem;
+    bottom: 5rem;
+  };
+  background: {
+    image: url("/images/home/banner.svg");
+    size: cover;
+  };
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $M1;
+}
+
+.slogan {
+  font: {
+    size: 3rem;
+    weight: 700;
+  }
+  color: white;
+}
+
+.subslogan {
+  @include P1;
+  margin-top: 1rem;
+  color: $M1;
+}
+
+.data {
+  $split-size: 4rem;
+
+  margin-top: 3.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+
+  &_item {
+    margin-right: $split-size;
+    padding-right: $split-size;
+
+    &:last-child {
+      border-right: 0;
+      margin-right: 0;
+      padding-right: 0;
+    }
+    border-right: 1px solid #FFF;
+
+    &_name {
+      font: {
+        size: 1.25rem;
+      }
+    }
+
+    &_number {
+      margin-top: .5rem;
+      font: {
+        size: 1.5rem;
+        weight: 700;
+      }
+    }
+
+  }
+
+}
+
+.buttons {
+  margin-top: 4.5rem;
+  .subscribe_email {
+    margin-left: 2rem;
+  }
+}

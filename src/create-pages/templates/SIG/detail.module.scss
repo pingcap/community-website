@@ -1,0 +1,24 @@
+@import "src/styles/common";
+
+.wrapper {
+
+}
+
+.container {
+
+}
+
+.banner {
+  &_title {
+    @include H0;
+    padding: 3rem 0;
+    color: $M2;
+  }
+  &_action {
+    padding: 2rem 0;
+    display: flex;
+    &_slack {
+      margin-left: 1rem;
+    }
+  }
+}

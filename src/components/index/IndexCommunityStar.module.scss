@@ -1,0 +1,87 @@
+@import "src/styles/common";
+
+.wrapper {
+  width: 100%;
+  padding: 4rem 0 6rem 0;
+  background-color: $M2;
+}
+
+.container {
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  @include H1;
+}
+
+.summary {
+  @include P1;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.list {
+  margin-top: 4rem;
+  text-align: center;
+  &_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &_image {
+
+    }
+    &_name {
+      @include H2;
+      margin-top: 2rem;
+    }
+    &_summary {
+      @include P1;
+      margin-top: .5rem;
+    }
+    &_content {
+      @include P1;
+    }
+  }
+}
+
+@mixin quoto {
+  color: $B1;
+  font: {
+    size: 10rem;
+  };
+  position: absolute;
+  user-select: none;
+}
+
+$opinion-margin-top: 1.5rem;
+
+.opinion {
+  @include P1;
+  @include transition;
+  background-color: #fff;
+  margin-top: $opinion-margin-top;
+  padding: 2rem 4rem;
+  transform: scale(1, 1);
+  &_quoto {
+    &_left {
+      @include quoto;
+      left: 1rem;
+      top: 1rem;
+    }
+    &_right {
+      @include quoto;
+      right: 1rem;
+      bottom: -3rem;
+    }
+  }
+  &_hidden {
+    height: 0;
+    opacity: 0;
+    //transform: scale(0, 0);
+    //overflow: hidden;
+  }
+}

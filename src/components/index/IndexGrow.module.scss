@@ -1,0 +1,55 @@
+@import "src/styles/common";
+
+.wrapper {
+  padding: 6rem 0;
+}
+
+.container {
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  @include H1;
+}
+
+.summary {
+  @include P1;
+  margin-top: 2rem;
+}
+
+.step {
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  &_arrow {
+    padding: 0 26px;
+  }
+  &_item {
+    padding: {
+      top: 32px;
+      bottom: 16px;
+    };
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //background-color: $T2;
+    border: 1px solid $T2;
+    &_index {
+      margin-top: 16px;
+    }
+    &_title {
+      margin-top: 8px;
+    }
+  }
+}
+
+.more {
+  margin-top: 40px;
+}

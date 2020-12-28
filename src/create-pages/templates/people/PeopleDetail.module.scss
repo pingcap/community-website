@@ -1,0 +1,17 @@
+@import "src/styles/common";
+
+.wrapper {
+
+}
+
+.container {
+
+}
+
+.banner {
+  &_title {
+    @include H0;
+    padding: 6rem 0;
+    color: $M2;
+  }
+}

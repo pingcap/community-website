@@ -1,0 +1,65 @@
+@import "src/styles/common";
+
+.wrapper {
+  padding: 6rem 0;
+}
+
+.container {
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  @include H1;
+}
+
+.summary {
+  @include P1;
+  margin-top: 2rem;
+}
+
+.list {
+  margin-top: 4rem;
+  &_item {
+    &:hover {
+      width: 100%;
+      .list_item_split_line>div {
+        width: 100%;
+      }
+    }
+    height: 100%;
+    //width: 800px;
+    //margin: 20px 0;
+    //display: flex;
+    padding: 2rem 3rem;
+    border: 1px solid #E9EAEE;
+    @include card;
+    &_title {
+      @include H1;
+    }
+    &_split_line {
+      margin: 1rem 0;
+      height: 1px;
+      background-color: $T2;
+      &>div {
+        transition: all .5s;
+        width: 0;
+        height: 1px;
+        background-color: $B1;
+      }
+    }
+    &_summary {
+      @include P1;
+    }
+  }
+}
+
+.more {
+  margin-top: 40px;
+  &_button {
+
+  }
+}

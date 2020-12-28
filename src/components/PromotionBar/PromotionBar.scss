@@ -1,0 +1,43 @@
+@import "src/styles/common";
+
+$height: 2rem;
+
+//@mixin scroll($number: 5, $interval: 5) {
+//  $step: 100 / ($number * 2);
+//  $duration: $number * 2 * $interval;
+//  @keyframes keyframes {
+//    @for $i from 0 through $number {
+//      #{$step * $i}% { bottom: $height * $i; }
+//    }
+//  }
+//  animation: keyframes $duration infinite;
+//}
+
+@keyframes scroll {
+  00%   { bottom: $height * 0; }
+  10%   { bottom: $height * 0; }
+  20%   { bottom: $height * 1; }
+  30%   { bottom: $height * 1; }
+  40%   { bottom: $height * 2; }
+  50%   { bottom: $height * 2; }
+  60%   { bottom: $height * 3; }
+  70%   { bottom: $height * 3; }
+  80%   { bottom: $height * 4; }
+  90%   { bottom: $height * 4; }
+  100%  { bottom: $height * 5; }
+}
+
+.PromotionBar {
+  height: $height;
+  overflow: hidden;
+  ul {
+    //@include scroll;
+    animation: scroll 50s infinite;
+    position: relative;
+    height: $height;
+    li {
+      line-height: $height;
+      height: $height;
+    }
+  }
+}

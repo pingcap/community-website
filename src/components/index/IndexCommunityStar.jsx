@@ -4,6 +4,7 @@ import {Row, Col} from "antd";
 import classNames from "classnames";
 import {useDebounceFn} from 'ahooks'
 import LinkWithArrow from "src/components/LinkWithArrow";
+import Container from "src/components/Container/Container";
 
 export default function IndexCommunityStar({data}) {
   const [opinionIndex, setOpinionIndex] = useState(-1);
@@ -14,7 +15,7 @@ export default function IndexCommunityStar({data}) {
   
   return (
     <div className={styles.wrapper}>
-      <div className={classNames(styles.container, "container")}>
+      <Container className={styles.container}>
         <div className={styles.title}>
           {data.title}
         </div>
@@ -68,7 +69,7 @@ export default function IndexCommunityStar({data}) {
           </LinkWithArrow>
         </div>
         
-      </div>
+      </Container>
     </div>
   )
 }

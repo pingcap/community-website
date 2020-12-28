@@ -8,6 +8,10 @@
 
 }
 
+.summary {
+  padding: 4rem 0;
+}
+
 .banner {
   &_title {
     @include H0;
@@ -15,3 +19,18 @@
     color: $M2;
   }
 }
+
+.item {
+  text-align: center;
+  &_icon {
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  }
+  &_name {
+    @include H2;
+    margin-top: .5rem;
+  }
+}
+

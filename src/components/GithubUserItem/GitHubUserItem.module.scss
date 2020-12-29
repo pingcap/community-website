@@ -1,0 +1,21 @@
+@import "src/styles/common";
+
+$avatar-size: 8rem;
+
+.wrapper {
+
+}
+
+.item {
+  text-align: center;
+  &_icon {
+    img {
+      width: $avatar-size;
+      height: $avatar-size;
+    }
+  }
+  &_name {
+    @include H2;
+    margin-top: .5rem;
+  }
+}

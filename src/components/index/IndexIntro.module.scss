@@ -9,16 +9,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
 .title {
   @include H1;
+  text-align: center;
 }
 
 .summary {
   @include P1;
   margin-top: 2rem;
+  text-align: center;
 }
 
 .list {

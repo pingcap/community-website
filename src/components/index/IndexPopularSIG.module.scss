@@ -13,11 +13,13 @@
 
 .title {
   @include H1;
+  text-align: center;
 }
 
 .summary {
   @include P1;
   margin-top: 2rem;
+  text-align: center;
 }
 
 .list {

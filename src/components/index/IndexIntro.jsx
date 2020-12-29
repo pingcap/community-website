@@ -11,7 +11,7 @@ export default function IndexIntro({data}) {
           {data.title}
         </div>
         <Row justify="space-around">
-          <Col span={16}>
+          <Col sm={24} md={16}>
             <div className={styles.summary}>
               {data.summary}
             </div>

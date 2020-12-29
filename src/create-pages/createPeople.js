@@ -9,7 +9,7 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
   for (const item of people) {
     const api = `https://bots.tidb.io/ti-community-bot/members?level=${item}`
     const response = await axios.get(api)
-    const members = response.data.data?.members ?? []
+    const members = response.data.data?.members || []
     // console.log('sig list', items)
   
     const url = `${urlPrefix}/${item}`

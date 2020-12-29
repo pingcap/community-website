@@ -7,8 +7,19 @@ import Container from "src/components/Container/Container";
 import Banner from "src/components/Banner/Banner";
 import {Col, Row} from "antd";
 import GitHubUserItem from "src/components/GithubUserItem/GitHubUserItem";
+import {graphql, useStaticQuery} from "gatsby";
 
 export default function PeopleDetail({ data, pageContext }) {
+  const imageData = useStaticQuery(
+    graphql`
+      query {
+        banner: file(relativePath: { eq: "home/banner.svg" }) {
+          publicURL
+        }
+      }
+    `
+  )
+  
   const {members, type} = pageContext
   return (
     <Layout>
@@ -17,7 +28,7 @@ export default function PeopleDetail({ data, pageContext }) {
         description="description"
       />
   
-      <Banner backgroundImage={'/images/home/banner.svg'} className={styles.banner}>
+      <Banner backgroundImage={imageData.banner.publicURL} className={styles.banner}>
         <h1 className={styles.banner_title}>
           {type}
         </h1>

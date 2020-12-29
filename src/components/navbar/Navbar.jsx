@@ -1,16 +1,26 @@
 import React, {useEffect, useState} from 'react';
 import styles from './Navbar.module.scss'
 import classNames from 'classnames'
-import {Link} from "gatsby";
+import {graphql, Link, useStaticQuery} from "gatsby";
 import {Dropdown, Menu} from 'antd';
 import {DownOutlined} from "@ant-design/icons";
-import i18n from '../../data/navbar'
+import i18n from 'src/data/navbar'
 import {useIntl} from "react-intl";
 import {useDebounce} from 'ahooks'
 import Container from "src/components/Container/Container";
 import {MenuOutlined} from "@material-ui/icons";
 
 export default function Navbar(props) {
+  const imageData = useStaticQuery(
+    graphql`
+      query {
+        logo: file(relativePath: { eq: "TiDB-logo-red.svg" }) {
+          publicURL
+        }
+      }
+    `
+  )
+  
   const intl = useIntl()
   const locale = intl.locale
   
@@ -42,7 +52,7 @@ export default function Navbar(props) {
           <div className={styles.left}>
             <div className={styles.logo}>
               <Link to="/">
-                <img src="/images/TiDB-logo-red.svg" alt="TiDB DevGroup"/>
+                <img src={imageData.logo.publicURL} alt="TiDB DevGroup"/>
               </Link>
             </div>
             <div className={classNames(styles.title, {[styles.title_transparent]: transparentDebounced})}>

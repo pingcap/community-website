@@ -3,8 +3,23 @@ import styles from './IndexPopularSIG.module.scss'
 import {Row, Col} from 'antd'
 import LinkWithArrow from "src/components/LinkWithArrow";
 import Container from "src/components/Container/Container";
+import {graphql, useStaticQuery} from "gatsby";
 
 export default function IndexPopularSIG({data}) {
+  const imageData = useStaticQuery(
+    graphql`
+      query {
+        sig: file(relativePath: { eq: "home/sig-icon.svg" }) {
+          publicURL
+        }
+      }
+    `
+  )
+  
+  data.items.forEach((item, index) => {
+    data.items[index].imageUrl = imageData.sig.publicURL
+  })
+  
   return (
     <div className={styles.wrapper}>
       <Container className={styles.container}>

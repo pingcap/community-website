@@ -6,8 +6,19 @@ import SEO from "src/components/SEO";
 import Banner from "src/components/Banner/Banner";
 import Container from "src/components/Container/Container";
 import BoundLink from "src/components/BoundLink";
+import {graphql, useStaticQuery} from "gatsby";
 
 export default function Detail({ data, pageContext }) {
+  const imageData = useStaticQuery(
+    graphql`
+      query {
+        banner: file(relativePath: { eq: "home/banner.svg" }) {
+          publicURL
+        }
+      }
+    `
+  )
+  
   const {name, sigUrl, channel} = pageContext
   return (
     <Layout>
@@ -16,7 +27,7 @@ export default function Detail({ data, pageContext }) {
         description="description"
       />
       
-      <Banner backgroundImage={'/images/home/banner.svg'} className={styles.banner}>
+      <Banner backgroundImage={imageData.banner.publicURL} className={styles.banner}>
         <h1 className={styles.banner_title}>
           {name}
         </h1>
@@ -33,7 +44,11 @@ export default function Detail({ data, pageContext }) {
       <div className={styles.wrapper}>
         <Container className={styles.container}>
           <LearningMaterials/>
-          <Members/>
+          <div className={styles.members}>
+            <Section name="Members">
+              Members
+            </Section>
+          </div>
         </Container>
       </div>
     </Layout>
@@ -45,16 +60,6 @@ function LearningMaterials() {
     <div className={styles.learning_materials}>
       <Section name="LearningMaterials">
         LearningMaterials
-      </Section>
-    </div>
-  )
-}
-
-function Members() {
-  return (
-    <div className={styles.members}>
-      <Section name="Members">
-        Members
       </Section>
     </div>
   )

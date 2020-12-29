@@ -1,8 +1,38 @@
 import React from 'react'
 import styles from './IndexGrow.module.scss'
 import Container from "src/components/Container/Container";
+import {graphql, useStaticQuery} from "gatsby";
 
 export default function IndexGrow({data}) {
+  const imageData = useStaticQuery(
+    graphql`
+      query {
+        growArrow: file(relativePath: { eq: "home/grow-arrow.svg" }) {
+          publicURL
+        }
+        growStep1: file(relativePath: { eq: "home/grow-step-1.svg" }) {
+          publicURL
+        }
+        growStep2: file(relativePath: { eq: "home/grow-step-2.svg" }) {
+          publicURL
+        }
+        growStep3: file(relativePath: { eq: "home/grow-step-3.svg" }) {
+          publicURL
+        }
+        growStep4: file(relativePath: { eq: "home/grow-step-4.svg" }) {
+          publicURL
+        }
+        growStep5: file(relativePath: { eq: "home/grow-step-5.svg" }) {
+          publicURL
+        }
+      }
+    `
+  )
+  
+  data.items.forEach((item, index) => {
+    data.items[index].imageUrl = imageData[`growStep${index + 1}`].publicURL
+  })
+  
   return (
     <div className={styles.wrapper}>
       <Container className={styles.container}>
@@ -16,7 +46,7 @@ export default function IndexGrow({data}) {
               {
                 index < data.items.length - 1 &&
                 <div className={styles.step_arrow}>
-                  <img src="/images/home/grow-arrow.svg" alt=">"/>
+                  <img src={imageData.growArrow.publicURL} alt=">"/>
                 </div>
               }
             </>

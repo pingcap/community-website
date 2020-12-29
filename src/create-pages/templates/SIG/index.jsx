@@ -7,9 +7,19 @@ import SEO from "src/components/SEO";
 import Container from "src/components/Container/Container";
 import {Row, Col} from "antd";
 import Banner from "src/components/Banner/Banner";
-import {Link} from "gatsby";
+import {graphql, Link, useStaticQuery} from "gatsby";
 
 export default function SIG({ data, pageContext}) {
+  const imageData = useStaticQuery(
+    graphql`
+      query {
+        banner: file(relativePath: { eq: "home/banner.svg" }) {
+          publicURL
+        }
+      }
+    `
+  )
+  
   const {items} = pageContext
   return (
     <Layout>
@@ -18,7 +28,7 @@ export default function SIG({ data, pageContext}) {
         description="Each SIG is comprised of members from multiple companies and organizations, with a common purpose of advancing the project with respect to a specific topic."
       />
   
-      <Banner backgroundImage={'/images/home/banner.svg'}>
+      <Banner backgroundImage={imageData.banner.publicURL}>
         <h1 className={styles.title}>Special Interest Group</h1>
       </Banner>
   

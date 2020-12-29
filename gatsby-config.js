@@ -19,7 +19,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "public/images/TiDB-logo-red.svg"
+        icon: "./images/TiDB-logo-red.svg"
       }
     },
     "gatsby-transformer-remark",
@@ -29,7 +29,7 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
-        path: "./images/",
+        path: `${__dirname}/images`,
       },
       __key: "images",
     },

@@ -2,8 +2,29 @@ import React from 'react'
 import styles from './IndexIntro.module.scss'
 import {Row, Col} from "antd";
 import Container from "src/components/Container/Container";
+import {useStaticQuery, graphql} from 'gatsby';
 
 export default function IndexIntro({data}) {
+  const imageData = useStaticQuery(
+    graphql`
+      query {
+        communityValue1: file(relativePath: { eq: "home/community-value-1.svg" }) {
+          publicURL
+        }
+        communityValue2: file(relativePath: { eq: "home/community-value-2.svg" }) {
+          publicURL
+        }
+        communityValue3: file(relativePath: { eq: "home/community-value-3.svg" }) {
+          publicURL
+        }
+      }
+    `
+  )
+  
+  data.items.forEach((item, index) => {
+    data.items[index].imageUrl = imageData[`communityValue${index + 1}`].publicURL
+  })
+  
   return (
     <div className={styles.wrapper}>
       <Container className={styles.container}>

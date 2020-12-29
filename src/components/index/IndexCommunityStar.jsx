@@ -5,6 +5,7 @@ import classNames from "classnames";
 import {useDebounceFn} from 'ahooks'
 import LinkWithArrow from "src/components/LinkWithArrow";
 import Container from "src/components/Container/Container";
+import {graphql, useStaticQuery} from "gatsby";
 
 export default function IndexCommunityStar({data}) {
   const [opinionIndex, setOpinionIndex] = useState(-1);
@@ -12,6 +13,20 @@ export default function IndexCommunityStar({data}) {
     setOpinionIndex,
     {wait: 500},
   );
+  
+  const imageData = useStaticQuery(
+    graphql`
+      query {
+        star: file(relativePath: { eq: "home/star-icon.svg" }) {
+          publicURL
+        }
+      }
+    `
+  )
+  
+  data.items.forEach((item, index) => {
+    data.items[index].imageUrl = imageData.star.publicURL
+  })
   
   return (
     <div className={styles.wrapper}>

@@ -7,6 +7,8 @@
   TiDB Developer Community - website 
 </h1>
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bcc3f001-7721-4584-abb8-937c89723fed/deploy-status)](https://app.netlify.com/sites/community-website/deploys)
+
 
 ## 🚀 Quick start
     git clone git@github.com:pingcap/community-website.git

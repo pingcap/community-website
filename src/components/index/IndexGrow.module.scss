@@ -26,8 +26,11 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  & > div {
+    margin-bottom: 2rem;
+  }
   &_arrow {
-    padding: 0 26px;
+    padding: 0 1.5rem;
   }
   &_item {
     padding: {
@@ -47,8 +50,4 @@
       margin-top: 8px;
     }
   }
-}
-
-.more {
-  margin-top: 40px;
 }

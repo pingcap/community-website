@@ -8,8 +8,7 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
   
   const api = 'https://bots.tidb.io/ti-community-bot/sigs'
   const response = await axios.get(api)
-  const items = response.data.data?.sigs || []
-  // console.log('sig list', items)
+  const items = response.data.data.sigs || []
   
   createPage({
     path: url,

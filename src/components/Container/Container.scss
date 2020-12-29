@@ -1,9 +1,4 @@
-$xs: 576px;
-$sm: 576px;
-$md: 768px;
-$lg: 992px;
-$xl: 1200px;
-$xll: 1600px;
+@import "src/styles/common";
 
 // width < 768px, container's width is 100%
 // otherwise >= 786px, container's width is their breakpoint
@@ -15,7 +10,7 @@ $xll: 1600px;
   margin: 0 auto;
 }
 
-@media screen and (max-width: $md) {
+@media screen and (max-width: $sm) {
   .pingcap-container {
     width: 100%;
   }

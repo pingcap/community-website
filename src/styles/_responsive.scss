@@ -1,0 +1,46 @@
+$xs: 576px;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xll: 1600px;
+
+
+
+@mixin responsive-xs {
+  @media screen and (max-width: $xs) {
+    @content
+  }
+}
+
+@mixin responsive-sm {
+  @media screen and (min-width: $sm) {
+    @content
+  }
+}
+
+@mixin responsive-md {
+  @media screen and (min-width: $md) {
+    @content
+  }
+}
+
+@mixin responsive-lg {
+  @media screen and (min-width: $lg) {
+    @content
+  }
+}
+
+@mixin responsive-xl {
+  @media screen and (min-width: $xl) {
+    @content
+  }
+}
+
+@mixin responsive-xll {
+  @media screen and (min-width: $xll) {
+    @content
+  }
+}
+
+

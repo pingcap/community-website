@@ -1,13 +1,13 @@
 import React from 'react'
 import styles from './IndexPopularSIG.module.scss'
 import {Row, Col} from 'antd'
-import classNames from "classnames";
 import LinkWithArrow from "src/components/LinkWithArrow";
+import Container from "src/components/Container/Container";
 
 export default function IndexPopularSIG({data}) {
   return (
     <div className={styles.wrapper}>
-      <div className={classNames(styles.container, "container")}>
+      <Container className={styles.container}>
         <div className={styles.title}>
           {data.title}
         </div>
@@ -30,7 +30,7 @@ export default function IndexPopularSIG({data}) {
             </LinkWithArrow>
           </div>
         </div>
-      </div>
+      </Container>
     </div>
   )
 }

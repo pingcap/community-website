@@ -1,11 +1,11 @@
 import React from 'react'
 import styles from './IndexGrow.module.scss'
-import classNames from "classnames";
+import Container from "src/components/Container/Container";
 
 export default function IndexGrow({data}) {
   return (
     <div className={styles.wrapper}>
-      <div className={classNames(styles.container, "container")}>
+      <Container className={styles.container}>
         <div className={styles.title}>
           {data.title}
         </div>
@@ -23,7 +23,7 @@ export default function IndexGrow({data}) {
           )}
         </div>
         
-      </div>
+      </Container>
     </div>
   )
 }

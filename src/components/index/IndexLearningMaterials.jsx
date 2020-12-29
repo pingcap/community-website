@@ -1,12 +1,12 @@
 import React from 'react'
 import styles from './IndexLearningMaterials.module.scss'
 import {Row, Col} from "antd";
-import classNames from "classnames";
+import Container from "src/components/Container/Container";
 
 export default function IndexLearningMaterials({data}) {
   return (
     <div className={styles.wrapper}>
-      <div className={classNames(styles.container, 'container')}>
+      <Container className={styles.container}>
         <div className={styles.title}>
           {data.title}
         </div>
@@ -20,7 +20,7 @@ export default function IndexLearningMaterials({data}) {
           </Row>
         </div>
         
-      </div>
+      </Container>
     </div>
   )
 }

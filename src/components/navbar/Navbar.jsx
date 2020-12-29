@@ -8,6 +8,7 @@ import i18n from '../../data/navbar'
 import {useIntl} from "react-intl";
 import {useDebounce} from 'ahooks'
 import Container from "src/components/Container/Container";
+import {MenuOutlined} from "@material-ui/icons";
 
 export default function Navbar(props) {
   const intl = useIntl()
@@ -17,6 +18,8 @@ export default function Navbar(props) {
   
   const [transparent, setTransparent] = useState(props.transparent)
   const transparentDebounced = useDebounce(transparent, {wait: 100})
+  
+  const [isPopup, setIsPopup] = useState(false)
   
   useEffect(() => {
     const eventName = 'scroll'
@@ -49,6 +52,7 @@ export default function Navbar(props) {
         </Link>
 
         <div className={styles.right}>
+          
           <div className={styles.menu}>
             {data.navbar.linkList.map(item => item.children ? (
               <div className={classNames(styles.menu_item, {[styles.menu_item_transparent]: transparentDebounced})}>
@@ -76,9 +80,45 @@ export default function Navbar(props) {
               </div>
             ))}
           </div>
+  
+          <div className={styles.menu_mobile}>
+            <MenuOutlined onClick={() => setIsPopup(prevState => !prevState)}/>
+          </div>
+          
         </div>
 
       </Container>
+      
+      {isPopup && (
+        <div className={styles.menu_mobile_popup}>
+          {data.navbar.linkList.map(item => item.children ? (
+            <div className={styles.menu_mobile_popup_item}>
+              <Dropdown overlayStyle={{zIndex: 99999}} overlay={
+                <Menu>
+                  {item.children.map(menuItem => (
+                    <Menu.Item>
+                      <Link to={menuItem.link}>
+                        {menuItem.title}
+                      </Link>
+                    </Menu.Item>
+                  ))}
+                </Menu>
+              }>
+                <Link to="#" onClick={e => e.preventDefault()}>
+                  {item.title} <DownOutlined />
+                </Link>
+              </Dropdown>
+            </div>
+          ) : (
+            <div className={styles.menu_mobile_popup_item}>
+              <Link to={item.link}>
+                {item.title}
+              </Link>
+            </div>
+          ))}
+        </div>
+      )}
+      
     </div>
   )
 }

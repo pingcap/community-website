@@ -6,7 +6,7 @@ import SEO from "src/components/SEO";
 import Container from "src/components/Container/Container";
 import Banner from "src/components/Banner/Banner";
 import {Col, Row} from "antd";
-import BoundLink from "src/components/BoundLink";
+import GitHubUserItem from "src/components/GithubUserItem/GitHubUserItem";
 
 export default function PeopleDetail({ data, pageContext }) {
   const {members, type} = pageContext
@@ -33,7 +33,7 @@ export default function PeopleDetail({ data, pageContext }) {
               <Row gutter={[48, 48]} className={styles.items}>
                 {members.map(item =>
                   <Col span={6}>
-                    <Item {...item} />
+                    <GitHubUserItem {...item} />
                   </Col>
                 )}
               </Row>
@@ -45,16 +45,4 @@ export default function PeopleDetail({ data, pageContext }) {
   )
 }
 
-function Item({githubName}) {
-  return (
-    <div className={styles.item}>
-      <div className={styles.item_icon}>
-        <img src={`https://github.com/${githubName}.png`} alt={githubName}/>
-        {/*<div style={{width: 200, height: 200, backgroundColor: 'lightgray', margin: '0 auto'}}>avatar - {githubName}</div>*/}
-      </div>
-      <div className={styles.item_name}>
-        <BoundLink href={`https://github.com/${githubName}`}>{githubName}</BoundLink>
-      </div>
-    </div>
-  )
-}
+

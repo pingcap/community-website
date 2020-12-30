@@ -7,6 +7,8 @@ import Banner from "src/components/Banner/Banner";
 import Container from "src/components/Container/Container";
 import BoundLink from "src/components/BoundLink";
 import {graphql, useStaticQuery} from "gatsby";
+import GitHubUserItem from "src/components/GithubUserItem/GitHubUserItem";
+import {Row, Col} from "antd";
 
 export default function Detail({ data, pageContext }) {
   const imageData = useStaticQuery(
@@ -19,11 +21,12 @@ export default function Detail({ data, pageContext }) {
     `
   )
   
-  const {name, sigUrl, channel} = pageContext
+  const {name, sigUrl, channel, apiData} = pageContext
+  console.log('apiData', apiData)
   return (
     <Layout>
       <SEO
-        title="Detail"
+        title={`${name} - SIG`}
         description="description"
       />
       
@@ -46,7 +49,13 @@ export default function Detail({ data, pageContext }) {
           <LearningMaterials/>
           <div className={styles.members}>
             <Section name="Members">
-              Members
+              <Row gutter={[48, 48]} className={styles.items}>
+                {apiData?.membership?.committers.map(item =>
+                  <Col span={6}>
+                    <GitHubUserItem {...item} />
+                  </Col>
+                )}
+              </Row>
             </Section>
           </div>
         </Container>

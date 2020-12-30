@@ -18,16 +18,21 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
     },
   })
   
-  items.forEach(item => {
+  for (const item of items) {
     const component = path.resolve(`${__dirname}/templates/SIG/detail.jsx`)
     const url = `${urlPrefix}/${item.name}`
+    const api = `https://bots.tidb.io/ti-community-bot/sigs/${item.name}`
+    const response = await axios.get(api)
+    console.log(item.name, response.data.status)
+    const apiData = response.data.data || {}
     createPage({
       path: url,
       component,
       context: {
         ...item,
+        apiData
       },
     })
-  })
+  }
   
 }

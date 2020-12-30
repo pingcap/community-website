@@ -1,0 +1,19 @@
+@import "src/styles/common";
+
+.wrapper {
+
+}
+
+.title {
+  @include H0;
+  padding: 6rem 0;
+  color: $M2;
+}
+
+.container {
+
+}
+
+.table {
+  margin: 4rem auto;
+}

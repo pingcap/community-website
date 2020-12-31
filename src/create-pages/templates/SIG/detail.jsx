@@ -13,16 +13,28 @@ import {Row, Col} from "antd";
 export default function Detail({ data, pageContext }) {
   const imageData = useStaticQuery(
     graphql`
-      query {
-        banner: file(relativePath: { eq: "home/banner.svg" }) {
-          publicURL
-        }
+    query {
+      banner: file(relativePath: { eq: "home/banner.svg" }) {
+        publicURL
       }
+    }
     `
   )
   
   const {name, sigUrl, channel, apiData} = pageContext
-  console.log('apiData', apiData)
+  
+  let memberNode = []
+  const {membership} = apiData
+  for (const membershipKey in membership) {
+    memberNode.push(...membership[membershipKey].map(item =>
+      <Col span={6}>
+        <GitHubUserItem {...item} />
+      </Col>
+    ))
+  }
+  
+  // const memberNode =
+  
   return (
     <Layout>
       <SEO
@@ -46,30 +58,20 @@ export default function Detail({ data, pageContext }) {
       
       <div className={styles.wrapper}>
         <Container className={styles.container}>
-          <LearningMaterials/>
+          <div className={styles.learning_materials}>
+            <Section name="LearningMaterials">
+              LearningMaterials
+            </Section>
+          </div>
           <div className={styles.members}>
             <Section name="Members">
               <Row gutter={[48, 48]} className={styles.items}>
-                {apiData?.membership?.committers.map(item =>
-                  <Col span={6}>
-                    <GitHubUserItem {...item} />
-                  </Col>
-                )}
+                {memberNode}
               </Row>
             </Section>
           </div>
         </Container>
       </div>
     </Layout>
-  )
-}
-
-function LearningMaterials() {
-  return (
-    <div className={styles.learning_materials}>
-      <Section name="LearningMaterials">
-        LearningMaterials
-      </Section>
-    </div>
   )
 }

@@ -5,7 +5,7 @@ import SEO from "src/components/SEO";
 import Banner from "src/components/Banner/Banner";
 import {graphql, useStaticQuery} from "gatsby";
 import Container from "src/components/Container/Container";
-import {Button, Table} from "antd";
+import {Button, Space, Table} from "antd";
 import {Link} from "gatsby";
 
 export default function Ranking({ data, pageContext }) {
@@ -49,16 +49,17 @@ export default function Ranking({ data, pageContext }) {
       title: 'SIG',
       dataIndex: 'sigs',
       key: 'sigs',
-      // render: text => <span>{
-      //   text.split(',').map(item =>
-      //     <Link to={`/SIG/${item}`}><Button size={'small'}>{item}</Button></Link>
-      //   )
-      // }</span>,
+      render: text =>
+        <Space>
+          {text?.split(',').map(item =>
+              <Link to={`/SIG/${item}`}><Button size={'small'}>{item}</Button></Link>
+          )}
+        </Space>
     },
   ]
   
   const tableData = apiData.contributions
-  console.log('tableData', tableData)
+  // console.log('tableData', tableData)
   
   return (
     <Layout>

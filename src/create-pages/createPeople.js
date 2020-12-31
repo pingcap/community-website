@@ -10,7 +10,7 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
     const api = `https://bots.tidb.io/ti-community-bot/members?level=${item}`
     const response = await axios.get(api)
     const members = response.data.data.members || []
-    // console.log('sig list', items)
+    console.log('people', item)
   
     const url = `${urlPrefix}/${item}`
     
@@ -23,5 +23,20 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
       },
     })
   }
+  
+  console.log('fetch contributors')
+  const api = `https://bots.tidb.io/ti-community-bot/contributors?pageSize=20&current=1`
+  const response = await axios.get(api)
+  const url = `${urlPrefix}/contributor`
+  
+  const members = response.data.data.contributors || []
+  createPage({
+    path: url,
+    component,
+    context: {
+      type: 'contributor',
+      members,
+    },
+  })
   
 }

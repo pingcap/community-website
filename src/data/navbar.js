@@ -9,6 +9,10 @@ export default {
           title: 'People',
           children: [
             {
+              title: 'Contributor',
+              link: `${prefixMemberPath}/contributor`
+            },
+            {
               title: 'Active Contributor',
               link: `${prefixMemberPath}/active-contributor`
             },

@@ -18,4 +18,8 @@ $avatar-size: 8rem;
     @include H2;
     margin-top: .5rem;
   }
+  &_level {
+    @include P1;
+    margin-top: .5rem;
+  }
 }

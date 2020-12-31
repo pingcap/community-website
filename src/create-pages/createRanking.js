@@ -9,7 +9,7 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
   const response = await axios.get(api)
   const apiData = response.data.data || []
   
-  console.log('ranking list', apiData)
+  // console.log('ranking list', apiData)
   
   createPage({
     path: url,

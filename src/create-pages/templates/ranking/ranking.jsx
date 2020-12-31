@@ -7,6 +7,7 @@ import {graphql, useStaticQuery} from "gatsby";
 import Container from "src/components/Container/Container";
 import {Button, Space, Table} from "antd";
 import {Link} from "gatsby";
+import BoundLink from "src/components/BoundLink";
 
 export default function Ranking({ data, pageContext }) {
   const imageData = useStaticQuery(
@@ -31,7 +32,7 @@ export default function Ranking({ data, pageContext }) {
       title: 'Coder Name',
       dataIndex: 'githubName',
       key: 'githubName',
-      // render: text => <a>{text}</a>,
+      render: text => <BoundLink href={`https://github.com/${text}`}>{text}</BoundLink>,
     },
     {
       title: 'PR',

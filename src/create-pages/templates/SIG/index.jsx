@@ -44,8 +44,8 @@ export default function SIG({ data, pageContext}) {
               </Section>
             </Col>
             <Col sm={24} md={8}>
-              <Section name="Popular groups">
-                Popular groups
+              <Section name="Popular Groups">
+                Popular Groups
               </Section>
             </Col>
           </Row>

@@ -5,16 +5,22 @@ import Layout from "src/components/Layout";
 import SEO from "src/components/SEO";
 import Banner from "src/components/Banner/Banner";
 import Container from "src/components/Container/Container";
-import BoundLink from "src/components/BoundLink";
-import {graphql, useStaticQuery} from "gatsby";
+import {graphql, Link, useStaticQuery} from "gatsby";
 import GitHubUserItem from "src/components/GithubUserItem/GitHubUserItem";
 import {Row, Col} from "antd";
+import Button from "src/components/Button";
 
 export default function Detail({ data, pageContext }) {
   const imageData = useStaticQuery(
     graphql`
     query {
       banner: file(relativePath: { eq: "home/banner.svg" }) {
+        publicURL
+      }
+      slack: file(relativePath: { eq: "home/button-icon-slack.svg" }) {
+        publicURL
+      }
+      sub: file(relativePath: { eq: "home/button-icon-sub.svg" }) {
         publicURL
       }
     }
@@ -47,12 +53,26 @@ export default function Detail({ data, pageContext }) {
           {name}
         </h1>
         <div className={styles.banner_action}>
-          <div className={styles.banner_action_github}>
-            <BoundLink href={sigUrl}>GitHub Link</BoundLink>
-          </div>
-          <div className={styles.banner_action_slack}>
-            <BoundLink href={channel}>Join Slack</BoundLink>
-          </div>
+          <Button
+            className={styles.banner_action_github}
+            icon={<img src={imageData.slack.publicURL} alt="slack"/>}
+            type="text"
+            size="small"
+            as={Link}
+            href={sigUrl}
+          >
+            GitHub Link
+          </Button>
+          <Button
+            className={styles.banner_action_slack}
+            icon={<img src={imageData.sub.publicURL} alt="subgroups"/>}
+            type="text"
+            size="small"
+            as={Link}
+            href={channel}
+          >
+            Join Slack
+          </Button>
         </div>
       </Banner>
       

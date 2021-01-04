@@ -14,7 +14,7 @@ export default function Ranking({ data, pageContext }) {
   const imageData = useStaticQuery(
     graphql`
       query {
-        banner: file(relativePath: { eq: "home/banner.svg" }) {
+        banner: file(relativePath: { eq: "banner-ranking@2x.png" }) {
           publicURL
         }
       }
@@ -26,6 +26,18 @@ export default function Ranking({ data, pageContext }) {
   
   const {apiData} = pageContext
   
+  const columnValue = sort === 'pr' ? {
+    title: 'Pull Request',
+    dataIndex: 'prCount',
+    key: 'prCount',
+    // render: text => <a>{text}</a>,
+  } : {
+    title: 'Score',
+    dataIndex: 'score',
+    key: 'score',
+    // render: text => <a>{text}</a>,
+  }
+  
   const columns = [
     {
       title: 'No',
@@ -36,20 +48,14 @@ export default function Ranking({ data, pageContext }) {
       title: 'Coder Name',
       dataIndex: 'githubName',
       key: 'githubName',
-      render: text => <BoundLink href={`https://github.com/${text}`}>{text}</BoundLink>,
+      render: text => <Space>
+        <BoundLink href={`https://github.com/${text}`}>
+          <img className={styles.avatar} src={`https://github.com/${text}.png`} alt={text}/>
+          <span className={styles.username}>{text}</span>
+        </BoundLink>
+      </Space>,
     },
-    {
-      title: 'PR',
-      dataIndex: 'prCount',
-      key: 'prCount',
-      // render: text => <a>{text}</a>,
-    },
-    {
-      title: 'Score',
-      dataIndex: 'score',
-      key: 'score',
-      // render: text => <a>{text}</a>,
-    },
+    columnValue,
     {
       title: 'SIG',
       dataIndex: 'sigs',
@@ -79,6 +85,9 @@ export default function Ranking({ data, pageContext }) {
       
       <div className={styles.wrapper}>
         <Container className={styles.container}>
+          <div className={styles.summary}>
+            Contributions to TiDB，including Pull Requests and TiDB Challenge Score.
+          </div>
           <Space size={[36, 0]} className={styles.toolbar}>
             {/*<Radio.Group*/}
             {/*  options={[*/}
@@ -120,9 +129,12 @@ export default function Ranking({ data, pageContext }) {
           
           <div className={styles.table}>
             <Table
-              bordered
+              // bordered
               columns={columns}
               dataSource={tableData}
+              pagination={{
+                pageSize: 100,
+              }}
             />
           </div>
         </Container>

@@ -10,12 +10,34 @@
   color: $M2;
 }
 
-.container {
+.summary {
+  @include P1;
+  padding: 4rem 0;
+}
 
+.container {
+  //display: flex;
+  //flex-direction: column;
+  //justify-content: center;
+  //align-items: cent1er;
+}
+
+$size-avatar: 2rem;
+
+.avatar {
+  width: $size-avatar;
+  height: $size-avatar;
+  border-radius: $size-avatar;
+  overflow: hidden;
+  margin-right: 1rem;
+}
+
+.username {
+  display: inline-block;
+  line-height: $size-avatar;
 }
 
 .toolbar {
-  margin-top: 3rem;
 }
 
 .table {

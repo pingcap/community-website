@@ -18,7 +18,7 @@ export default function Events() {
   const imageData = useStaticQuery(
     graphql`
       query {
-        banner: file(relativePath: { eq: "home/banner.svg" }) {
+        banner: file(relativePath: { eq: "banner-events@2x.png" }) {
           publicURL
         }
         event1: file(relativePath: { eq: "home/event-high-performance-tidb-challenge.svg" }) {

@@ -5,7 +5,7 @@ import SEO from "src/components/SEO";
 import Banner from "src/components/Banner/Banner";
 import {graphql, useStaticQuery} from "gatsby";
 import Container from "src/components/Container/Container";
-import {Button, Radio, Space, Table} from "antd";
+import {Button, Space, Table} from "antd";
 import {Link} from "gatsby";
 import BoundLink from "src/components/BoundLink";
 import RadioButton from "src/components/RadioButton/RadioButton";

@@ -23,7 +23,18 @@
 
   &-icon {
     display: flex;
-    margin-right: 8px;
+    &.small {
+      margin-right: 8px;
+      font-size: 16px;
+    }
+    &.medium {
+      margin-right: 10px;
+      font-size: 20px;
+    }
+    &.large {
+      margin-right: 12px;
+      font-size: 24px;
+    }
   }
 
   &.small {

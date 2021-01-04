@@ -33,10 +33,12 @@ export default function Navbar(props) {
   
   useEffect(() => {
     const eventName = 'scroll'
-    const scrollListener = (e) => {
+    const scrollListener = () => {
       const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
       setTransparent(scrollTop <= 0)
     }
+  
+    scrollListener()
     
     window.addEventListener(eventName, scrollListener)
     return () => {

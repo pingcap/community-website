@@ -26,6 +26,7 @@
   &_transparent {
     background-color: rgba(#000, 0);
     box-shadow: 0 0;
+    backdrop-filter: none;
   }
 }
 

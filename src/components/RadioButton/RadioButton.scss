@@ -1,0 +1,27 @@
+@import "src/styles/common";
+
+
+$color-border: #CBD3D5;
+$border-radius: 4px;
+
+.RadioButton {
+  display: flex;
+  &-item {
+    @include P2;
+    cursor: pointer;
+    padding: 8px 16px;
+    border: 1px solid $color-border;
+    &:first-child {
+      border-radius: $border-radius 0 0 $border-radius;
+    }
+    &:last-child {
+      //border-right: none;
+      border-radius: 0 $border-radius $border-radius 0;
+    }
+
+    &-selected {
+      color: $B1;
+      border-color: $B1;
+    }
+  }
+}

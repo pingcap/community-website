@@ -9,12 +9,13 @@ import {graphql, Link, useStaticQuery} from "gatsby";
 import GitHubUserItem from "src/components/GithubUserItem/GitHubUserItem";
 import {Row, Col} from "antd";
 import Button from "src/components/Button";
+import {GithubOutlined, SlackOutlined} from '@ant-design/icons'
 
 export default function Detail({ data, pageContext }) {
   const imageData = useStaticQuery(
     graphql`
     query {
-      banner: file(relativePath: { eq: "home/banner.svg" }) {
+      banner: file(relativePath: { eq: "banner-sig-detail@2x.png" }) {
         publicURL
       }
       slack: file(relativePath: { eq: "home/button-icon-slack.svg" }) {
@@ -55,9 +56,10 @@ export default function Detail({ data, pageContext }) {
         <div className={styles.banner_action}>
           <Button
             className={styles.banner_action_github}
-            icon={<img src={imageData.slack.publicURL} alt="slack"/>}
+            // icon={<img src={imageData.slack.publicURL} alt="slack"/>}
+            icon={<GithubOutlined />}
             type="text"
-            size="small"
+            size="large"
             as={Link}
             href={sigUrl}
           >
@@ -65,9 +67,10 @@ export default function Detail({ data, pageContext }) {
           </Button>
           <Button
             className={styles.banner_action_slack}
-            icon={<img src={imageData.sub.publicURL} alt="subgroups"/>}
+            // icon={<img src={imageData.sub.publicURL} alt="subgroups"/>}
+            icon={<SlackOutlined />}
             type="text"
-            size="small"
+            size="large"
             as={Link}
             href={channel}
           >

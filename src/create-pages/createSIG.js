@@ -10,11 +10,21 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
   const response = await axios.get(api)
   const items = response.data.data.sigs || []
   
+  console.log('items', items)
+  const sigSubMember = {}
+  for (const item of items) {
+    const {id} = item
+    const gitHubNames = await getGitHubNamesBySigId(id)
+    sigSubMember[id] = gitHubNames
+  }
+  console.log('create sigSubMember', sigSubMember)
+  
   createPage({
     path: url,
     component,
     context: {
       items,
+      sigSubMember,
     },
   })
   
@@ -22,7 +32,7 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
     const component = path.resolve(`${__dirname}/templates/SIG/detail.jsx`)
     const url = `${urlPrefix}/${item.name}`
     const api = `https://bots.tidb.io/ti-community-bot/sigs/${item.name}`
-    // let response
+    
     try {
       const response = await axios.get(api)
       console.log(item.name, response.data.status)
@@ -37,7 +47,22 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
         },
       })
     } catch (e) {
-      console.error('download SIG detail error', e)
+      console.error('download SIG detail error', item.name)
     }
+  }
+}
+
+async function getGitHubNamesBySigId(sigId) {
+  try {
+    const apiMember = `https://bots.tidb.io/ti-community-bot/members?sigId=${sigId}`
+    const responseMember = await axios.get(apiMember)
+    const dataMember = responseMember.data.data || {}
+    const {members} = dataMember
+    const subMember = members.slice(0, 8)
+    const subMemberUsernames = subMember.map(member => member.githubName)
+    return subMemberUsernames
+  } catch (e) {
+    console.error('getGitHubNamesBySigId error, ', sigId)
+    return []
   }
 }

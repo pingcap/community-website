@@ -16,10 +16,14 @@
 }
 
 .list {
-  padding-bottom: 4rem;
+  padding: {
+    bottom: 4rem;
+  };
 }
 
 $split-size: 1rem;
+$avatar-size: 5rem;
+$avatar-sub-size: 33.3%;
 
 .item {
   display: flex;
@@ -30,19 +34,50 @@ $split-size: 1rem;
     border-bottom: 0;
   }
   &_left {
+    margin-right: 1rem;
     &_icon {
-
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap-reverse;
+      width: $avatar-size;
+      img {
+        width: $avatar-sub-size;
+        height: $avatar-sub-size;
+      }
     }
   }
   &_right {
-    &_title {
-      @include H2;
-      a:hover {
-        color: $B1;
+    width: 100%;
+    &_header {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      &_title {
+        @include H2;
+        a:hover {
+          color: $B1;
+        }
+      }
+      &_member_count {
+        @include P2;
+        color: $B3;
       }
     }
     &_summary {
       margin-top: 1rem;
+    }
+  }
+}
+
+.popular {
+  &_item {
+    @include transition;
+    display: block;
+    padding: 4px 10px;
+    background-color: rgba($B3, .1);
+    &:hover {
+      color: $B1;
+      background-color: rgba($B1, .25);
     }
   }
 }

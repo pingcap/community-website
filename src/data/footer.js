@@ -1,34 +1,31 @@
 const footerColumns = [
   [
     {
-      name: 'Product',
-      items: [
-        {
-          name: 'TiDB',
-          link: '/products/tidb',
-        },
-        {
-          name: 'TiDB Cloud',
-          link: '/products/tidbcloud',
-        },
-      ],
-    },
-    {
-      name: 'Ecosystem',
+      name: 'Community',
       items: [
         {
           name: 'TiKV',
-          link: 'https://github.com/tikv/tikv',
+          link: 'https://tikv.org/',
           outbound: true,
         },
         {
-          name: 'TiSpark',
-          link: 'https://github.com/pingcap/tispark',
+          name: 'Slack',
+          link: 'https://slack.tidb.io/invite?team=tidb-community&channel=everyone',
+          outbound: true,
+        },
+        {
+          name: 'AskTUG',
+          link: 'https://asktug.com/',
+          outbound: true,
+        },
+        {
+          name: 'Mailing List',
+          link: 'https://lists.tidb.io/g/main/subgroups',
           outbound: true,
         },
         {
           name: 'Chaos Mesh®',
-          link: 'https://github.com/pingcap/chaos-mesh',
+          link: 'https://chaos-mesh.org/',
           outbound: true,
         },
       ],
@@ -36,59 +33,39 @@ const footerColumns = [
   ],
 
   [
-    {
-      name: 'Blog',
-      items: [
-        {
-          name: 'Engineering',
-          link: '/blog/category/Engineering',
-        },
-        {
-          name: 'HTAP',
-          link: '/blog/category/HTAP',
-        },
-        {
-          name: 'MySQL Scalability',
-          link: '/blog/category/MySQL-Scalability',
-        },
-        {
-          name: 'Open Source',
-          link: '/blog/category/Open-Source-Community',
-        },
-      ],
-    },
-  ],
-
-  [
+  
     {
       name: 'Resources',
       items: [
         {
-          name: 'Case Studies',
-          link: '/case-studies',
+          name: 'Quick Start',
+          link: 'https://docs.pingcap.com/tidb/stable/quick-start-with-tidb',
+          outbound: true,
         },
         {
-          name: 'Community',
-          link: '/community',
+          name: 'Best Practices',
+          link: 'https://docs.pingcap.com/tidb/stable/tidb-best-practices',
+          outbound: true,
         },
         {
-          name: 'Docs',
-          link: 'https://docs.pingcap.com/tidb/v4.0',
+          name: 'FAQs',
+          link: 'https://docs.pingcap.com/tidb/stable/tidb-faq',
+          outbound: true,
+        },
+        {
+          name: 'Release Notes',
+          link: 'https://docs.pingcap.com/tidb/stable/release-notes',
+          outbound: true,
+        },
+        {
+          name: 'Blog',
+          link: 'https://en.pingcap.com/blog',
           outbound: true,
         },
         {
           name: 'GitHub',
-          link: 'https://github.com/pingcap',
+          link: 'https://github.com/pingcap/tidb',
           outbound: true,
-        },
-        {
-          name: 'TiDB Monthly',
-          link: 'https://pingcap.com/weekly/',
-          outbound: true,
-        },
-        {
-          name: 'Trust Center',
-          link: '/trust',
         },
       ],
     },
@@ -96,35 +73,31 @@ const footerColumns = [
 
   [
     {
-      name: 'Company',
+      name: 'Learning',
       items: [
         {
-          name: 'About',
-          link: '/about',
+          name: 'Docs',
+          link: 'https://docs.pingcap.com/tidb/stable',
+          outbound: true,
         },
         {
-          name: 'News',
-          link: '/in-the-news',
+          name: 'Case Studies',
+          link: 'https://en.pingcap.com/case-studies/',
         },
         {
-          name: 'Careers',
-          link: '/careers',
+          name: 'PingCAP University',
+          link: 'https://university.pingcap.com/',
+          outbound: true,
         },
         {
-          name: 'Contact Us',
-          link: '/contact-us',
-        },
-        {
-          name: 'Cookie Policy',
-          link: '/cookie-policy',
-        },
-        {
-          name: 'Privacy Policy',
-          link: '/privacy-policy',
+          name: 'TiDB in Action',
+          link: 'https://book.tidb.io/',
+          outbound: true,
         },
       ],
     },
   ],
+  
 ]
 
 const footerColumnsZh = [

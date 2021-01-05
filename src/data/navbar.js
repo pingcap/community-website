@@ -25,12 +25,8 @@ export default {
               link: `${prefixMemberPath}/committer`
             },
             {
-              title: 'Co-leader',
-              link: `${prefixMemberPath}/co-leader`
-            },
-            {
-              title: 'Leader',
-              link: `${prefixMemberPath}/leader`
+              title: 'Maintainer',
+              link: `${prefixMemberPath}/maintainer`
             },
           ]
         },

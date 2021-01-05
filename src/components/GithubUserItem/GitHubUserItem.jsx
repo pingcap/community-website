@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./GitHubUserItem.module.scss";
 import BoundLink from "src/components/BoundLink";
 
-export default function GitHubUserItem({githubName, level}) {
+export default function GitHubUserItem({githubName, level, community}) {
   return (
     <div className={styles.item}>
       <div className={styles.item_icon}>
@@ -16,7 +16,7 @@ export default function GitHubUserItem({githubName, level}) {
         </BoundLink>
       </div>
       <div className={styles.item_level}>
-        {level}
+        {level || community}
       </div>
     </div>
   )

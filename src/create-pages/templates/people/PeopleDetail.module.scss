@@ -9,6 +9,7 @@
 }
 
 .summary {
+  @include markdown;
   padding: 4rem 0;
 }
 

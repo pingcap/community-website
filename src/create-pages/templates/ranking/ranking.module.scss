@@ -12,6 +12,7 @@
 
 .summary {
   @include P1;
+  @include markdown;
   padding: 4rem 0;
 }
 

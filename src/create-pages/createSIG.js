@@ -2,6 +2,7 @@ const path = require('path')
 const axios = require('axios')
 
 module.exports = async ({ graphql, createPage, createRedirect }) => {
+  
   const component = path.resolve(`${__dirname}/templates/SIG/index.jsx`)
   const urlPrefix = '/SIG'
   const url = `${urlPrefix}`
@@ -32,6 +33,14 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
     const component = path.resolve(`${__dirname}/templates/SIG/detail.jsx`)
     const url = `${urlPrefix}/${item.name}`
     const api = `https://bots.tidb.io/ti-community-bot/sigs/${item.name}`
+  
+    const graphqlData = await graphql(`
+      query {
+        summary: markdownRemark(fileAbsolutePath: {regex: "/${item.name}/"}) {
+          html
+        }
+      }
+    `)
     
     try {
       const response = await axios.get(api)
@@ -44,7 +53,9 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
         context: {
           ...item,
           apiData,
+          graphqlData,
         },
+        data: graphqlData,
       })
     } catch (e) {
       console.error('download SIG detail error', item.name)
@@ -58,7 +69,7 @@ async function getGitHubNamesBySigId(sigId) {
     const responseMember = await axios.get(apiMember)
     const dataMember = responseMember.data.data || {}
     const {members} = dataMember
-    const subMember = members.slice(0, 8)
+    const subMember = members.slice(0, 9)
     const subMemberUsernames = subMember.map(member => member.githubName)
     return subMemberUsernames
   } catch (e) {

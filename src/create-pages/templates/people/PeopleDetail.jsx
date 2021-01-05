@@ -20,7 +20,21 @@ export default function PeopleDetail({ data, pageContext }) {
     `
   )
   
-  const {members, type} = pageContext
+  const {members, type, graphqlData} = pageContext
+  
+  const summaryNode = graphqlData.data.summary ? (
+    <div
+      className={styles.markdown}
+      dangerouslySetInnerHTML={{ __html: graphqlData.data.summary.html }}
+    />
+  ) : (
+    <div
+      className={styles.markdown}
+    >
+      There is no description of this people type.
+    </div>
+  )
+  
   return (
     <Layout>
       <SEO
@@ -37,7 +51,7 @@ export default function PeopleDetail({ data, pageContext }) {
       <div className={styles.wrapper}>
         <Container className={styles.container}>
           <div className={styles.summary}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus autem, blanditiis cum excepturi, explicabo facere impedit ipsum labore laboriosam nobis nulla optio perspiciatis placeat quo quod repudiandae soluta sunt tenetur?
+            {summaryNode}
           </div>
           <div className={styles.list}>
             <Section name="All Contributors">

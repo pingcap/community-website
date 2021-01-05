@@ -28,7 +28,21 @@ export default function Detail({ data, pageContext }) {
     `
   )
   
-  const {name, sigUrl, channel, apiData} = pageContext
+  const {name, sigUrl, channel, apiData, graphqlData} = pageContext
+  console.log('graphqlData', graphqlData)
+  
+  const learningMaterialsNode = graphqlData.data.summary ? (
+      <div
+        className={styles.markdown}
+        dangerouslySetInnerHTML={{ __html: graphqlData.data.summary.html }}
+      />
+    ) : (
+      <div
+        className={styles.markdown}
+      >
+        There is no description of this special interest group.
+      </div>
+    )
   
   let memberNode = []
   const {membership} = apiData
@@ -39,8 +53,6 @@ export default function Detail({ data, pageContext }) {
       </Col>
     ))
   }
-  
-  // const memberNode =
   
   return (
     <Layout>
@@ -82,8 +94,8 @@ export default function Detail({ data, pageContext }) {
       <div className={styles.wrapper}>
         <Container className={styles.container}>
           <div className={styles.learning_materials}>
-            <Section name="LearningMaterials">
-              LearningMaterials
+            <Section name="">
+              {learningMaterialsNode}
             </Section>
           </div>
           <div className={styles.members}>

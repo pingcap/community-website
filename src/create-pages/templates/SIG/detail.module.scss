@@ -33,3 +33,10 @@
     }
   }
 }
+
+.learning_materials {
+  @include markdown;
+  margin: {
+    bottom: 4rem;
+  };
+}

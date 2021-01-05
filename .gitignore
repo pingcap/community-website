@@ -68,3 +68,7 @@ yarn-error.log
 
 # Yarn Integrity file
 .yarn-integrity
+
+
+# ignore the downloaded markdown file
+./src/markdown-pages

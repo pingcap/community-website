@@ -11,11 +11,14 @@ import BoundLink from "src/components/BoundLink";
 import RadioButton from "src/components/RadioButton/RadioButton";
 
 export default function Ranking({ data, pageContext, location }) {
-  const imageData = useStaticQuery(
+  const graphqlData = useStaticQuery(
     graphql`
       query {
         banner: file(relativePath: { eq: "banner-ranking@2x.png" }) {
           publicURL
+        }
+        rankingDescription: markdownRemark(fileAbsolutePath: {regex: "/ranking/"}) {
+          html
         }
       }
     `
@@ -72,7 +75,6 @@ export default function Ranking({ data, pageContext, location }) {
   ]
   
   const tableData = showType === 'pr' ? apiData.contributions : apiData.contributions.filter(contribution => !!contribution.score)
-  // console.log('tableData', tableData)
   
   return (
     <Layout>
@@ -81,15 +83,13 @@ export default function Ranking({ data, pageContext, location }) {
         description="TiDB DevGroup rankings"
       />
   
-      <Banner backgroundImage={imageData.banner.publicURL}>
+      <Banner backgroundImage={graphqlData.banner.publicURL}>
         <h1 className={styles.title}>Ranking</h1>
       </Banner>
       
       <div className={styles.wrapper}>
         <Container className={styles.container}>
-          <div className={styles.summary}>
-            Contributions to TiDB，including Pull Requests and TiDB Challenge Score.
-          </div>
+          <div className={styles.summary} dangerouslySetInnerHTML={{ __html: graphqlData.rankingDescription.html }} />
           <Space size={[36, 0]} className={styles.toolbar}>
             <RadioButton
               options={[

@@ -4,10 +4,17 @@
 
 @mixin title {
   h2 {
+    @include H2;
     margin: {
       top: 2rem;
       bottom: 1rem;
     };
+  }
+  h3 {
+    @include H3;
+  }
+  h4 {
+    @include H4;
   }
 }
 
@@ -29,9 +36,20 @@
   }
 }
 
+@mixin list {
+  ul {
+    list-style: disc;
+    margin: .5rem 0;
+    padding: {
+      left: 1.5rem;
+    }
+  }
+}
+
 @mixin markdown {
   @include anchor;
   @include table;
   @include title;
   @include paragraph;
+  @include list;
 }

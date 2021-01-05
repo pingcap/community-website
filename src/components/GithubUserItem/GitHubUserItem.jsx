@@ -6,11 +6,14 @@ export default function GitHubUserItem({githubName, level}) {
   return (
     <div className={styles.item}>
       <div className={styles.item_icon}>
-        <img src={`https://github.com/${githubName}.png`} alt={githubName}/>
-        {/*<div style={{width: 200, height: 200, backgroundColor: 'lightgray', margin: '0 auto'}}>avatar - {githubName}</div>*/}
+        <BoundLink href={`https://github.com/${githubName}`}>
+          <img src={`https://github.com/${githubName}.png`} alt={githubName}/>
+        </BoundLink>
       </div>
       <div className={styles.item_name}>
-        <BoundLink href={`https://github.com/${githubName}`}>{githubName}</BoundLink>
+        <BoundLink href={`https://github.com/${githubName}`}>
+          {githubName}
+        </BoundLink>
       </div>
       <div className={styles.item_level}>
         {level}

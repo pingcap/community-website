@@ -3,6 +3,7 @@ import styles from './IndexBanner.module.scss'
 import Button from "src/components/Button";
 import {graphql, Link, useStaticQuery} from "gatsby";
 import Container from "src/components/Container/Container";
+import {Space} from "antd";
 
 export default function IndexBanner({data}) {
   const imageData = useStaticQuery(
@@ -44,7 +45,7 @@ export default function IndexBanner({data}) {
             number="1.2 K"
           />
         </div>
-        <div className={styles.buttons}>
+        <Space size={32} className={styles.buttons}>
           <Button
             className={styles.join_slack}
             icon={<img src={imageData.slack.publicURL} alt="slack"/>}
@@ -62,7 +63,7 @@ export default function IndexBanner({data}) {
           >
             Subscribe
           </Button>
-        </div>
+        </Space>
       </Container>
     </div>
   )

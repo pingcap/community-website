@@ -71,3 +71,9 @@
     font-weight: $W1-EN
   }
 }
+
+@mixin anchor {
+  a {
+    color: $B1;
+  }
+}

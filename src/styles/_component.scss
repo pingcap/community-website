@@ -1,0 +1,37 @@
+
+@import "variable";
+@import "typography";
+
+@mixin title {
+  h2 {
+    margin: {
+      top: 2rem;
+      bottom: 1rem;
+    };
+  }
+}
+
+@mixin table {
+  table {
+    margin: 2rem 0;
+    tr {
+      th, td {
+        padding: .5rem 1rem;
+        border: 1px solid rgba($B3, .25);
+      }
+    }
+  }
+}
+
+@mixin paragraph {
+  p {
+    margin: 1rem 0;
+  }
+}
+
+@mixin markdown {
+  @include anchor;
+  @include table;
+  @include title;
+  @include paragraph;
+}

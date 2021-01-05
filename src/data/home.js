@@ -9,11 +9,12 @@ export default {
       summary: 'TiDB is An open-source, cloud-native, distributed SQL database for elastic scale and real-time analytics',
     },
     announcement: [
-      'Tom becomes a new contributor',
-      'Cw1997 becomes a new contributor',
-      'Test becomes a new contributor',
-      'User becomes a new contributor',
-      'Admin becomes a new contributor',
+      // 'Tom becomes a new contributor',
+      // 'Cw1997 becomes a new contributor',
+      // 'Test becomes a new contributor',
+      // 'User becomes a new contributor',
+      // 'Admin becomes a new contributor',
+      
       // {
       //   name: '',
       //   content: 'Tom becomes a new contributor',

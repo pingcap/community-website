@@ -51,7 +51,7 @@ export default function SIG({ data, pageContext}) {
             <Col sm={24} md={8}>
               <Section name="Popular Groups">
                 <Space size={[16, 16]} wrap className={styles.popular}>
-                  {items.map(item => <SIGPopularItem>{item.name}</SIGPopularItem>)}
+                  {items.slice(0, 5).map(item => <SIGPopularItem>{item.name}</SIGPopularItem>)}
                 </Space>
               </Section>
             </Col>

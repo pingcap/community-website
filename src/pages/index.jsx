@@ -27,7 +27,7 @@ export default function Index() {
       />
       
       <IndexBanner data={data.banner} />
-      <IndexAnnouncement data={data.announcement} />
+      {data.announcement.length > 0 && <IndexAnnouncement data={data.announcement}/>}
       <IndexIntro data={data.feature} />
       <IndexGrow data={data.grow} />
       <IndexCommunityStar data={data.star} />

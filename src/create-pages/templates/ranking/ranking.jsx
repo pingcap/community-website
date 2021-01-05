@@ -17,7 +17,7 @@ export default function Ranking({ data, pageContext, location }) {
         banner: file(relativePath: { eq: "banner-ranking@2x.png" }) {
           publicURL
         }
-        rankingDescription: markdownRemark(fileAbsolutePath: {regex: "/ranking/"}) {
+        rankingDescription: markdownRemark(fileAbsolutePath: {regex: "//ranking.md$/"}) {
           html
         }
       }

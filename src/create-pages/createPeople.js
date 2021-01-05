@@ -15,7 +15,7 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
   
     const graphqlData = await graphql(`
       query {
-        summary: markdownRemark(fileAbsolutePath: {regex: "/${item}/"}) {
+        summary: markdownRemark(fileAbsolutePath: {regex: "//${item}.md$/"}) {
           html
         }
       }
@@ -41,7 +41,7 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
 
   const graphqlData = await graphql(`
       query {
-        summary: markdownRemark(fileAbsolutePath: {regex: "/${item}/"}) {
+        summary: markdownRemark(fileAbsolutePath: {regex: "//${item}.md$/"}) {
           html
         }
       }
@@ -60,9 +60,10 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
   
   
   console.log('fetch maintainers')
+  const itemMaintainer = 'maintainer'
   const graphqlDataMaintainer = await graphql(`
       query {
-        summary: markdownRemark(fileAbsolutePath: {regex: "/maintainer/"}) {
+        summary: markdownRemark(fileAbsolutePath: {regex: "//${itemMaintainer}.md$/"}) {
           html
         }
       }

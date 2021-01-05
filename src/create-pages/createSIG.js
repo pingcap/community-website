@@ -36,7 +36,7 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
   
     const graphqlData = await graphql(`
       query {
-        summary: markdownRemark(fileAbsolutePath: {regex: "/${item.name}/"}) {
+        summary: markdownRemark(fileAbsolutePath: {regex: "//${item.name}.md$/"}) {
           html
         }
       }

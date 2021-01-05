@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 const axios = require('axios')
 
 async function downloadBySIGName(SIGName) {
@@ -6,7 +7,9 @@ async function downloadBySIGName(SIGName) {
   try {
     const responseLearningMaterials = await axios.get(apiLearningMaterials)
     const apiDataLearningMaterials = responseLearningMaterials.data || {}
-    writeFile(`../../markdown-pages/SIGReadme`, `${SIGName}.md`, apiDataLearningMaterials)
+    const targetDir = path.resolve(__dirname, `../../markdown-pages/SIGReadme`)
+    console.log('download targetDir: ', targetDir)
+    writeFile(targetDir, `${SIGName}.md`, apiDataLearningMaterials)
   } catch (e) {
     console.error('downloadBySIGName error', e)
   }

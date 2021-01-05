@@ -6,11 +6,11 @@ import Banner from "src/components/Banner/Banner";
 import {graphql, useStaticQuery} from "gatsby";
 import Container from "src/components/Container/Container";
 import {Button, Space, Table} from "antd";
-import {Link} from "gatsby";
+import {Link, navigate} from "gatsby";
 import BoundLink from "src/components/BoundLink";
 import RadioButton from "src/components/RadioButton/RadioButton";
 
-export default function Ranking({ data, pageContext }) {
+export default function Ranking({ data, pageContext, location }) {
   const imageData = useStaticQuery(
     graphql`
       query {
@@ -21,21 +21,23 @@ export default function Ranking({ data, pageContext }) {
     `
   )
   
-  const [filter, setFilter] = useState('week')
-  const [sort, setSort] = useState('pr')
-  
   const {apiData} = pageContext
   
-  const columnValue = sort === 'pr' ? {
+  const duration = location.pathname.substr('/ranking/'.length)
+  const [showType, setShowType] = useState('pr')
+  
+  const columnValue = showType === 'pr' ? {
     title: 'Pull Request',
     dataIndex: 'prCount',
     key: 'prCount',
-    // render: text => <a>{text}</a>,
+    sorter: (a, b) => a.prCount - b.prCount,
+    defaultSortOrder: 'descend',
   } : {
     title: 'Score',
     dataIndex: 'score',
     key: 'score',
-    // render: text => <a>{text}</a>,
+    sorter: (a, b) => a.score - b.score,
+    defaultSortOrder: 'descend',
   }
   
   const columns = [
@@ -69,7 +71,7 @@ export default function Ranking({ data, pageContext }) {
     },
   ]
   
-  const tableData = apiData.contributions
+  const tableData = showType === 'pr' ? apiData.contributions : apiData.contributions.filter(contribution => !!contribution.score)
   // console.log('tableData', tableData)
   
   return (
@@ -89,41 +91,26 @@ export default function Ranking({ data, pageContext }) {
             Contributions to TiDB，including Pull Requests and TiDB Challenge Score.
           </div>
           <Space size={[36, 0]} className={styles.toolbar}>
-            {/*<Radio.Group*/}
-            {/*  options={[*/}
-            {/*    {name: 'Week', value: 'week'},*/}
-            {/*    {name: 'Month', value: 'month'},*/}
-            {/*    {name: 'Year', value: 'year'},*/}
-            {/*    {name: 'History List', value: 'history_list'},*/}
-            {/*  ]}*/}
-            {/*  value={'week'}*/}
-            {/*  onChange={(option) => console.log('filter', option)}*/}
-            {/*/>*/}
-            {/*<Radio.Group*/}
-            {/*  options={[*/}
-            {/*    {name: 'Pull Request', value: 'pr'},*/}
-            {/*    {name: 'Score', value: 'score'},*/}
-            {/*  ]}*/}
-            {/*  selected={'score'}*/}
-            {/*  onChange={(option) => console.log('sort', option)}*/}
-            {/*/>*/}
             <RadioButton
               options={[
                 {label: 'Week', value: 'week'},
                 {label: 'Month', value: 'month'},
                 {label: 'Year', value: 'year'},
-                {label: 'History List', value: 'history_list'},
+                {label: 'History List', value: ''},
               ]}
-              value={filter}
-              onChange={(option) => setFilter(option.value)}
+              value={duration}
+              onChange={(option) => {
+                // setShowDuration(option.value)
+                navigate(`/ranking/${option.value}`)
+              }}
             />
             <RadioButton
               options={[
                 {label: 'Pull Request', value: 'pr'},
                 {label: 'Score', value: 'score'},
               ]}
-              value={sort}
-              onChange={(option) => setSort(option.value)}
+              value={showType}
+              onChange={(option) => setShowType(option.value)}
             />
           </Space>
           

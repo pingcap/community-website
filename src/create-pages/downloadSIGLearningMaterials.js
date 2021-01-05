@@ -6,7 +6,7 @@ async function downloadBySIGName(SIGName) {
   try {
     const responseLearningMaterials = await axios.get(apiLearningMaterials)
     const apiDataLearningMaterials = responseLearningMaterials.data || {}
-    fs.writeFile(`markdown/SIGReadme/${SIGName}.md`, apiDataLearningMaterials, err => console.error(err))
+    writeFile(`../../markdown-pages/SIGReadme`, `${SIGName}.md`, apiDataLearningMaterials)
   } catch (e) {
     console.error('downloadBySIGName error', e)
   }
@@ -28,5 +28,13 @@ async function downloadAll() {
     console.log('downloadBySIGName completed', SIGName)
   }
 }
+
+function writeFile(path, filename, content) {
+  if (!fs.existsSync(path)) {
+    fs.mkdirSync(path, { recursive: true })
+  }
+  fs.writeFile(`${path}/${filename}`, content, { 'flag': 'a' }, err => console.error('fs.writeFile err: ', err))
+}
+
 
 downloadAll().then(data => console.log(data))

@@ -71,4 +71,4 @@ yarn-error.log
 
 
 # ignore the downloaded markdown file
-./src/markdown-pages
+markdown-pages/

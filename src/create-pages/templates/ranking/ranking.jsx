@@ -24,22 +24,34 @@ export default function Ranking({ data, pageContext, location }) {
     `
   )
   
+  const [sortedInfo, setSortedInfo] = useState({
+    order: 'descend',
+    columnKey: 'prCount',
+  })
+  
+  const setSortedColumn = (columnKey) => setSortedInfo({
+    order: 'descend',
+    columnKey,
+  })
+  
   const {apiData} = pageContext
   
   const duration = location.pathname.substr('/ranking/'.length)
-  const [showType, setShowType] = useState('pr')
+  const [showType, setShowType] = useState('prCount')
   
-  const columnValue = showType === 'pr' ? {
+  const columnValue = showType === 'prCount' ? {
     title: 'Pull Request',
     dataIndex: 'prCount',
     key: 'prCount',
     sorter: (a, b) => a.prCount - b.prCount,
+    sortOrder: sortedInfo.columnKey === 'prCount' && sortedInfo.order,
     defaultSortOrder: 'descend',
   } : {
     title: 'Score',
     dataIndex: 'score',
     key: 'score',
     sorter: (a, b) => a.score - b.score,
+    sortOrder: sortedInfo.columnKey === 'score' && sortedInfo.order,
     defaultSortOrder: 'descend',
   }
   
@@ -74,7 +86,7 @@ export default function Ranking({ data, pageContext, location }) {
     },
   ]
   
-  const tableData = showType === 'pr' ? apiData.contributions : apiData.contributions.filter(contribution => !!contribution.score)
+  const tableData = showType === 'prCount' ? apiData.contributions : apiData.contributions.filter(contribution => !!contribution.score)
   
   return (
     <Layout>
@@ -106,11 +118,14 @@ export default function Ranking({ data, pageContext, location }) {
             />
             <RadioButton
               options={[
-                {label: 'Pull Request', value: 'pr'},
+                {label: 'Pull Request', value: 'prCount'},
                 {label: 'Score', value: 'score'},
               ]}
               value={showType}
-              onChange={(option) => setShowType(option.value)}
+              onChange={(option) => {
+                setSortedColumn(option.value)
+                setShowType(option.value)
+              }}
             />
           </Space>
           

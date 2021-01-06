@@ -62,7 +62,7 @@ export default function SIG({ data, pageContext}) {
   )
 }
 
-function SIGItem({name, info, createTime, updateTime, imageData, sigSubMember}) {
+function SIGItem({name, info, createTime, updateTime, imageData, sigSubMember, membersCount}) {
   if (info === '' || info === null || info === undefined) {
     info = `There is no description of sig - ${name}`
   }
@@ -79,7 +79,7 @@ function SIGItem({name, info, createTime, updateTime, imageData, sigSubMember}) 
             <Link to={`/SIG/${name}`}>{name}</Link>
           </div>
           <div className={styles.item_right_member_count}>
-            <img src={imageData.memberIcon.publicURL} alt="member_count"/> {'{member_count}'}
+            <img src={imageData.memberIcon.publicURL} alt="membersCount"/> {membersCount}
           </div>
         </div>
         <div className={styles.item_right_summary}>

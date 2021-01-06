@@ -1,5 +1,6 @@
 const path = require('path')
 const axios = require('axios')
+const apiHelper = require('./apiHelper')
 
 module.exports = async ({ graphql, createPage, createRedirect }) => {
   
@@ -15,7 +16,7 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
   const sigSubMember = {}
   for (const item of items) {
     const {id} = item
-    const gitHubNames = await getGitHubNamesBySigId(id)
+    const gitHubNames = await apiHelper.getGitHubNamesBySigId(id)
     sigSubMember[id] = gitHubNames
   }
   console.log('create sigSubMember', sigSubMember)
@@ -63,17 +64,3 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
   }
 }
 
-async function getGitHubNamesBySigId(sigId) {
-  try {
-    const apiMember = `https://bots.tidb.io/ti-community-bot/members?sigId=${sigId}`
-    const responseMember = await axios.get(apiMember)
-    const dataMember = responseMember.data.data || {}
-    const {members} = dataMember
-    const subMember = members.slice(0, 9)
-    const subMemberUsernames = subMember.map(member => member.githubName)
-    return subMemberUsernames
-  } catch (e) {
-    console.error('getGitHubNamesBySigId error, ', sigId)
-    return []
-  }
-}

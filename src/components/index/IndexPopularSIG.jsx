@@ -4,22 +4,9 @@ import {Row, Col} from 'antd'
 import LinkWithArrow from "src/components/LinkWithArrow";
 import Container from "src/components/Container/Container";
 import {graphql, useStaticQuery} from "gatsby";
+import AvatarGrid from "src/components/AvatarGrid/AvatarGrid";
 
 export default function IndexPopularSIG({data}) {
-  const imageData = useStaticQuery(
-    graphql`
-      query {
-        sig: file(relativePath: { eq: "home/sig-icon.svg" }) {
-          publicURL
-        }
-      }
-    `
-  )
-  
-  data.items.forEach((item, index) => {
-    data.items[index].imageUrl = imageData.sig.publicURL
-  })
-  
   return (
     <div className={styles.wrapper}>
       <Container className={styles.container}>
@@ -33,7 +20,7 @@ export default function IndexPopularSIG({data}) {
           <Row justify="center" gutter={[32, 32]}>
             {data.items.map(item =>
               <Col xs={24} sm={16} md={16} lg={8}>
-                <IndexPopularSIGItem {...item}/>
+                <IndexPopularSIGItem {...item} />
               </Col>
             )}
           </Row>
@@ -50,11 +37,11 @@ export default function IndexPopularSIG({data}) {
   )
 }
 
-function IndexPopularSIGItem({imageUrl, title, summary}) {
+function IndexPopularSIGItem({title, summary, sigSubMemberNames}) {
   return (
     <div className={styles.list_item}>
       <div className={styles.list_item_image}>
-        <img src={imageUrl} alt={title}/>
+        <AvatarGrid members={sigSubMemberNames}/>
       </div>
       <div className={styles.list_item_title}>
         {title}

@@ -9,6 +9,11 @@ const footerColumns = [
           outbound: true,
         },
         {
+          name: 'Chaos Mesh®',
+          link: 'https://chaos-mesh.org/',
+          outbound: true,
+        },
+        {
           name: 'Slack',
           link: 'https://slack.tidb.io/invite?team=tidb-community&channel=everyone',
           outbound: true,
@@ -21,11 +26,6 @@ const footerColumns = [
         {
           name: 'Mailing List',
           link: 'https://lists.tidb.io/g/main/subgroups',
-          outbound: true,
-        },
-        {
-          name: 'Chaos Mesh®',
-          link: 'https://chaos-mesh.org/',
           outbound: true,
         },
       ],

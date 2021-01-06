@@ -35,6 +35,7 @@
     padding: 0 1rem;
   }
   &_item {
+    @include shadow;
     padding: {
       top: 2rem;
       bottom: 1rem;

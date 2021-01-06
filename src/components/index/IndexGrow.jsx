@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './IndexGrow.module.scss'
 import Container from "src/components/Container/Container";
 import {graphql, useStaticQuery} from "gatsby";
+import BoundLink from "src/components/BoundLink";
 
 export default function IndexGrow({data}) {
   const imageData = useStaticQuery(
@@ -58,18 +59,20 @@ export default function IndexGrow({data}) {
   )
 }
 
-function IndexGrowStep({imageUrl, step, title, summary}) {
+function IndexGrowStep({imageUrl, step, title, urlPath}) {
   return (
-    <div className={styles.step_item}>
-      <div className={styles.step_item_image}>
-        <img src={imageUrl} alt=""/>
+    <BoundLink to={`/people/${urlPath}`}>
+      <div className={styles.step_item}>
+          <div className={styles.step_item_image}>
+            <img src={imageUrl} alt=""/>
+          </div>
+          <div className={styles.step_item_index}>
+            STEP {step}
+          </div>
+          <div className={styles.step_item_title}>
+            {title}
+          </div>
       </div>
-      <div className={styles.step_item_index}>
-        STEP {step}
-      </div>
-      <div className={styles.step_item_title}>
-        {title}
-      </div>
-    </div>
+    </BoundLink>
   )
 }

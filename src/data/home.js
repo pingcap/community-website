@@ -97,31 +97,31 @@ export default {
           imageUrl: `${imagesDir}grow-step-1.svg`,
           step: 1,
           title: 'Contributor',
-          summary: '贡献量从 0 - 1 新手入门',
+          urlPath: 'contributor'
         },
         {
           imageUrl: `${imagesDir}grow-step-2.svg`,
           step: 2,
           title: 'Active Contributor',
-          summary: '社区积极分子',
+          urlPath: 'active-contributor'
         },
         {
           imageUrl: `${imagesDir}grow-step-3.svg`,
           step: 3,
           title: 'Reviewer',
-          summary: '代码审阅者',
+          urlPath: 'reviewer'
         },
         {
           imageUrl: `${imagesDir}grow-step-4.svg`,
           step: 4,
           title: 'Committer',
-          summary: '模块老司机',
+          urlPath: 'committer'
         },
         {
           imageUrl: `${imagesDir}grow-step-5.svg`,
           step: 5,
           title: 'Maintainer',
-          summary: '开源推广者',
+          urlPath: 'maintainer'
         },
       ]
     },

@@ -1,4 +1,5 @@
 import common from './common'
+import events from "src/data/events";
 
 const imagesDir = common.imagesDir + '/home/'
 
@@ -150,23 +151,7 @@ export default {
     // TODO: normal form, reference data from events
     events: {
       title: 'Upcoming Events',
-      items: [
-        {
-          imageUrl: `${imagesDir}event-tidb-hackathon2020-62c1c40e7dd9eb4a0eed8d00ea6507e5.svg`,
-          title: 'High Performance TiDB Challenge',
-          summary: 'Getting to know tidb source code and finding the way to join the development.The articles in the tidb source code reading series introduces the overall architecture of tidb, knowing which modules tidb has, what it does, where to start, which can be ignored and which needs to be read carefully.',
-        },
-        {
-          imageUrl: `${imagesDir}event-high-performance-tidb-challenge-ff7cb0ab67af3592ef7f1fe66151630c.svg`,
-          title: 'TiDB Usability Challenge',
-          summary: 'Getting to know tidb source code and finding the way to join the development.The articles in the tidb source code reading series introduces the overall architecture of tidb, knowing which modules tidb has, what it does, where to start, which can be ignored and which needs to be read carefully.',
-        },
-        {
-          imageUrl: `${imagesDir}event-pingcap-infra-meetup.svg`,
-          title: 'Infra Meetup',
-          summary: 'Getting to know tidb source code and finding the way to join the development.The articles in the tidb source code reading series introduces the overall architecture of tidb, knowing which modules tidb has, what it does, where to start, which can be ignored and which needs to be read carefully.',
-        },
-      ]
+      items: events.en.items.slice(0, 3),
     },
   
     learningMaterials: {

@@ -29,7 +29,7 @@ export default function Detail({ data, pageContext }) {
     `
   )
   
-  const {name, sigUrl, channel, apiData, graphqlData} = pageContext
+  const {name, sig_url, channel, apiData, graphqlData} = pageContext
   console.log('graphqlData', graphqlData)
   
   const learningMaterialsNode = graphqlData.data.summary ? (
@@ -45,14 +45,24 @@ export default function Detail({ data, pageContext }) {
       </div>
     )
   
-  let memberNode = []
+  const memberNode = []
   const {membership} = apiData
   for (const membershipKey in membership) {
-    memberNode.push(...membership[membershipKey].map(item =>
-      <Col span={6}>
-        <GitHubUserItem {...item} />
-      </Col>
-    ))
+    const membershipValue = membership[membershipKey]
+    memberNode.push(
+      <div
+        className={styles.member_section}
+      >
+        <h3 className={styles.member_section_title}>{membershipKey}</h3>
+        <Row gutter={[48, 48]}>
+          {membershipValue.map(item =>
+            <Col span={6}>
+              <GitHubUserItem {...item} />
+            </Col>
+          )}
+        </Row>
+      </div>
+    )
   }
   
   return (
@@ -74,7 +84,7 @@ export default function Detail({ data, pageContext }) {
             type="ghost"
             size="small"
             as={Link}
-            href={sigUrl}
+            href={sig_url}
           >
             GitHub Link
           </Button>
@@ -101,9 +111,7 @@ export default function Detail({ data, pageContext }) {
           </div>
           <div className={styles.members}>
             <Section name="Members">
-              <Row gutter={[48, 48]} className={styles.items}>
-                {memberNode}
-              </Row>
+              {memberNode}
             </Section>
           </div>
         </Container>

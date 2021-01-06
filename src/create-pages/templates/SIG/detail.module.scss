@@ -40,3 +40,10 @@
     bottom: 4rem;
   };
 }
+
+.member_section {
+  &_title {
+    @include H3;
+    margin-bottom: 2rem;
+  }
+}

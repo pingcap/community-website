@@ -8,6 +8,7 @@ import Container from "src/components/Container/Container";
 import {Space, Row, Col} from "antd";
 import Banner from "src/components/Banner/Banner";
 import {graphql, Link, useStaticQuery} from "gatsby";
+import AvatarGrid from "src/components/AvatarGrid/AvatarGrid";
 
 export default function SIG({ data, pageContext}) {
   const imageData = useStaticQuery(
@@ -70,7 +71,7 @@ function SIGItem({name, info, createTime, updateTime, imageData, sigSubMember, m
     <div className={styles.item}>
       <div className={styles.item_left}>
         <div className={styles.item_left_icon}>
-          {sigSubMember.map(item => <img src={`https://github.com/${item}.png`} alt=""/>)}
+          <AvatarGrid members={sigSubMember}/>
         </div>
       </div>
       <div className={styles.item_right}>

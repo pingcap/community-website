@@ -37,16 +37,8 @@ $avatar-sub-size: 33.3%;
   &_left {
     margin-right: 1rem;
     &_icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap-reverse;
       width: $avatar-size;
       height: $avatar-size;
-      img {
-        width: $avatar-sub-size;
-        height: $avatar-sub-size;
-      }
     }
   }
   &_right {

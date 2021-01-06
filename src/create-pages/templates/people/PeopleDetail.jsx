@@ -8,6 +8,7 @@ import Banner from "src/components/Banner/Banner";
 import {Col, Row} from "antd";
 import GitHubUserItem from "src/components/GithubUserItem/GitHubUserItem";
 import {graphql, useStaticQuery} from "gatsby";
+import {convertToUpperCamelCase} from 'src/helper'
 
 export default function PeopleDetail({ data, pageContext }) {
   const imageData = useStaticQuery(
@@ -44,7 +45,7 @@ export default function PeopleDetail({ data, pageContext }) {
   
       <Banner backgroundImage={imageData.banner.publicURL} className={styles.banner}>
         <h1 className={styles.banner_title}>
-          {type}
+          {convertToUpperCamelCase(type)}
         </h1>
       </Banner>
   
@@ -54,7 +55,7 @@ export default function PeopleDetail({ data, pageContext }) {
             {summaryNode}
           </div>
           <div className={styles.list}>
-            <Section name={`All ${type}`}>
+            <Section name={`All ${convertToUpperCamelCase(type)}s`}>
               <Row gutter={[48, 48]} className={styles.items}>
                 {members.map(item =>
                   <Col span={6}>

@@ -10,6 +10,7 @@ import GitHubUserItem from "src/components/GithubUserItem/GitHubUserItem";
 import {Row, Col} from "antd";
 import Button from "src/components/Button";
 import {GithubOutlined, SlackOutlined} from '@ant-design/icons'
+import {convertToUpperCamelCase} from 'src/helper'
 
 export default function Detail({ data, pageContext }) {
   const imageData = useStaticQuery(
@@ -63,15 +64,15 @@ export default function Detail({ data, pageContext }) {
       
       <Banner backgroundImage={imageData.banner.publicURL} className={styles.banner}>
         <h1 className={styles.banner_title}>
-          {name}
+          {convertToUpperCamelCase(name)}
         </h1>
         <div className={styles.banner_action}>
           <Button
             className={styles.banner_action_github}
             // icon={<img src={imageData.slack.publicURL} alt="slack"/>}
             icon={<GithubOutlined />}
-            type="text"
-            size="large"
+            type="ghost"
+            size="small"
             as={Link}
             href={sigUrl}
           >
@@ -81,8 +82,8 @@ export default function Detail({ data, pageContext }) {
             className={styles.banner_action_slack}
             // icon={<img src={imageData.sub.publicURL} alt="subgroups"/>}
             icon={<SlackOutlined />}
-            type="text"
-            size="large"
+            type="ghost"
+            size="small"
             as={Link}
             href={channel}
           >

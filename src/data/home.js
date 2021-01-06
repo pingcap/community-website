@@ -161,11 +161,13 @@ export default {
           imageUrl: '#',
           title: 'TiDB Source Code Reading Series',
           summary: 'Getting to know tidb source code and finding the way to join the development.The articles in the tidb source code reading series introduces the overall architecture of tidb, knowing which modules tidb has, what it does, where to start, which can be ignored and which needs to be read carefully.',
+          link: 'https://pingcap.com/blog-cn/#TiDB-%e6%ba%90%e7%a0%81%e9%98%85%e8%af%bb',
         },
         {
           imageUrl: '#',
           title: 'Talent Plan',
           summary: 'Talent Plan is an open source training program initiated by PingCAP. It aims to create or combine some open source learning materials for people interested in open source, distributed systems, Rust, Golang, and other infrastructure knowledges. As such, a series of courses focused on open source collaboration, rust programming, distributed database and systems are provided.',
+          link: 'https://university.pingcap.com/talent-plan/',
         },
       ]
     }

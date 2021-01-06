@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './IndexLearningMaterials.module.scss'
 import {Row, Col} from "antd";
 import Container from "src/components/Container/Container";
+import BoundLink from "src/components/BoundLink";
 
 export default function IndexLearningMaterials({data}) {
   return (
@@ -25,19 +26,21 @@ export default function IndexLearningMaterials({data}) {
   )
 }
 
-function LearningItem({title, summary}) {
+function LearningItem({title, summary, link}) {
   return (
-    <div className={styles.list_item}>
-      <div className={styles.list_item_title}>
-        {title}
+    <BoundLink href={link}>
+      <div className={styles.list_item}>
+        <div className={styles.list_item_title}>
+          {title}
+        </div>
+        <div className={styles.list_item_split_line}>
+          <div/>
+        </div>
+        <div className={styles.list_item_summary}>
+          {summary}
+        </div>
       </div>
-      <div className={styles.list_item_split_line}>
-        <div/>
-      </div>
-      <div className={styles.list_item_summary}>
-        {summary}
-      </div>
-    </div>
+    </BoundLink>
   )
 }
 

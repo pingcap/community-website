@@ -54,7 +54,7 @@ export default function PeopleDetail({ data, pageContext }) {
             {summaryNode}
           </div>
           <div className={styles.list}>
-            <Section name="All Contributors">
+            <Section name={`All ${type}`}>
               <Row gutter={[48, 48]} className={styles.items}>
                 {members.map(item =>
                   <Col span={6}>

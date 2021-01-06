@@ -35,7 +35,7 @@ export default function IndexCommunityStar({data}) {
           {data.title}
         </div>
         <Row justify="space-around">
-          <Col sm={24} md={16}>
+          <Col sm={24} md={20}>
             <div className={styles.summary}>
               {data.summary}
             </div>
@@ -78,11 +78,11 @@ export default function IndexCommunityStar({data}) {
         {/*  </Col>*/}
         {/*</Row>*/}
   
-        <div className={styles.more}>
-          <LinkWithArrow to="/stars" isOutbound={false}>
-            VIEW MORE
-          </LinkWithArrow>
-        </div>
+        {/*<div className={styles.more}>*/}
+        {/*  <LinkWithArrow to="/stars" isOutbound={false}>*/}
+        {/*    VIEW MORE*/}
+        {/*  </LinkWithArrow>*/}
+        {/*</div>*/}
         
       </Container>
     </div>

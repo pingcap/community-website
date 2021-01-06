@@ -32,7 +32,7 @@ export default function IndexIntro({data}) {
           {data.title}
         </div>
         <Row justify="space-around">
-          <Col sm={24} md={16}>
+          <Col sm={24} md={20}>
             <div className={styles.summary}>
               {data.summary}
             </div>
@@ -41,7 +41,7 @@ export default function IndexIntro({data}) {
         <div className={styles.list}>
           <Row justify="space-around" gutter={[32, 32]}>
             {data.items.map((item =>
-                <Col xs={16} sm={16} md={4}>
+                <Col xs={16} sm={16} md={6}>
                   <IndexIntroFeature {...item} />
                 </Col>
             ))}

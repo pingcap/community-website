@@ -128,7 +128,7 @@ export default {
   
     SIG: {
       title: 'Popular SIG',
-      summary: 'Special Interest Group，专项兴趣小组，主要负责 TiDB / TiKV 某个模块的开发和维护工作，对该模块代码的质量负责',
+      summary: 'Special Interest Groups (SIGs) are persistent open groups that focus on a module of TiDB. SIGs must have open and transparent proceedings. The purpose of a SIG is to own and develop a module of TiDB.',
       items: [
         {
           imageUrl: `${imagesDir}sig-icon.svg`,

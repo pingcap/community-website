@@ -60,6 +60,7 @@ export default function Ranking({ data, pageContext, location }) {
       title: 'No',
       dataIndex: 'no',
       key: 'no',
+      render: (text, record, index) => index + 1,
     },
     {
       title: 'Coder Name',

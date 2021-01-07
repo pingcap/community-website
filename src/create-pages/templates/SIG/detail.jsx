@@ -56,7 +56,7 @@ export default function Detail({ data, pageContext }) {
         <h3 className={styles.member_section_title}>{membershipKey}</h3>
         <Row gutter={[48, 48]}>
           {membershipValue.map(item =>
-            <Col span={6}>
+            <Col xs={24} sm={12} md={6}>
               <GitHubUserItem {...item} />
             </Col>
           )}

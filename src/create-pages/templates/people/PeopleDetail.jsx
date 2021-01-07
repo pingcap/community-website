@@ -58,7 +58,7 @@ export default function PeopleDetail({ data, pageContext }) {
             <Section name={`All ${convertToUpperCamelCase(type)}s`}>
               <Row gutter={[48, 48]} className={styles.items}>
                 {members.map(item =>
-                  <Col span={6}>
+                  <Col xs={24} sm={12} md={6}>
                     <GitHubUserItem {...item} />
                   </Col>
                 )}

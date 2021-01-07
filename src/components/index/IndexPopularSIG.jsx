@@ -5,6 +5,7 @@ import LinkWithArrow from "src/components/LinkWithArrow";
 import Container from "src/components/Container/Container";
 import {graphql, useStaticQuery} from "gatsby";
 import AvatarGrid from "src/components/AvatarGrid/AvatarGrid";
+import BoundLink from "src/components/BoundLink";
 
 export default function IndexPopularSIG({data}) {
   return (
@@ -40,12 +41,16 @@ export default function IndexPopularSIG({data}) {
 function IndexPopularSIGItem({title, summary, sigSubMemberNames}) {
   return (
     <div className={styles.list_item}>
-      <div className={styles.list_item_image}>
-        <AvatarGrid members={sigSubMemberNames}/>
-      </div>
-      <div className={styles.list_item_title}>
-        {title}
-      </div>
+      <BoundLink href={`/SIG/${title}`}>
+        <div className={styles.list_item_image}>
+          <AvatarGrid members={sigSubMemberNames}/>
+        </div>
+      </BoundLink>
+      <BoundLink href={`/SIG/${title}`}>
+        <div className={styles.list_item_title}>
+          {title}
+        </div>
+      </BoundLink>
       <div className={styles.list_item_summary}>
         {summary}
       </div>

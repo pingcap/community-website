@@ -4,7 +4,7 @@ const axios = require('axios')
 const dayjs = require('dayjs')
 
 
-function writeFile(path, filename, content, option) {
+function writeFile(path, filename, content) {
   if (!fs.existsSync(path)) {
     fs.mkdirSync(path, { recursive: true })
   }
@@ -57,10 +57,7 @@ async function cacheOneGitHubAvatar(username) {
         responseType: 'arraybuffer'
       })
       const {data} = response
-      // writeFile(targetDir, `${fileName}`, data)
-      // console.log('data', data)
-      fs.writeFileSync(fullPath, data, 'binary')
-      // writeFile(targetDir, fileName, data, 'binary')
+      writeFile(targetDir, fileName, data)
     } catch (e) {
       console.error('cacheGitHubAvatar error, username: ', username, e)
     }

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { followSocials, shareSocials } from '../../data/socials'
+import { followSocials, shareSocials } from 'src/data/socials'
+
+import './Socials.scss'
 
 import PropTypes from 'prop-types'
+import {Row, Col} from "antd";
 
 const Socials = ({ className, type, title }) => {
   const [data, setData] = useState(null)
@@ -18,21 +21,24 @@ const Socials = ({ className, type, title }) => {
   }, [])
 
   return (
-    <>
-      {data &&
-      data.map(social => (
-        // eslint-disable-next-line jsx-a11y/anchor-has-content
-        <a
-          key={social.name}
-          className={className ? className + ' ' + social.name : social.name}
-          target="_blank"
-          rel="noopener noreferrer"
-          href={social.href}
-        >
-          {social.name}
-        </a>
-      ))}
-    </>
+    <div className="socials">
+      <Row gutter={[32]}>
+        {data &&
+        data.map(social => (
+          <Col span={8}>
+            <a
+              key={social.name}
+              className="socials-item"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={social.href}
+            >
+              {social.icon}
+            </a>
+          </Col>
+        ))}
+      </Row>
+    </div>
   )
 }
 

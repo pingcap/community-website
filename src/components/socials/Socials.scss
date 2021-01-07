@@ -1,0 +1,11 @@
+@import "src/styles/common";
+
+$size-social: 2rem;
+
+.socials {
+  width: 150px;
+  margin-top: 2rem;
+  &-item {
+    font-size: $size-social;
+  }
+}

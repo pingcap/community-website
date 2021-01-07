@@ -57,16 +57,18 @@ export default function Footer() {
           </Col>
           
           <Col sm={24} md={8} className={classNameContainerMainRight}>
-            <div className={classNameContainerMainRightLogo}>
-              <div className={classNameContainerMainRightLogoImage}>
-                <img src={logoImageUrl} alt="DevGroup"/>
+            <BoundLink to={'/'}>
+              <div className={classNameContainerMainRightLogo}>
+                <div className={classNameContainerMainRightLogoImage}>
+                  <img src={logoImageUrl} alt="DevGroup"/>
+                </div>
+                <div className={classNameContainerMainRightLogoText}>
+                  DevGroup
+                </div>
               </div>
-              <div className={classNameContainerMainRightLogoText}>
-                DevGroup
-              </div>
-            </div>
+            </BoundLink>
             <div className={classNameContainerMainRightSocials}>
-              {/*<Socials type="follow" />*/}
+              <Socials type="follow" />
             </div>
           </Col>
         </Row>

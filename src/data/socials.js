@@ -1,28 +1,43 @@
+import React from "react";
+import {
+  GithubOutlined,
+  TwitterOutlined,
+  FacebookOutlined,
+  LinkedinOutlined,
+  SlackOutlined,
+  YoutubeOutlined,
+} from '@ant-design/icons'
+
 const followSocials = [
   {
     name: 'github',
     href: 'https://github.com/pingcap',
+    icon: <GithubOutlined />,
   },
   {
     name: 'twitter',
     href: 'https://twitter.com/PingCAP',
+    icon: <TwitterOutlined />
   },
   {
     name: 'facebook',
     href: 'https://facebook.com/pingcap2015',
+    icon: <FacebookOutlined />,
   },
   {
     name: 'linkedin',
     href: 'https://linkedin.com/company/pingcap',
+    icon: <LinkedinOutlined />,
   },
   {
     name: 'slack',
-    href:
-      'https://slack.tidb.io/invite?team=tidb-community&channel=everyone&ref=pingcap',
+    href: 'https://slack.tidb.io/invite?team=tidb-community&channel=everyone&ref=pingcap',
+    icon: <SlackOutlined />,
   },
   {
     name: 'youtube',
     href: 'https://youtube.com/channel/UCuq4puT32DzHKT5rU1IZpIA',
+    icon: <YoutubeOutlined />,
   },
 ]
 

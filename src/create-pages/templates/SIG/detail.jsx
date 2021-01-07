@@ -54,9 +54,9 @@ export default function Detail({ data, pageContext }) {
         className={styles.member_section}
       >
         <h3 className={styles.member_section_title}>{membershipKey}</h3>
-        <Row gutter={[48, 48]}>
+        <Row gutter={[0, 48]}>
           {membershipValue.map(item =>
-            <Col xs={24} sm={12} md={6}>
+            <Col xs={24} sm={12} md={6} lg={6} xl={6}>
               <GitHubUserItem {...item} />
             </Col>
           )}
@@ -74,7 +74,7 @@ export default function Detail({ data, pageContext }) {
       
       <Banner backgroundImage={imageData.banner.publicURL} className={styles.banner}>
         <h1 className={styles.banner_title}>
-          {convertToUpperCamelCase(name)}
+          Special Interest Group - {convertToUpperCamelCase(name)}
         </h1>
         <div className={styles.banner_action}>
           <Button

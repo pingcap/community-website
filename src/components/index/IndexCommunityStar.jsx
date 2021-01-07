@@ -1,31 +1,10 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styles from './IndexCommunityStar.module.scss'
 import {Row, Col} from "antd";
-import classNames from "classnames";
-import {useDebounceFn} from 'ahooks'
-import Container from "src/components/Container/Container";
-import {graphql, useStaticQuery} from "gatsby";
+import Container from "src/components/Container/Container"
+import BoundLink from "src/components/BoundLink";
 
 export default function IndexCommunityStar({data}) {
-  const [opinionIndex, setOpinionIndex] = useState(-1);
-  const setOpinionDebounced = useDebounceFn(
-    setOpinionIndex,
-    {wait: 500},
-  );
-  
-  const imageData = useStaticQuery(
-    graphql`
-      query {
-        star: file(relativePath: { eq: "home/star-icon.svg" }) {
-          publicURL
-        }
-      }
-    `
-  )
-  
-  data.items.forEach((item, index) => {
-    data.items[index].imageUrl = imageData.star.publicURL
-  })
   
   return (
     <div className={styles.wrapper}>
@@ -41,26 +20,16 @@ export default function IndexCommunityStar({data}) {
           </Col>
         </Row>
         <div className={styles.list}>
-          <Row justify="space-between" gutter={[32, 32]}>
+          <Row justify="space-around" gutter={[32, 32]}>
             {data.items.map(((item, index) =>
                 <Col xs={24} sm={12} md={4}
-                  onMouseOver={() => setOpinionDebounced.run(index)}
-                  onMouseOut={() => setOpinionDebounced.run(-1)}
+                  // onMouseOver={() => setOpinionDebounced.run(index)}
+                  // onMouseOut={() => setOpinionDebounced.run(-1)}
                 >
                   <IndexCommunityStarItem {...item} />
                 </Col>
             ))}
           </Row>
-        </div>
-  
-        <div className={classNames(styles.opinion, {[styles.opinion_hidden]: opinionIndex === -1})}>
-          <div className={styles.opinion_quoto}>
-            <div className={styles.opinion_quoto_left}>“</div>
-            <div className={styles.opinion_quoto_right}>”</div>
-          </div>
-          <div>
-            {data.items[opinionIndex]?.content ?? ''}
-          </div>
         </div>
         
       </Container>
@@ -68,18 +37,20 @@ export default function IndexCommunityStar({data}) {
   )
 }
 
-function IndexCommunityStarItem({imageUrl, name, summary, content}) {
+function IndexCommunityStarItem({githubName}) {
+  const avatarUrl = `/cache/github-avatar/${githubName}.png`
   return (
     <div className={styles.list_item}>
-      <div className={styles.list_item_image}>
-        <img src={imageUrl} alt=""/>
-      </div>
-      <div className={styles.list_item_name}>
-        {name}
-      </div>
-      <div className={styles.list_item_summary}>
-        {summary}
-      </div>
+      <BoundLink href={`https://github.com/${githubName}`}>
+        <div className={styles.list_item_image}>
+          <img src={avatarUrl} alt=""/>
+        </div>
+      </BoundLink>
+      <BoundLink href={`https://github.com/${githubName}`}>
+        <div className={styles.list_item_name}>
+          {githubName}
+        </div>
+      </BoundLink>
     </div>
   )
 }

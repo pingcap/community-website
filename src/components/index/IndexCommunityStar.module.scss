@@ -24,15 +24,21 @@
   text-align: center;
 }
 
+$size-avatar: 6rem;
+
 .list {
   margin-top: 4rem;
   text-align: center;
+  width: 100%;
   &_item {
     display: flex;
     flex-direction: column;
     align-items: center;
     &_image {
-
+      width: $size-avatar;
+      height: $size-avatar;
+      border-radius: $size-avatar;
+      overflow: hidden;
     }
     &_name {
       @include H2;

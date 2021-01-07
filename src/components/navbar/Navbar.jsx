@@ -68,7 +68,7 @@ export default function Navbar(props) {
           <div className={styles.menu}>
             {data.navbar.linkList.map(item => item.children ? (
               <div className={classNames(styles.menu_item, {[styles.menu_item_transparent]: transparentDebounced})}>
-                <Dropdown overlayStyle={{zIndex: 99999}} trigger={'click'} overlay={
+                <Dropdown overlayStyle={{zIndex: 99999}} overlay={
                   <Menu style={{right: 12}}>
                     {item.children.map(menuItem => (
                       <Menu.Item>

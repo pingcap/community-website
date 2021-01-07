@@ -33,11 +33,17 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
     }
   })
   
+  const apiCommunityStar = `https://bots.tidb.io/ti-community-bot/contributors?pageSize=4&current=1`
+  const responseCommunityStar = await axios.get(apiCommunityStar)
+  const dataCommunityStar = responseCommunityStar.data.data || {}
+  const itemsCommunityStar = dataCommunityStar.contributors
+  
   createPage({
     path: url,
     component,
     context: {
       sigTop3: sigTop3Items,
+      itemsCommunityStar,
     },
   })
   

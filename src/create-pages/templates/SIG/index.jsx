@@ -48,10 +48,14 @@ export default function SIG({ data, pageContext}) {
             <p>Our goal is to enable a distributed decision structure and code ownership, as well as providing focused forums for getting work done, making decisions, and onboarding new contributors.</p>
 
             <h1>Scope</h1>
-            <p>Every identifiable subpart of the project (e.g., github org, repository, subdirectory, API, test, issue, PR) is intended to be owned by some SIG.<p>
+            <p>Every identifiable subpart of the project (e.g., github org, repository, subdirectory, API, test, issue, PR) is intended to be owned by some SIG.</p>
 
             <h1>Goverance</h1>
-            <p>For more details about sig governance, you can read this doc <a href="https://github.com/pingcap/community/blob/master/governance/sig-governance.md">sig governance</a>. And if you are new to tidb, and want to find a sig to start, this <a href="https://github.com/pingcap/tidb-map/blob/master/maps/contribution-map.md#sig---special-interest-group">contribution map</a> for sig may be helpful.<p>
+            <p>
+              For more details about sig governance, you can read this doc <a href="https://github.com/pingcap/community/blob/master/governance/sig-governance.md">sig governance</a>.
+              And if you are new to tidb, and want to find a sig to start, this <a href="https://github.com/pingcap/tidb-map/blob/master/maps/contribution-map.md#sig---special-interest-group">contribution map</a>
+              for sig may be helpful.
+            </p>
           </div>
           <Row gutter={[64, 64]} className={styles.list}>
             <Col sm={24} md={16}>

@@ -34,7 +34,7 @@ export default function IndexBanner({data}) {
           />
           <IndexBannerDataItem
             name="Star"
-            number="26.1 K"
+            number="26.5 K"
           />
           <IndexBannerDataItem
             name="Fork"

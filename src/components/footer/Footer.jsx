@@ -59,10 +59,10 @@ export default function Footer() {
           <Col sm={24} md={8} className={classNameContainerMainRight}>
             <div className={classNameContainerMainRightLogo}>
               <div className={classNameContainerMainRightLogoImage}>
-                <img src={logoImageUrl} alt="TiDB Developer Group"/>
+                <img src={logoImageUrl} alt="DevGroup"/>
               </div>
               <div className={classNameContainerMainRightLogoText}>
-                TiDB Developer Group
+                DevGroup
               </div>
             </div>
             <div className={classNameContainerMainRightSocials}>

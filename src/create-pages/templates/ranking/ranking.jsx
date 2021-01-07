@@ -103,31 +103,37 @@ export default function Ranking({ data, pageContext, location }) {
       <div className={styles.wrapper}>
         <Container className={styles.container}>
           <div className={styles.summary} dangerouslySetInnerHTML={{ __html: graphqlData.rankingDescription.html }} />
-          <Space size={[36, 0]} className={styles.toolbar}>
-            <RadioButton
-              options={[
-                {label: 'Week', value: 'week'},
-                {label: 'Month', value: 'month'},
-                {label: 'Year', value: 'year'},
-                {label: 'History List', value: ''},
-              ]}
-              value={duration}
-              onChange={(option) => {
-                // setShowDuration(option.value)
-                navigate(`/ranking/${option.value}`)
-              }}
-            />
-            <RadioButton
-              options={[
-                {label: 'Pull Request', value: 'prCount'},
-                {label: 'Score', value: 'score'},
-              ]}
-              value={showType}
-              onChange={(option) => {
-                setSortedColumn(option.value)
-                setShowType(option.value)
-              }}
-            />
+          <Space size={[48, 0]} className={styles.toolbar}>
+            <Space size={[16, 0]}>
+              <div className={styles.toolbar_label}>Period</div>
+              <RadioButton
+                options={[
+                  {label: '1 Week', value: 'week'},
+                  {label: '1 Month', value: 'month'},
+                  {label: '1 Year', value: 'year'},
+                  {label: 'All', value: ''},
+                ]}
+                value={duration}
+                onChange={(option) => {
+                  // setShowDuration(option.value)
+                  navigate(`/ranking/${option.value}`)
+                }}
+              />
+            </Space>
+            <Space size={[16, 0]}>
+              <div className={styles.toolbar_label}>Order By</div>
+              <RadioButton
+                options={[
+                  {label: 'Pull Request', value: 'prCount'},
+                  {label: 'Score', value: 'score'},
+                ]}
+                value={showType}
+                onChange={(option) => {
+                  setSortedColumn(option.value)
+                  setShowType(option.value)
+                }}
+              />
+            </Space>
           </Space>
           
           <div className={styles.table}>

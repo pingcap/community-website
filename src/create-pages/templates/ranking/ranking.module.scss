@@ -43,6 +43,10 @@ $size-avatar: 2rem;
 }
 
 .toolbar {
+  &_label {
+    font-weight: 600;
+
+  }
 }
 
 .table {

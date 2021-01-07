@@ -36,7 +36,7 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
   
   console.log('fetch contributors')
   const item = 'contributor'
-  const api = `https://bots.tidb.io/ti-community-bot/contributors?pageSize=20&current=1`
+  const api = `https://bots.tidb.io/ti-community-bot/contributors`
   const response = await axios.get(api)
   const url = `${urlPrefix}/contributor`
 

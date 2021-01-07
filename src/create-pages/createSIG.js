@@ -47,6 +47,11 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
       const response = await axios.get(api)
       console.log(item.name, response.data.status)
       const apiData = response.data.data || {}
+  
+      for (const membershipKey in apiData.membership) {
+        const membershipValue = apiData.membership[membershipKey]
+        await apiHelper.cacheGitHubAvatar(membershipValue.map(member => member.githubName))
+      }
     
       createPage({
         path: url,

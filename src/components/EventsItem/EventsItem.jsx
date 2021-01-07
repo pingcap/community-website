@@ -9,13 +9,15 @@ export default function EventsItem({imageUrl, title, summary, link}) {
         <div className={styles.list_item_image}>
           <img src={imageUrl} alt={title}/>
         </div>
+      </BoundLink>
+      <BoundLink href={link}>
         <div className={styles.list_item_title}>
           {title}
         </div>
+      </BoundLink>
         <div className={styles.list_item_summary}>
           {summary}
         </div>
-      </BoundLink>
     </div>
   )
 }

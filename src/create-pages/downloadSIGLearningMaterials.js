@@ -1,4 +1,4 @@
-const fs = require('fs')
+const apiHelper = require('./apiHelper')
 const path = require('path')
 const axios = require('axios')
 
@@ -9,7 +9,7 @@ async function downloadBySIGName(SIGName) {
     const apiDataLearningMaterials = responseLearningMaterials.data || {}
     const targetDir = path.resolve(__dirname, `../../markdown-pages/SIGReadme`)
     console.log('download targetDir: ', targetDir)
-    writeFile(targetDir, `${SIGName}.md`, apiDataLearningMaterials)
+    apiHelper.writeFile(targetDir, `${SIGName}.md`, apiDataLearningMaterials)
   } catch (e) {
     console.error('downloadBySIGName error', e)
   }
@@ -30,13 +30,6 @@ async function downloadAll() {
     await downloadBySIGName(SIGName)
     console.log('downloadBySIGName completed', SIGName)
   }
-}
-
-function writeFile(path, filename, content) {
-  if (!fs.existsSync(path)) {
-    fs.mkdirSync(path, { recursive: true })
-  }
-  fs.writeFile(`${path}/${filename}`, content, { 'flag': 'a' }, err => console.error('fs.writeFile err: ', err))
 }
 
 

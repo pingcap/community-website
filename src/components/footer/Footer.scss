@@ -1,8 +1,54 @@
-@import "../../styles/common";
+@import "src/styles/common";
 
-.PingCAP-Footer {
+.Footer {
   background: $M2;
-  padding-bottom: 3rem;
+  padding: 3rem 0;
+
+  &-container {
+    &-main {
+      //display: flex;
+      //justify-content: space-between;
+      //flex-wrap: wrap;
+      &-left {
+        //display: flex;
+        //flex-wrap: wrap;
+        &-column {
+          //margin-right: 12rem;
+          &-title {
+            @include H4;
+          }
+          &-list {
+            @include P1;
+            li {
+              margin: 1rem 0;
+            }
+          }
+        }
+      }
+      &-right {
+        &-logo {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          &-image {
+            $size-logo: 3rem;
+            img {
+              width: $size-logo;
+              height: $size-logo;
+            }
+          }
+          &-text {
+            @include H1;
+            margin-left: .5rem;
+          }
+        }
+      }
+    }
+    &-copyright {
+      text-align: center;
+    }
+  }
 
   @include mobile {
     padding: 0 1rem 1.5rem;

@@ -1,135 +1,80 @@
-import AddIcon from '@material-ui/icons/Add'
-import LanguageIcon from '@material-ui/icons/Language'
-import React, { useState } from 'react'
+import React from 'react'
 import Socials from '../socials/Socials'
-import footerColumnsMap from '../../data/footer'
+import i18n from '../../data/footer'
 import BoundLink from '../BoundLink'
-import langConfig from '../../../lang.config'
 import { useIntl } from 'react-intl'
+import Container from "src/components/Container/Container";
+import logoImageUrl from 'images/TiDB-logo-red.svg'
 
 import './Footer.scss'
+import {Col, Row} from "antd";
 
-const Footer = () => {
-
-  const handleSpreadItems = (e) => {
-    const title = e.currentTarget
-    const spread = title.children[0]
-    spread.classList.toggle('clicked')
-    title.nextSibling.classList.toggle('displayed')
-  }
-
+export default function Footer() {
+  
   const intl = useIntl()
-
-  const Lang = ({ align }) => {
-    const [dropdownActive, setDropdownActive] = useState('')
-
-    const handleMenuOpen = () => {
-      if (dropdownActive) {
-        setDropdownActive('')
-      } else {
-        setDropdownActive(' is-active')
-      }
-    }
-
-    return (
-      <div className={`dropdown is-${align} is-up lang${dropdownActive}`}>
-        <div
-          role="button"
-          tabIndex={0}
-          className="dropdown-trigger"
-          onClick={handleMenuOpen}
-          onKeyDown={handleMenuOpen}
-        >
-          <LanguageIcon /> Language
-        </div>
-        <div className="dropdown-menu">
-          <div className="dropdown-content">
-            {Object.keys(langConfig.languages).map((lang) => (
-              <a
-                key={lang}
-                className="dropdown-item"
-                href={
-                  lang === langConfig.defaultLang
-                    ? intl.locale === 'zh'
-                    ? 'https://tidb.io'
-                    : '/'
-                    : `/${lang}`
-                }
-              >
-                {langConfig.languages[lang].langName}
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-    )
-  }
-
+  const locale = intl.locale
+  
+  const data = i18n[locale]
+  
+  const copyrightNode = `©${new Date().getFullYear()} TiDB Author.`
+  
+  const className = `Footer`
+  const classNameContainer = `${className}-container`
+  const classNameContainerMain = `${classNameContainer}-main`
+  
+  const classNameContainerMainLeft = `${classNameContainerMain}-left`
+  const classNameContainerMainLeftColumn = `${classNameContainerMainLeft}-column`
+  const classNameContainerMainLeftItemTitle = `${classNameContainerMainLeftColumn}-title`
+  const classNameContainerMainLeftItemList = `${classNameContainerMainLeftColumn}-list`
+  
+  const classNameContainerMainRight = `${classNameContainerMain}-right`
+  const classNameContainerMainRightLogo = `${classNameContainerMainRight}-logo`
+  const classNameContainerMainRightLogoImage = `${classNameContainerMainRightLogo}-image`
+  const classNameContainerMainRightLogoText = `${classNameContainerMainRightLogo}-text`
+  const classNameContainerMainRightSocials = `${classNameContainerMainRight}-socials`
+  
+  const classNameContainerCopyright = `${classNameContainer}-copyright`
+  
   return (
-    <footer className="footer PingCAP-Footer">
-      <div className="container">
-        <div className="columns">
-          {footerColumnsMap[intl.locale].map((columns, i) => (
-            <div key={i} className="column">
-              {columns.map((column) => (
-                <div key={column.name} className="subcolumn">
-                  <div
-                    role="button"
-                    tabIndex={0}
-                    className="title is-7"
-                    onClick={handleSpreadItems}
-                    onKeyDown={handleSpreadItems}
-                  >
+    <div className={className}>
+      <Container className={classNameContainer}>
+        <Row gutter={[16, 16]} className={classNameContainerMain}>
+          <Col sm={24} md={16}>
+            <Row className={classNameContainerMainLeft}>
+              {data.map(column => (
+                <Col xs={24} sm={12} md={8} className={classNameContainerMainLeftColumn}>
+                  <div className={classNameContainerMainLeftItemTitle}>
                     {column.name}
-                    <span className="spread">
-                      <AddIcon />
-                    </span>
                   </div>
-                  <ul className="items">
-                    {column.items.map((item) => (
-                      <li key={item.name}>
-                        <BoundLink to={item.link} outbound={item.outbound}>
-                          {item.name}
-                        </BoundLink>
-                      </li>
+                  <ul className={classNameContainerMainLeftItemList}>
+                    {column.items.map(item => (
+                      <li>{item.outbound ? <BoundLink href={item.link}>{item.name}</BoundLink> : <BoundLink to={item.link}>{item.name}</BoundLink>}</li>
                     ))}
                   </ul>
-                </div>
+                </Col>
               ))}
+            </Row>
+          </Col>
+          
+          <Col sm={24} md={8} className={classNameContainerMainRight}>
+            <div className={classNameContainerMainRightLogo}>
+              <div className={classNameContainerMainRightLogoImage}>
+                <img src={logoImageUrl} alt="TiDB Developer Group"/>
+              </div>
+              <div className={classNameContainerMainRightLogoText}>
+                TiDB Developer Group
+              </div>
             </div>
-          ))}
-          <div className="column with-socials">
-            <div className="columns is-multiline socials-desktop">
-              <Socials className="column is-4" type="follow" />
+            <div className={classNameContainerMainRightSocials}>
+              {/*<Socials type="follow" />*/}
             </div>
-          </div>
+          </Col>
+        </Row>
+        
+        <div className={classNameContainerCopyright}>
+          {copyrightNode}
         </div>
-
-        <div className="annotations annotations-desktop">
-          <Lang align="left" />
-          <div className="copyright">
-            ©{new Date().getFullYear()} PingCAP. All Rights Reserved.
-          </div>
-          <img
-            className="footer-logo"
-            src="/images/TiDB-logo-red.svg"
-            alt="footer logo"
-          />
-        </div>
-
-        <div className="socials-mobile">
-          <Socials type="follow" />
-        </div>
-
-        <div className="annotations annotations-mobile">
-          <Lang align="left" />
-          <div className="copyright">
-            ©{new Date().getFullYear()} PingCAP. All Rights Reserved.
-          </div>
-        </div>
-      </div>
-    </footer>
+      </Container>
+    </div>
   )
 }
-
-export default Footer

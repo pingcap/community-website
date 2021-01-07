@@ -20,9 +20,9 @@ export default function IndexCommunityStar({data}) {
           </Col>
         </Row>
         <div className={styles.list}>
-          <Row justify="space-around" gutter={[32, 32]}>
+          <Row justify="space-around" gutter={[192, 64]}>
             {data.items.map(((item, index) =>
-                <Col xs={24} sm={12} md={4}
+                <Col xs={24} sm={12} md={6}
                   // onMouseOver={() => setOpinionDebounced.run(index)}
                   // onMouseOut={() => setOpinionDebounced.run(-1)}
                 >

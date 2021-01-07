@@ -11,7 +11,11 @@
 .banner {
   &_title {
     @include H0;
-    padding: 3rem 0;
+    padding: {
+      top: 5rem;
+      bottom: 2rem;
+    };
+    font-size: 2.5rem;
     color: $M2;
   }
   &_action {

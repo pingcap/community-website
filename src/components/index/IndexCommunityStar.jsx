@@ -3,7 +3,6 @@ import styles from './IndexCommunityStar.module.scss'
 import {Row, Col} from "antd";
 import classNames from "classnames";
 import {useDebounceFn} from 'ahooks'
-import LinkWithArrow from "src/components/LinkWithArrow";
 import Container from "src/components/Container/Container";
 import {graphql, useStaticQuery} from "gatsby";
 
@@ -63,26 +62,6 @@ export default function IndexCommunityStar({data}) {
             {data.items[opinionIndex]?.content ?? ''}
           </div>
         </div>
-        
-        {/*<Row justify="center">*/}
-        {/*  <Col xs={24} sm={18}>*/}
-        {/*    <div className={classNames(styles.opinion, {[styles.opinion_hidden]: opinionIndex === -1})}>*/}
-        {/*      <div className={styles.opinion_quoto}>*/}
-        {/*        <div className={styles.opinion_quoto_left}>“</div>*/}
-        {/*        <div className={styles.opinion_quoto_right}>”</div>*/}
-        {/*      </div>*/}
-        {/*      <div>*/}
-        {/*        {data.items[opinionIndex]?.content ?? ''}*/}
-        {/*      </div>*/}
-        {/*    </div>*/}
-        {/*  </Col>*/}
-        {/*</Row>*/}
-  
-        {/*<div className={styles.more}>*/}
-        {/*  <LinkWithArrow to="/stars" isOutbound={false}>*/}
-        {/*    VIEW MORE*/}
-        {/*  </LinkWithArrow>*/}
-        {/*</div>*/}
         
       </Container>
     </div>

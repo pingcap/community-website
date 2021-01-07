@@ -4,7 +4,6 @@ import {Col, Row} from "antd";
 import LinkWithArrow from "src/components/LinkWithArrow";
 import EventsItem from "src/components/EventsItem/EventsItem";
 import Container from "src/components/Container/Container";
-import {graphql, useStaticQuery} from "gatsby";
 
 export default function IndexEvents({data}) {
   

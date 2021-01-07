@@ -3,7 +3,6 @@ import styles from './IndexPopularSIG.module.scss'
 import {Row, Col} from 'antd'
 import LinkWithArrow from "src/components/LinkWithArrow";
 import Container from "src/components/Container/Container";
-import {graphql, useStaticQuery} from "gatsby";
 import AvatarGrid from "src/components/AvatarGrid/AvatarGrid";
 import BoundLink from "src/components/BoundLink";
 

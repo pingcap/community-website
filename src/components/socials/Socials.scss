@@ -1,0 +1,16 @@
+@import "src/styles/common";
+
+$size-social: 2.5rem;
+
+.Socials {
+  width: 160px;
+  margin-top: 2rem;
+  &-item {
+    a {
+      img {
+        width: $size-social;
+        height: $size-social;
+      }
+    }
+  }
+}

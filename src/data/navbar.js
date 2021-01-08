@@ -9,24 +9,24 @@ export default {
           title: 'People',
           children: [
             {
-              title: 'Active Contributor',
-              link: `${prefixMemberPath}/active-contributor`
-            },
-            {
-              title: 'Reviewer',
-              link: `${prefixMemberPath}/reviewer`
+              title: 'Maintainer',
+              link: `${prefixMemberPath}/maintainer`
             },
             {
               title: 'Committer',
               link: `${prefixMemberPath}/committer`
             },
             {
-              title: 'Co-leader',
-              link: `${prefixMemberPath}/co-leader`
+              title: 'Reviewer',
+              link: `${prefixMemberPath}/reviewer`
             },
             {
-              title: 'Leader',
-              link: `${prefixMemberPath}/leader`
+              title: 'Active Contributor',
+              link: `${prefixMemberPath}/active-contributor`
+            },
+            {
+              title: 'Contributor',
+              link: `${prefixMemberPath}/contributor`
             },
           ]
         },

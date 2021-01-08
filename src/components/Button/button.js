@@ -45,7 +45,7 @@ const Button = ({
   }
 
   const iconNode = icon ? (
-    <div className={`${classNameButton}-icon`}>{icon}</div>
+    <div className={classNames(`${classNameButton}-icon`, size)}>{icon}</div>
   ) : (
     <></>
   )

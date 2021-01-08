@@ -1,13 +1,15 @@
 import React from 'react'
 import styles from './IndexPopularSIG.module.scss'
 import {Row, Col} from 'antd'
-import classNames from "classnames";
 import LinkWithArrow from "src/components/LinkWithArrow";
+import Container from "src/components/Container/Container";
+import AvatarGrid from "src/components/AvatarGrid/AvatarGrid";
+import BoundLink from "src/components/BoundLink";
 
 export default function IndexPopularSIG({data}) {
   return (
     <div className={styles.wrapper}>
-      <div className={classNames(styles.container, "container")}>
+      <Container className={styles.container}>
         <div className={styles.title}>
           {data.title}
         </div>
@@ -18,7 +20,7 @@ export default function IndexPopularSIG({data}) {
           <Row justify="center" gutter={[32, 32]}>
             {data.items.map(item =>
               <Col xs={24} sm={16} md={16} lg={8}>
-                <IndexPopularSIGItem {...item}/>
+                <IndexPopularSIGItem {...item} />
               </Col>
             )}
           </Row>
@@ -30,20 +32,24 @@ export default function IndexPopularSIG({data}) {
             </LinkWithArrow>
           </div>
         </div>
-      </div>
+      </Container>
     </div>
   )
 }
 
-function IndexPopularSIGItem({imageUrl, title, summary}) {
+function IndexPopularSIGItem({title, summary, sigSubMemberNames}) {
   return (
     <div className={styles.list_item}>
-      <div className={styles.list_item_image}>
-        <img src={imageUrl} alt={title}/>
-      </div>
-      <div className={styles.list_item_title}>
-        {title}
-      </div>
+      <BoundLink href={`/SIG/${title}`}>
+        <div className={styles.list_item_image}>
+          <AvatarGrid members={sigSubMemberNames}/>
+        </div>
+      </BoundLink>
+      <BoundLink href={`/SIG/${title}`}>
+        <div className={styles.list_item_title}>
+          {title}
+        </div>
+      </BoundLink>
       <div className={styles.list_item_summary}>
         {summary}
       </div>

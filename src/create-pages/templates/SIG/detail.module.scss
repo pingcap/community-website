@@ -11,14 +11,43 @@
 .banner {
   &_title {
     @include H0;
-    padding: 3rem 0;
+    padding: {
+      top: 5rem;
+      bottom: 2rem;
+    };
+    font-size: 2.5rem;
     color: $M2;
   }
   &_action {
     padding: 2rem 0;
     display: flex;
+    &_github {
+      & > div {
+        color: $M2;
+      }
+    }
     &_slack {
+      & > div {
+        color: $M2;
+      }
       margin-left: 1rem;
     }
+    a:hover {
+      color: $M2;
+    }
+  }
+}
+
+.learning_materials {
+  @include markdown;
+  margin: {
+    bottom: 4rem;
+  };
+}
+
+.member_section {
+  &_title {
+    @include H3;
+    margin-bottom: 2rem;
   }
 }

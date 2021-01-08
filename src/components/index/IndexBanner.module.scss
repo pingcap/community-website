@@ -2,11 +2,11 @@
 
 .wrapper {
   padding: {
-    top: 6rem;
-    bottom: 5rem;
+    top: 10rem;
+    bottom: 4rem;
   };
   background: {
-    image: url("/images/home/banner.svg");
+    image: url("../../../images/home/banner.svg");
     size: cover;
   };
   color: white;
@@ -35,7 +35,7 @@
 }
 
 .data {
-  $split-size: 4rem;
+  $split-size: 2rem;
 
   margin-top: 3.5rem;
   display: flex;
@@ -45,7 +45,10 @@
   &_item {
     margin-right: $split-size;
     padding-right: $split-size;
-
+    width: 120px;
+    &:first-child {
+      margin-left: $split-size;
+    }
     &:last-child {
       border-right: 0;
       margin-right: 0;
@@ -73,7 +76,7 @@
 
 .buttons {
   margin-top: 4.5rem;
-  .subscribe_email {
-    margin-left: 2rem;
+  .join_slack , .subscribe_email {
+    //width: 10rem;
   }
 }

@@ -1,14 +1,15 @@
 import React from 'react'
 import styles from './IndexEvents.module.scss'
 import {Col, Row} from "antd";
-import classNames from "classnames";
 import LinkWithArrow from "src/components/LinkWithArrow";
 import EventsItem from "src/components/EventsItem/EventsItem";
+import Container from "src/components/Container/Container";
 
 export default function IndexEvents({data}) {
+  
   return (
     <div className={styles.wrapper}>
-      <div className={classNames(styles.container, "container")}>
+      <Container className={styles.container}>
         <div className={styles.title}>
           {data.title}
         </div>
@@ -26,7 +27,7 @@ export default function IndexEvents({data}) {
             VIEW MORE
           </LinkWithArrow>
         </div>
-      </div>
+      </Container>
     </div>
   )
 }

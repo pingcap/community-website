@@ -8,10 +8,19 @@
 
 }
 
+.summary {
+  @include markdown;
+  padding: 4rem 0;
+}
+
 .banner {
   &_title {
     @include H0;
-    padding: 6rem 0;
     color: $M2;
+    padding: {
+      top: 5rem;
+      bottom: 5rem;
+    };
+    font-size: 2.5rem;
   }
 }

@@ -20,16 +20,17 @@
   z-index: 99999;
   width: 100%;
   height: $height-navbar;
-  background-color: $M2;
+  backdrop-filter: blur(.5rem);
+  background-color: rgba($M2, .9);
   box-shadow: $shadow;
   &_transparent {
     background-color: rgba(#000, 0);
     box-shadow: 0 0;
+    backdrop-filter: none;
   }
 }
 
 .container {
-  padding: 0 1rem;
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -57,22 +58,47 @@
   };
 }
 
-.menu {
-  display: flex;
-  align-items: center;
-  &_item {
-    @include text;
-    margin: 0 1.5rem;
-    padding: .5rem 0;
+@media screen and (max-width: $md - 1px) {
+  .menu {
+    display: none;
 
-    @include transition;
-    @include H3;
-    display: inline-block;
-    border: {
-      bottom: 3px solid rgba($B1, 0);
-    };
-    &:hover {
-      border-bottom-color: $B1;
+    &_mobile {
+      display: block;
+      &_popup {
+        @include H3;
+        background-color: rgba($M2, 1);
+        box-shadow: $shadow;
+        &_item {
+          padding: 1rem 2rem;
+        }
+      }
     }
+  }
+}
+
+@media screen and (min-width: $md) {
+  .menu {
+    display: flex;
+    align-items: center;
+    &_item {
+      @include text;
+      margin: 0 1.5rem;
+      padding: .5rem 0;
+
+      @include transition;
+      @include H3;
+      display: inline-block;
+      border: {
+        bottom: 3px solid rgba($B1, 0);
+      };
+      &:hover {
+        border-bottom-color: $B1;
+      }
+    }
+
+    &_mobile {
+      display: none;
+    }
+
   }
 }

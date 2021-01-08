@@ -1,0 +1,16 @@
+
+$avatar-size: 100%;
+$avatar-sub-size: 33.3%;
+
+.AvatarGrid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap-reverse;
+  width: $avatar-size;
+  height: $avatar-size;
+  img {
+    width: $avatar-sub-size;
+    height: $avatar-sub-size;
+  }
+}

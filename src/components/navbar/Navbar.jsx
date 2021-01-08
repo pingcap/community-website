@@ -1,15 +1,26 @@
 import React, {useEffect, useState} from 'react';
 import styles from './Navbar.module.scss'
 import classNames from 'classnames'
-import {Link} from "gatsby";
+import {graphql, Link, useStaticQuery} from "gatsby";
 import {Dropdown, Menu} from 'antd';
 import {DownOutlined} from "@ant-design/icons";
-import i18n from '../../data/navbar'
+import i18n from 'src/data/navbar'
 import {useIntl} from "react-intl";
 import {useDebounce} from 'ahooks'
 import Container from "src/components/Container/Container";
+import {MenuOutlined} from "@material-ui/icons";
 
 export default function Navbar(props) {
+  const imageData = useStaticQuery(
+    graphql`
+      query {
+        logo: file(relativePath: { eq: "TiDB-logo-red.svg" }) {
+          publicURL
+        }
+      }
+    `
+  )
+  
   const intl = useIntl()
   const locale = intl.locale
   
@@ -18,12 +29,16 @@ export default function Navbar(props) {
   const [transparent, setTransparent] = useState(props.transparent)
   const transparentDebounced = useDebounce(transparent, {wait: 100})
   
+  const [isPopup, setIsPopup] = useState(false)
+  
   useEffect(() => {
     const eventName = 'scroll'
-    const scrollListener = (e) => {
+    const scrollListener = () => {
       const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
       setTransparent(scrollTop <= 0)
     }
+  
+    scrollListener()
     
     window.addEventListener(eventName, scrollListener)
     return () => {
@@ -39,7 +54,7 @@ export default function Navbar(props) {
           <div className={styles.left}>
             <div className={styles.logo}>
               <Link to="/">
-                <img src="/images/TiDB-logo-red.svg" alt="TiDB DevGroup"/>
+                <img src={imageData.logo.publicURL} alt="TiDB DevGroup"/>
               </Link>
             </div>
             <div className={classNames(styles.title, {[styles.title_transparent]: transparentDebounced})}>
@@ -49,11 +64,12 @@ export default function Navbar(props) {
         </Link>
 
         <div className={styles.right}>
+          
           <div className={styles.menu}>
             {data.navbar.linkList.map(item => item.children ? (
               <div className={classNames(styles.menu_item, {[styles.menu_item_transparent]: transparentDebounced})}>
                 <Dropdown overlayStyle={{zIndex: 99999}} overlay={
-                  <Menu>
+                  <Menu style={{right: 12}}>
                     {item.children.map(menuItem => (
                       <Menu.Item>
                         <Link to={menuItem.link}>
@@ -76,9 +92,45 @@ export default function Navbar(props) {
               </div>
             ))}
           </div>
+  
+          <div className={styles.menu_mobile}>
+            <MenuOutlined onClick={() => setIsPopup(prevState => !prevState)}/>
+          </div>
+          
         </div>
 
       </Container>
+      
+      {isPopup && (
+        <div className={styles.menu_mobile_popup}>
+          {data.navbar.linkList.map(item => item.children ? (
+            <div className={styles.menu_mobile_popup_item}>
+              <Dropdown overlayStyle={{zIndex: 99999}} overlay={
+                <Menu>
+                  {item.children.map(menuItem => (
+                    <Menu.Item>
+                      <Link to={menuItem.link}>
+                        {menuItem.title}
+                      </Link>
+                    </Menu.Item>
+                  ))}
+                </Menu>
+              }>
+                <Link to="#" onClick={e => e.preventDefault()}>
+                  {item.title} <DownOutlined />
+                </Link>
+              </Dropdown>
+            </div>
+          ) : (
+            <div className={styles.menu_mobile_popup_item}>
+              <Link to={item.link}>
+                {item.title}
+              </Link>
+            </div>
+          ))}
+        </div>
+      )}
+      
     </div>
   )
 }

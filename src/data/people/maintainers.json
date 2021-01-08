@@ -1,0 +1,69 @@
+{
+    "data": {
+        "members": [
+            {
+                "githubName": "lidaobing",
+                "level": "maintainer",
+                "community": "tikv"
+            },
+            {
+                "githubName": "siddontang",
+                "level": "maintainer",
+                "community": "tikv"
+            },
+            {
+                "githubName": "BusyJay",
+                "level": "maintainer",
+                "community": "tikv"
+            },
+            {
+                "githubName": "sunxiaoguang",
+                "level": "maintainer",
+                "community": "tikv"
+            },
+            {
+                "githubName": "winkyao",
+                "level": "maintainer",
+                "community": "tikv"
+            },
+            {
+                "githubName": "fredchenbj",
+                "level": "maintainer",
+                "community": "tikv"
+            },
+            {
+                "githubName": "coocood",
+                "level": "maintainer",
+                "community": "tidb"
+            },
+            {
+                "githubName": "shenli",
+                "level": "maintainer",
+                "community": "tidb"
+            },
+            {
+                "githubName": "jackysp",
+                "level": "maintainer",
+                "community": "tidb"
+            },
+            {
+                "githubName": "zz-jason",
+                "level": "maintainer",
+                "community": "tidb"
+            },
+            {
+                "githubName": "winkyao",
+                "level": "maintainer",
+                "community": "tidb"
+            },
+            {
+                "githubName": "zhangjinpeng1987",
+                "level": "maintainer",
+                "community": "tikv"
+            }
+        ],
+        "total": "12"
+    },
+    "status": 200,
+    "message": "List contributors success."
+}

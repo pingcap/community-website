@@ -1,11 +1,23 @@
 import React from 'react'
 import styles from './IndexBanner.module.scss'
 import Button from "src/components/Button";
-import {ForumOutlined, EmailOutlined} from "@material-ui/icons";
-import {Link} from "gatsby";
+import {graphql, Link, useStaticQuery} from "gatsby";
 import Container from "src/components/Container/Container";
+import {Space} from "antd";
 
 export default function IndexBanner({data}) {
+  const imageData = useStaticQuery(
+    graphql`
+      query {
+        slack: file(relativePath: { eq: "home/button-icon-slack.svg" }) {
+          publicURL
+        }
+        sub: file(relativePath: { eq: "home/button-icon-sub.svg" }) {
+          publicURL
+        }
+      }
+    `
+  )
   return (
     <div className={styles.wrapper}>
       <Container className={styles.container}>
@@ -22,7 +34,7 @@ export default function IndexBanner({data}) {
           />
           <IndexBannerDataItem
             name="Star"
-            number="26.1 K"
+            number="26.5 K"
           />
           <IndexBannerDataItem
             name="Fork"
@@ -33,10 +45,10 @@ export default function IndexBanner({data}) {
             number="1.2 K"
           />
         </div>
-        <div className={styles.buttons}>
+        <Space size={32} className={styles.buttons}>
           <Button
             className={styles.join_slack}
-            icon={<ForumOutlined/>}
+            icon={<img src={imageData.slack.publicURL} alt="slack"/>}
             type="ghost"
             as={Link}
             href="https://slack.tidb.io"
@@ -45,13 +57,13 @@ export default function IndexBanner({data}) {
           </Button>
           <Button
             className={styles.subscribe_email}
-            icon={<EmailOutlined/>}
+            icon={<img src={imageData.sub.publicURL} alt="subgroups"/>}
             as={Link}
             href="https://lists.tidb.io/g/main/subgroups"
           >
             Subscribe
           </Button>
-        </div>
+        </Space>
       </Container>
     </div>
   )

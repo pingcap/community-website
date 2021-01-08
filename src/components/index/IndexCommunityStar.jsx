@@ -1,90 +1,56 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styles from './IndexCommunityStar.module.scss'
 import {Row, Col} from "antd";
-import classNames from "classnames";
-import {useDebounceFn} from 'ahooks'
-import LinkWithArrow from "src/components/LinkWithArrow";
+import Container from "src/components/Container/Container"
+import BoundLink from "src/components/BoundLink";
 
 export default function IndexCommunityStar({data}) {
-  const [opinionIndex, setOpinionIndex] = useState(-1);
-  const setOpinionDebounced = useDebounceFn(
-    setOpinionIndex,
-    {wait: 500},
-  );
   
   return (
     <div className={styles.wrapper}>
-      <div className={classNames(styles.container, "container")}>
+      <Container className={styles.container}>
         <div className={styles.title}>
           {data.title}
         </div>
         <Row justify="space-around">
-          <Col span={16}>
+          <Col sm={24} md={20}>
             <div className={styles.summary}>
               {data.summary}
             </div>
           </Col>
         </Row>
         <div className={styles.list}>
-          <Row justify="space-between" gutter={[32, 32]}>
+          <Row justify="space-around" gutter={[192, 64]}>
             {data.items.map(((item, index) =>
-                <Col xs={24} sm={12} md={4}
-                  onMouseOver={() => setOpinionDebounced.run(index)}
-                  onMouseOut={() => setOpinionDebounced.run(-1)}
+                <Col xs={24} sm={12} md={6}
+                  // onMouseOver={() => setOpinionDebounced.run(index)}
+                  // onMouseOut={() => setOpinionDebounced.run(-1)}
                 >
                   <IndexCommunityStarItem {...item} />
                 </Col>
             ))}
           </Row>
         </div>
-  
-        <div className={classNames(styles.opinion, {[styles.opinion_hidden]: opinionIndex === -1})}>
-          <div className={styles.opinion_quoto}>
-            <div className={styles.opinion_quoto_left}>“</div>
-            <div className={styles.opinion_quoto_right}>”</div>
-          </div>
-          <div>
-            {data.items[opinionIndex]?.content ?? ''}
-          </div>
-        </div>
         
-        {/*<Row justify="center">*/}
-        {/*  <Col xs={24} sm={18}>*/}
-        {/*    <div className={classNames(styles.opinion, {[styles.opinion_hidden]: opinionIndex === -1})}>*/}
-        {/*      <div className={styles.opinion_quoto}>*/}
-        {/*        <div className={styles.opinion_quoto_left}>“</div>*/}
-        {/*        <div className={styles.opinion_quoto_right}>”</div>*/}
-        {/*      </div>*/}
-        {/*      <div>*/}
-        {/*        {data.items[opinionIndex]?.content ?? ''}*/}
-        {/*      </div>*/}
-        {/*    </div>*/}
-        {/*  </Col>*/}
-        {/*</Row>*/}
-  
-        <div className={styles.more}>
-          <LinkWithArrow to="/stars" isOutbound={false}>
-            VIEW MORE
-          </LinkWithArrow>
-        </div>
-        
-      </div>
+      </Container>
     </div>
   )
 }
 
-function IndexCommunityStarItem({imageUrl, name, summary, content}) {
+function IndexCommunityStarItem({githubName}) {
+  const avatarUrl = `/cache/github-avatar/${githubName}.png`
   return (
     <div className={styles.list_item}>
-      <div className={styles.list_item_image}>
-        <img src={imageUrl} alt=""/>
-      </div>
-      <div className={styles.list_item_name}>
-        {name}
-      </div>
-      <div className={styles.list_item_summary}>
-        {summary}
-      </div>
+      <BoundLink href={`https://github.com/${githubName}`}>
+        <div className={styles.list_item_image}>
+          <img src={avatarUrl} alt=""/>
+        </div>
+      </BoundLink>
+      <BoundLink href={`https://github.com/${githubName}`}>
+        <div className={styles.list_item_name}>
+          {githubName}
+        </div>
+      </BoundLink>
     </div>
   )
 }

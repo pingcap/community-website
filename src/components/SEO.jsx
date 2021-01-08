@@ -14,7 +14,7 @@ export default function SEO({ lang, title, description, meta, image: metaImage, 
             siteUrl
           }
         }
-        defaultMetaImg: file(relativePath: { eq: "icon.png" }) {
+        defaultMetaImg: file(relativePath: { eq: "TiDB-logo-red.svg" }) {
           publicURL
         }
       }

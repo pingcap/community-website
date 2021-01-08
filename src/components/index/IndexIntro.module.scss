@@ -5,21 +5,21 @@
 }
 
 .container {
-  padding: 0 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
 .title {
   @include H1;
+  text-align: center;
 }
 
 .summary {
   @include P1;
   margin-top: 2rem;
+  text-align: center;
 }
 
 .list {
@@ -29,7 +29,7 @@
     flex-direction: column;
     align-items: center;
     &_image {
-
+      height: 6rem;
     }
     &_text {
       text-align: center;

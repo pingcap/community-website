@@ -1,0 +1,41 @@
+@import "src/styles/common";
+
+// width < 768px, container's width is 100%
+// otherwise >= 786px, container's width is their breakpoint
+
+.pingcap-container {
+  // page both sides padding is 1rem
+  padding: 0 1rem;
+  // horizontal center
+  margin: 0 auto;
+}
+
+@media screen and (max-width: $sm) {
+  .pingcap-container {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: $md) {
+  .pingcap-container {
+    max-width: $md;
+  }
+}
+
+@media screen and (min-width: $lg) {
+  .pingcap-container {
+    max-width: $lg;
+  }
+}
+
+@media screen and (min-width: $xl) {
+  .pingcap-container {
+    max-width: $xl;
+  }
+}
+
+@media screen and (min-width: $xll) {
+  .pingcap-container {
+    max-width: $xll;
+  }
+}

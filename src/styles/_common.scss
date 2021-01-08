@@ -2,15 +2,8 @@
 
 @import "variable";
 @import "typography";
-
-// TODO: remove font-face before deploy because of Adobe font license !!! u cant store any ttf file on the server's disk or import font file by CDN !
-@font-face {
-  font-family: 'Source Sans Pro';
-  //font-family: 'ssp';
-  src: url("/font/SourceSansPro-Regular.ttf");
-  font-weight: normal;
-  font-style: normal;
-}
+@import "responsive";
+@import "component";
 
 $socials: github twitter linkedin facebook reddit slack youtube yc;
 

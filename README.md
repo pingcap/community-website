@@ -7,6 +7,8 @@
   TiDB Developer Community - website 
 </h1>
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bcc3f001-7721-4584-abb8-937c89723fed/deploy-status)](https://app.netlify.com/sites/community-website/deploys)
+
 
 ## 🚀 Quick start
     git clone git@github.com:pingcap/community-website.git
@@ -30,6 +32,10 @@ Its content likes
 部分图片资源通过 `gatsby-source-filesystem` 插件进行索引，
 在 component 中通过 graphql 进行查询。
 
+但是也可以通过JavaScript的import或者require直接导入，
+通过这种方式导入同样会被webpack打包并且生成带有hash缓存标识符的资源文件。
+和 graphql 查询导入的区别在于可能会失去某些优化手段，目前我们的图片尺寸都还不算太大，
+为了方便数据管理，可以按需灵活选择两种引入图片的方式
 
 ### src/pages 
 gatsby.js 默认的页面 component 存放路径，URL路由规则也按照该文件夹下的文件系统进行生成。

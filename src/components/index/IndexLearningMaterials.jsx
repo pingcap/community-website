@@ -1,12 +1,13 @@
 import React from 'react'
 import styles from './IndexLearningMaterials.module.scss'
 import {Row, Col} from "antd";
-import classNames from "classnames";
+import Container from "src/components/Container/Container";
+import BoundLink from "src/components/BoundLink";
 
 export default function IndexLearningMaterials({data}) {
   return (
     <div className={styles.wrapper}>
-      <div className={classNames(styles.container, 'container')}>
+      <Container className={styles.container}>
         <div className={styles.title}>
           {data.title}
         </div>
@@ -20,24 +21,26 @@ export default function IndexLearningMaterials({data}) {
           </Row>
         </div>
         
-      </div>
+      </Container>
     </div>
   )
 }
 
-function LearningItem({title, summary}) {
+function LearningItem({title, summary, link}) {
   return (
-    <div className={styles.list_item}>
-      <div className={styles.list_item_title}>
-        {title}
+    <BoundLink href={link}>
+      <div className={styles.list_item}>
+        <div className={styles.list_item_title}>
+          {title}
+        </div>
+        <div className={styles.list_item_split_line}>
+          <div/>
+        </div>
+        <div className={styles.list_item_summary}>
+          {summary}
+        </div>
       </div>
-      <div className={styles.list_item_split_line}>
-        <div/>
-      </div>
-      <div className={styles.list_item_summary}>
-        {summary}
-      </div>
-    </div>
+    </BoundLink>
   )
 }
 

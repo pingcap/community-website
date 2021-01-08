@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react'
+import React, {useState} from 'react'
 import styles from './ranking.module.scss'
 import Layout from "src/components/Layout";
 import SEO from "src/components/SEO";

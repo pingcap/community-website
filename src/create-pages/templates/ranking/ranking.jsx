@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useMemo, useState} from 'react'
 import styles from './ranking.module.scss'
 import Layout from "src/components/Layout";
 import SEO from "src/components/SEO";
@@ -9,6 +9,7 @@ import {Button, Space, Table} from "antd";
 import {Link, navigate} from "gatsby";
 import BoundLink from "src/components/BoundLink";
 import RadioButton from "src/components/RadioButton/RadioButton";
+import _ from 'lodash'
 
 export default function Ranking({ data, pageContext, location }) {
   const graphqlData = useStaticQuery(
@@ -60,7 +61,7 @@ export default function Ranking({ data, pageContext, location }) {
       title: 'No',
       dataIndex: 'no',
       key: 'no',
-      render: (text, record, index) => index + 1,
+      // render: (text, record, index) => index + 1,
     },
     {
       title: 'Coder Name',
@@ -87,7 +88,12 @@ export default function Ranking({ data, pageContext, location }) {
     },
   ]
   
-  const tableData = showType === 'prCount' ? apiData.contributions : apiData.contributions.filter(contribution => !!contribution.score)
+  const parsedData = apiData.contributions.map(item => ({...item, prCount: parseInt(item.prCount), score: parseInt(item.score), }))
+  
+  const prData = _.orderBy(parsedData, ['prCount'], ['desc']).map((item, index) => ({...item, no: index + 1}))
+  const scoreData = _.orderBy(parsedData.filter(contribution => !!contribution.score), ['score'], ['desc']).map((item, index) => ({...item, no: index + 1}))
+  
+  const tableData = showType === 'prCount' ? prData : scoreData
   
   return (
     <Layout>

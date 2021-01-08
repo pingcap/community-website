@@ -69,7 +69,7 @@ export default function Ranking({ data, pageContext, location }) {
       key: 'githubName',
       render: text => <Space>
         <BoundLink href={`https://github.com/${text}`}>
-          <img className={styles.avatar} src={`https://github.com/${text}.png`} alt={text}/>
+          <img className={styles.avatar} src={`/cache/github-avatar/${text}.png`} alt={text}/>
           <span className={styles.username}>{text}</span>
         </BoundLink>
       </Space>,

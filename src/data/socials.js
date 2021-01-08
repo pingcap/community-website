@@ -1,43 +1,42 @@
 import React from "react";
-import {
-  GithubOutlined,
-  TwitterOutlined,
-  FacebookOutlined,
-  LinkedinOutlined,
-  SlackOutlined,
-  YoutubeOutlined,
-} from '@ant-design/icons'
+
+import iconGitHub from 'images/socials/github.svg'
+import iconTwitter from 'images/socials/twitter.svg'
+import iconFacebook from 'images/socials/facebook.svg'
+import iconLinkedin from 'images/socials/linkedin.svg'
+import iconSlack from 'images/socials/slack.svg'
+import iconYoutube from 'images/socials/youtube.svg'
 
 const followSocials = [
   {
     name: 'github',
     href: 'https://github.com/pingcap',
-    icon: <GithubOutlined />,
+    icon: (<img src={iconGitHub} alt=""/>),
   },
   {
     name: 'twitter',
     href: 'https://twitter.com/PingCAP',
-    icon: <TwitterOutlined />
+    icon: (<img src={iconTwitter} alt=""/>)
   },
   {
     name: 'facebook',
     href: 'https://facebook.com/pingcap2015',
-    icon: <FacebookOutlined />,
+    icon: (<img src={iconFacebook} alt=""/>),
   },
   {
     name: 'linkedin',
     href: 'https://linkedin.com/company/pingcap',
-    icon: <LinkedinOutlined />,
+    icon: (<img src={iconLinkedin} alt=""/>),
   },
   {
     name: 'slack',
     href: 'https://slack.tidb.io/invite?team=tidb-community&channel=everyone&ref=pingcap',
-    icon: <SlackOutlined />,
+    icon: (<img src={iconSlack} alt=""/>),
   },
   {
     name: 'youtube',
     href: 'https://youtube.com/channel/UCuq4puT32DzHKT5rU1IZpIA',
-    icon: <YoutubeOutlined />,
+    icon: (<img src={iconYoutube} alt=""/>),
   },
 ]
 

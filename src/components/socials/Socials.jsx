@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { followSocials, shareSocials } from 'src/data/socials'
-
 import './Socials.scss'
-
-import PropTypes from 'prop-types'
 import {Row, Col} from "antd";
 
-const Socials = ({ className, type, title }) => {
+const Socials = ({type, title }) => {
   const [data, setData] = useState(null)
 
   useEffect(() => {
@@ -20,15 +17,17 @@ const Socials = ({ className, type, title }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const className = `Socials`
+  const classNameItem = `${className}-item`
+  
   return (
-    <div className="socials">
-      <Row gutter={[32]}>
-        {data &&
-        data.map(social => (
+    <div className={className}>
+      <Row gutter={[24, 16]}>
+        {data && data.map(social => (
           <Col span={8}>
             <a
               key={social.name}
-              className="socials-item"
+              className={classNameItem}
               target="_blank"
               rel="noopener noreferrer"
               href={social.href}
@@ -40,12 +39,6 @@ const Socials = ({ className, type, title }) => {
       </Row>
     </div>
   )
-}
-
-Socials.propTypes = {
-  className: PropTypes.string,
-  type: PropTypes.string,
-  title: PropTypes.string,
 }
 
 export default Socials

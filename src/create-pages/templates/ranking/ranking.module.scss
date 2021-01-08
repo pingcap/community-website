@@ -51,4 +51,7 @@ $size-avatar: 2rem;
 
 .table {
   margin: 4rem auto;
+  td {
+    line-height: $size-avatar;
+  }
 }

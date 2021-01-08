@@ -1,6 +1,6 @@
 ### Maintainer
 
-Maintainers are the planners and designers of the TiDB project, with the authority to merge branches into the master. Maintainers come from Committers. They must demonstrate both good judgment and responsibility towards the sustained development and overall health of the TiDB project. See [TiDB Maintainers](./maintainer-list.md) for a list of TiDB Maintainers.
+Maintainers are the planners and designers of the TiDB project, with the authority to merge branches into the master. Maintainers come from Committers. They must demonstrate both good judgment and responsibility towards the sustained development and overall health of the TiDB project.
 
 #### How to become a Maintainer
 

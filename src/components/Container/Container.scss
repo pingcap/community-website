@@ -1,41 +1,48 @@
 @import "src/styles/common";
 
-// width < 768px, container's width is 100%
-// otherwise >= 786px, container's width is their breakpoint
+/**
+           screen width <=  576 px , container width =  100  % , gutter = 16
+ 576 px <= screen width <   768 px , container width =  512 px , gutter = 16
+ 768 px <= screen width <   922 px , container width =  752 px , gutter = 16
+ 922 px <= screen width <  1200 px , container width =  992 px , gutter = 16
+1200 px <= screen width <  1600 px , container width = 1200 px , gutter = 28
+1600 px <= screen width <  1920 px , container width = 1600 px , gutter = 32
+        <= screen width <  1920 px , container width = 1920 px , gutter = 32
+ */
 
 .pingcap-container {
-  // page both sides padding is 1rem
+  box-sizing: border-box;
+  // both sides padding of page is 1rem
   padding: 0 1rem;
-  // horizontal center
+  // center horizontally
   margin: 0 auto;
-}
 
-@media screen and (max-width: $sm) {
-  .pingcap-container {
+  // (0 , 576]
+  @include responsive-lte-xs {
     width: 100%;
   }
-}
-
-@media screen and (min-width: $md) {
-  .pingcap-container {
-    max-width: $md;
+  // (576 , 768]
+  @include responsive-between-xs-sm {
+    width: 512px;
   }
-}
-
-@media screen and (min-width: $lg) {
-  .pingcap-container {
-    max-width: $lg;
+  // (768 , 992]
+  @include responsive-between-sm-md {
+    width: 752px;
   }
-}
-
-@media screen and (min-width: $xl) {
-  .pingcap-container {
-    max-width: $xl;
+  // (992 , 1200]
+  @include responsive-between-md-lg {
+    width: 992px;
   }
-}
-
-@media screen and (min-width: $xll) {
-  .pingcap-container {
-    max-width: $xll;
+  // (1200 , 1600]
+  @include responsive-between-lg-xl {
+    width: 1200px;
+  }
+  // (1600 , 1920]
+  @include responsive-between-xl-xxl {
+    width: 1600px;
+  }
+  // (1920 , ∞]
+  @include responsive-gt-xxl {
+    width: 1920px;
   }
 }

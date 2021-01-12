@@ -14,7 +14,7 @@ $xxl: 1920px;
 }
 
 @mixin responsive-between-xs-sm {
-  @media screen and (min-width: $xs) {
+  @media screen and (min-width: $xs + 1) {
     @content
   }
 }

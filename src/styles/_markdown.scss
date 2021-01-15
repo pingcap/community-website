@@ -50,6 +50,8 @@
     padding: {
       left: 1.5rem;
     }
+    // if markdown is likes ul > li > ul, the gatsby's markdown renderer will add `p` tag automatically
+    // so we should reduce the margin
     p {
       margin: 0;
     }

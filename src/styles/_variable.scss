@@ -96,10 +96,11 @@ $mobile-section-padding: 1rem;
 }
 
 @mixin shadow {
-  @include transition(box-shadow);
+  @include transition;
   box-shadow: $shadow;
   &:hover {
     box-shadow: $shadow-hover;
+    transform: translate(0, -4px);
   }
 }
 

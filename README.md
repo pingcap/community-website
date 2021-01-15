@@ -1,11 +1,4 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  TiDB Developer Community - website 
-</h1>
+# TiDB Developer Community - website 
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/bcc3f001-7721-4584-abb8-937c89723fed/deploy-status)](https://app.netlify.com/sites/community-website/deploys)
 
@@ -45,6 +38,18 @@ pages 目录名禁止修改。否则默认配置下 gatsby.js 将无法找到页
 ### src/component 
 页面中会重复使用的 component 存放路径。
 
+#### src/component/Container
+页面容器组件，用于包裹页面元素，默认情况下居中
+其中又分为 normal 容器和 fluid 容器
+- normal 容器的宽度通过媒体查询，根据响应式布局的规则进行自适应调整。左右边距为 1rem （实际尺寸请参考源码）
+- fluid 容器的宽度为 100% （忽略滚动条的情况下也可以为 100vw）。左右边距通过媒体查询，根据响应式布局的规则进行自适应调整。
+
+#### src/component/Layout
+页面布局组件，会在页面的顶部和底部自动导入 header 和 footer
+
+#### src/component/SEO
+metadata 数据注入组件，通过 react-helmet 自动像 HTML 文档的 head 部分注入SEO相关标签
+
 
 ### src/styles 
 自定义的样式目录，存放公共样式以及 sass 的部分变量声明
@@ -56,9 +61,19 @@ pages 目录名禁止修改。否则默认配置下 gatsby.js 将无法找到页
 该文件存放各种 sass 变量声明，因此该样式文件里面的样式**不允许**有副作用。
 请勿在该文件中直接写任何选择器以及样式。
 
+#### src/styles/_typography.scss
+该文件存放各类字体排版的 mixin 声明
+
+#### src/styles/_markdown.scss
+该文件存放针对 gatsby.js markdown 渲染器自动生成的 HTML 的样式声明
+
+#### src/styles/_responsive.scss
+该文件存放有关响应式布局的变量以及媒体查询有关的 mixin 
+
 #### src/styles/_common.scss
 该文件为公共import文件，可被任何 sass 样式文件使用 `import` 指令导入。
-该文件仅供导入，因此**不允许**有副作用。请勿在该文件中直接写任何选择器以及样式。
+该文件仅供导入，以及导入其他声明（`@import`指令），因此**不允许**有副作用，也**不允许**有任何声明。
+请勿在该文件中直接写任何选择器以及样式。
 
 
 ### src/data
@@ -90,15 +105,41 @@ gatsby.js 框架支持直接在 `src/pages` 目录中存放通过 React 组件�
 存放 React 根组件被包裹的标签，通常用于注入 React.Context ，
 例如 react-intl 的 provider 需要在此处注入
 
+#### src/create-pages/apiHelper.js
+存放从 HTTP API 中获取数据的业务逻辑。
+#####  async function cacheGitHubAvatar(username)
+该函数将通过 github 用户名获取该用户的头像
+并且缓存在 `public/cache/github-avatar` 目录中
+因此该项目中涉及到需要显示 github 用户头像的逻辑，需要在 gatsby-node.js 中缓存该头像
+并且在 HTML 中直接引用该目录下的缓存头像，以免中国大陆境内用户无法正常显示 github 头像
+
+该函数的缓存策略为：判断最后修改时间若距离当前时间大于 7 天则强制重新下载一遍 github 头像并覆盖缓存，否则不作任何操作。
+
+
 #### src/create-pages/templates
 存放用于通过 JavaScript 脚本构建页面的页面模版文件，写法与 pages 中的文件类似。
 更多详情可参考 gatsby.js 文档。
 
+### src/helper.js
+一些助手函数
 
 ### gatsby-*.js
 
 #### gatsby-config.js
 存放站点的各种配置以及插件配置，具体请参考 gatsby.js 文档。
+
+#### gatsby-node.js
+由于本站点有部分数据为动态生成，需要通过 HTTP API 获取数据并且填充 template 文件，
+因此需要 在 gatsby-node 中导入相关业务逻辑。
+构建流程如下
+
+1. 导出 onCreateWebpackConfig 函数用于重写 webpack 配置
+1. 导出 createPages 函数用于动态创建页面
+
+这些被导出的函数类似于 hook ，将会再 gatsby.js 的构建过程中自动被执行
+
+其中 createPages 又通过 Promise.all 分发了多个异步函数用于从 API 中获取数据并且填充模板，然后动态创建页面
+
 
 ### lang.config.js
 语言配置，存放默认语言，以及可使用的语言列表（用于在 footer 中进行语言切换）

@@ -1,6 +1,6 @@
 $xs:   576px;
 $sm:   768px;
-$md:   992px;
+$md:   922px;
 $lg:  1200px;
 $xl:  1600px;
 $xxl: 1920px;
@@ -13,31 +13,31 @@ $xxl: 1920px;
   }
 }
 
-@mixin responsive-between-xs-sm {
+@mixin responsive-gt-sm {
   @media screen and (min-width: $xs + 1) {
     @content
   }
 }
 
-@mixin responsive-between-sm-md {
+@mixin responsive-gt-md {
   @media screen and (min-width: $sm + 1) {
     @content
   }
 }
 
-@mixin responsive-between-md-lg {
+@mixin responsive-gt-lg {
   @media screen and (min-width: $md + 1) {
     @content
   }
 }
 
-@mixin responsive-between-lg-xl {
+@mixin responsive-gt-xl {
   @media screen and (min-width: $lg + 1) {
     @content
   }
 }
 
-@mixin responsive-between-xl-xxl {
+@mixin responsive-gt-xxl {
   @media screen and (min-width: $xl + 1) {
     @content
   }

@@ -14,7 +14,7 @@ export default function IndexEvents({data}) {
           {data.title}
         </div>
         <div className={styles.list}>
-          <Row justify="center" gutter={[32, 32]}>
+          <Row justify="space-around" gutter={[32, 32]}>
             {data.items.map((item =>
                 <Col xs={24} sm={16} md={16} lg={8}>
                   <EventsItem {...item} />

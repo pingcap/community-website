@@ -1,9 +1,14 @@
 import React from "react";
 import './Container.scss'
+import classNames from 'classnames'
 
-export default function Container({children, className, ...rest}) {
+export default function Container({children, fluid, className: classNameInput, ...rest}) {
+  const className = 'PingCAPContainer'
   return (
-    <div className={`pingcap-container ${className}`} {...rest}>
+    <div className={classNames(className, classNameInput, {
+      [`${className}-fluid`]: fluid,
+      [`${className}-normal`]: !fluid,
+    })} {...rest}>
       {children}
     </div>
   )

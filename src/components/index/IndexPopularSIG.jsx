@@ -5,6 +5,7 @@ import LinkWithArrow from "src/components/LinkWithArrow";
 import Container from "src/components/Container/Container";
 import AvatarGrid from "src/components/AvatarGrid/AvatarGrid";
 import BoundLink from "src/components/BoundLink";
+import ResponsiveRow from "src/components/ResponsiveRow/ResponsiveRow";
 
 export default function IndexPopularSIG({data}) {
   return (
@@ -17,13 +18,13 @@ export default function IndexPopularSIG({data}) {
           {data.summary}
         </div>
         <div className={styles.list}>
-          <Row justify="center" gutter={[32, 32]}>
+          <ResponsiveRow justify="space-around" gutter={[0, 32]}>
             {data.items.map(item =>
               <Col xs={24} sm={16} md={16} lg={8}>
                 <IndexPopularSIGItem {...item} />
               </Col>
             )}
-          </Row>
+          </ResponsiveRow>
         </div>
         <div className={styles.more}>
           <div className={styles.more_button}>

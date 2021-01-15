@@ -26,8 +26,7 @@ $size-avatar: 6rem;
 
 .list {
   margin-top: 4rem;
-  display: flex;
-  flex-wrap: wrap;
+  width: 100%;
   &_item {
     @include card;
     height: 100%;

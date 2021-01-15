@@ -3,6 +3,7 @@ import styles from './IndexCommunityStar.module.scss'
 import {Row, Col} from "antd";
 import Container from "src/components/Container/Container"
 import BoundLink from "src/components/BoundLink";
+import ResponsiveRow from "src/components/ResponsiveRow/ResponsiveRow";
 
 export default function IndexCommunityStar({data}) {
   
@@ -20,16 +21,16 @@ export default function IndexCommunityStar({data}) {
           </Col>
         </Row>
         <div className={styles.list}>
-          <Row justify="space-around" gutter={[192, 64]}>
+          <ResponsiveRow justify="space-around" gutter={[0, 64]}>
             {data.items.map(((item, index) =>
-                <Col xs={24} sm={12} md={6}
+                <Col xs={20} sm={8} md={2}
                   // onMouseOver={() => setOpinionDebounced.run(index)}
                   // onMouseOut={() => setOpinionDebounced.run(-1)}
                 >
                   <IndexCommunityStarItem {...item} />
                 </Col>
             ))}
-          </Row>
+          </ResponsiveRow>
         </div>
         
       </Container>

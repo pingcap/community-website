@@ -48,13 +48,20 @@ export default {
       summary: 'The TiDB Community Organization brings together development enthusiasts interested in TiDB and surrounding open source software to explore the future of distributed databases using TiDB as a hands-on project.',
       items: [
         {
-          summary: 'Create a de facto standard for distributed databases',
+          title: 'Building',
+          summary: 'Develop/create Database Standards',
         },
         {
-          summary: 'Lead the direction of distributed database technology development',
+          title: 'Learning',
+          summary: 'Learning Knowledge and Skills',
         },
         {
-          summary: 'Become an industry expert in the field of distributed databases',
+          title: 'Sharing',
+          summary: 'Sharing Best Practices',
+        },
+        {
+          title: 'Growing',
+          summary: 'Become a Database Expert',
         },
       ],
     },

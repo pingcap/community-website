@@ -17,6 +17,9 @@ export default function IndexIntro({data}) {
         communityValue3: file(relativePath: { eq: "home/community-value-3.svg" }) {
           publicURL
         }
+        communityValue4: file(relativePath: { eq: "home/community-value-4.svg" }) {
+          publicURL
+        }
       }
     `
   )
@@ -41,9 +44,9 @@ export default function IndexIntro({data}) {
         <div className={styles.list}>
           <Row justify="space-around" gutter={[32, 32]}>
             {data.items.map((item =>
-                <Col xs={16} sm={16} md={6}>
-                  <IndexIntroFeature {...item} />
-                </Col>
+              <Col xs={16} sm={16} md={6}>
+                <IndexIntroFeature {...item} />
+              </Col>
             ))}
           </Row>
         </div>
@@ -52,13 +55,16 @@ export default function IndexIntro({data}) {
   )
 }
 
-function IndexIntroFeature({imageUrl, summary}) {
+function IndexIntroFeature({imageUrl, title, summary}) {
   return (
     <div className={styles.list_item}>
       <div className={styles.list_item_image}>
         <img src={imageUrl} alt=""/>
       </div>
-      <div className={styles.list_item_text}>
+      <div className={styles.list_item_title}>
+        {title}
+      </div>
+      <div className={styles.list_item_summary}>
         {summary}
       </div>
     </div>

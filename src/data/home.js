@@ -49,7 +49,7 @@ export default {
       items: [
         {
           title: 'Building',
-          summary: 'Develop/create Database Standards',
+          summary: 'Develop Database Standards',
         },
         {
           title: 'Learning',

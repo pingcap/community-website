@@ -1,7 +1,7 @@
 # TiDB Developer Community - website 
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/bcc3f001-7721-4584-abb8-937c89723fed/deploy-status)](https://app.netlify.com/sites/community-website/deploys)
-
+[![CircleCI Status](https://circleci.com/gh/pingcap/community-website.svg?style=svg)](https://circleci.com/gh/pingcap/community-website)
 
 ## 🚀 Quick start
     git clone git@github.com:pingcap/community-website.git
@@ -143,3 +143,35 @@ gatsby.js 框架支持直接在 `src/pages` 目录中存放通过 React 组件�
 
 ### lang.config.js
 语言配置，存放默认语言，以及可使用的语言列表（用于在 footer 中进行语言切换）
+
+## Deploy
+在 `.circleci/config.yml` 中存放了 CI 构建配置
+
+当前配置情况如下
+- 只构建 main 分支
+- 使用 node.js v14.13.0 版本
+- 安装 rsync 用于同步构建结果，sshpass 用于在 ssh 中传递密码
+- 执行 yarn install 安装依赖
+- 执行 yarn download 下载一些来自 github 的 markdown 的文件
+- 设置环境变量 GATSBY_CPU_COUNT 用于解决某些情况下的构建 BUG
+- 执行 yarn build 构建纯静态 HTML 页面文件
+- 执行 rsync 命令将构建好的 HTML 页面文件同步到生产环境服务器中
+- 服务器使用 nginx ，配置文件在 `/etc/nginx/nginx.conf` ，
+根据配置文件中的 root 项，在 CircleCI 中将构建结果文件同步至对应路径。
+
+该站点当前 nginx 配置如下
+
+        server {
+            listen       80;
+            listen       [::]:80;
+            server_name  developer.tidb.io;
+            root         /usr/share/nginx/html/dev-group;
+    
+            # Load configuration files for the default server block.
+            include /etc/nginx/default.d/*.conf;
+    
+            location / {
+            }
+        }
+
+实际配置以生产环境服务器中的配置文件为准

@@ -19,14 +19,19 @@ jobs:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-github-avatar
       - run: yarn install
       - save_cache:
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run:
           command: yarn download && GATSBY_CPU_COUNT=1 yarn build
           no_output_timeout: 20m
+      - save_cache:
+          key: v1-github-avatar
+          paths:
+            - public/cache
 
 #      - deploy:
 #          name: 'Publish Website Could JP_1_HOST'

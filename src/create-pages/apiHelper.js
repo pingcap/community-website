@@ -3,6 +3,9 @@ const path = require('path')
 const axios = require('axios')
 const dayjs = require('dayjs')
 
+const sleep = (millisecond) => new Promise((resolve => {
+  setTimeout(() => resolve(), millisecond)
+}))
 
 function writeFile(path, filename, content) {
   if (!fs.existsSync(path)) {
@@ -33,6 +36,8 @@ async function cacheGitHubAvatar(username) {
   if (Array.isArray(username)) {
     for (const usernameElement of username) {
       await cacheOneGitHubAvatar(usernameElement)
+      /* sleep 10s */
+      await sleep(10 * 1000)
     }
   } else {
     await cacheOneGitHubAvatar(username)

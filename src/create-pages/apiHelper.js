@@ -36,8 +36,6 @@ async function cacheGitHubAvatar(username) {
   if (Array.isArray(username)) {
     for (const usernameElement of username) {
       await cacheOneGitHubAvatar(usernameElement)
-      /* sleep 1s */
-      await sleep(1 * 1000)
     }
   } else {
     await cacheOneGitHubAvatar(username)
@@ -66,6 +64,8 @@ async function cacheOneGitHubAvatar(username) {
     } catch (e) {
       console.error('cacheGitHubAvatar error, username: ', username, e)
     }
+    /* sleep 1s */
+    await sleep(1 * 1000)
   }
 }
 

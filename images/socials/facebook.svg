@@ -1,9 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
-  <g id="Group_1819" data-name="Group 1819" transform="translate(-3429 -4678)">
-    <g id="Group_1806" data-name="Group 1806">
-      <path id="Path_6330" data-name="Path 6330" d="M456,49.994A27.507,27.507,0,1,1,428.486,77.5,27.538,27.538,0,0,1,456,49.994m0-2.493a30,30,0,1,0,30,30,30,30,0,0,0-30-30Z" transform="translate(3003.006 4630.499)" fill="#6e77a3"/>
-      <g id="Group_1779" data-name="Group 1779" transform="translate(3450.6 4690.8)">
-        <path id="Path_6320" data-name="Path 6320" d="M466.719,85.684h7.25V68.1h5.593l.689-6.193h-6.282V58.056c0-1.367.569-1.487,1.254-1.487h4.932V50.542l-5.826-.018c-6.462,0-7.61,4.494-7.61,7.366v4.02H462.66V68.1h4.059Z" transform="translate(-462.66 -50.524)" fill="#6e77a3"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="40.884" height="40.884" viewBox="0 0 40.884 40.884">
+  <g id="组_5251" data-name="组 5251" transform="translate(21462 9516.924)">
+    <g id="组_4434" data-name="组 4434" transform="translate(-22852.461 -10935)">
+      <g id="组_1806" data-name="组 1806" transform="translate(1390.461 1418.076)">
+        <path id="路径_6330" data-name="路径 6330" d="M446.437,49.2a18.743,18.743,0,1,1-18.745,18.743A18.765,18.765,0,0,1,446.437,49.2m0-1.7a20.442,20.442,0,1,0,20.441,20.442A20.442,20.442,0,0,0,446.437,47.5Z" transform="translate(-425.994 -47.501)" fill="#4c5470"/>
+        <g id="组_1779" data-name="组 1779" transform="translate(14.718 8.722)">
+          <path id="路径_6320" data-name="路径 6320" d="M465.426,74.482h4.94V62.5h3.811l.469-4.22h-4.28V55.656c0-.932.388-1.013.854-1.013h3.361V50.536l-3.97-.012c-4.4,0-5.185,3.062-5.185,5.019v2.74H462.66V62.5h2.766Z" transform="translate(-462.66 -50.524)" fill="#4c5470"/>
+        </g>
       </g>
     </g>
   </g>

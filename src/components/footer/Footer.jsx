@@ -1,13 +1,13 @@
 import React from 'react'
+import styles from './Footer.module.scss'
 import Socials from '../socials/Socials'
 import i18n from '../../data/footer'
-import BoundLink from '../BoundLink'
+import MyLink from 'src/components/MyLink'
 import { useIntl } from 'react-intl'
 import Container from "src/components/Container/Container";
-import logoImageUrl from 'images/TiDB-logo-red.svg'
 
-import './Footer.scss'
-import {Col, Row} from "antd";
+import logoImageUrl from 'images/logo-with-text.svg'
+
 
 export default function Footer() {
   
@@ -18,63 +18,39 @@ export default function Footer() {
   
   const copyrightNode = `©${new Date().getFullYear()} TiDB Author.`
   
-  const className = `Footer`
-  const classNameContainer = `${className}-container`
-  const classNameContainerMain = `${classNameContainer}-main`
-  
-  const classNameContainerMainLeft = `${classNameContainerMain}-left`
-  const classNameContainerMainLeftColumn = `${classNameContainerMainLeft}-column`
-  const classNameContainerMainLeftItemTitle = `${classNameContainerMainLeftColumn}-title`
-  const classNameContainerMainLeftItemList = `${classNameContainerMainLeftColumn}-list`
-  
-  const classNameContainerMainRight = `${classNameContainerMain}-right`
-  const classNameContainerMainRightLogo = `${classNameContainerMainRight}-logo`
-  const classNameContainerMainRightLogoImage = `${classNameContainerMainRightLogo}-image`
-  const classNameContainerMainRightLogoText = `${classNameContainerMainRightLogo}-text`
-  const classNameContainerMainRightSocials = `${classNameContainerMainRight}-socials`
-  
-  const classNameContainerCopyright = `${classNameContainer}-copyright`
-  
   return (
-    <div className={className}>
-      <Container fluid className={classNameContainer}>
-        <Row gutter={[16, 16]} className={classNameContainerMain}>
-          <Col sm={24} md={16}>
-            <Row className={classNameContainerMainLeft}>
-              {data.map(column => (
-                <Col xs={24} sm={12} md={8} className={classNameContainerMainLeftColumn}>
-                  <div className={classNameContainerMainLeftItemTitle}>
-                    {column.name}
-                  </div>
-                  <ul className={classNameContainerMainLeftItemList}>
-                    {column.items.map(item => (
-                      <li>{item.outbound ? <BoundLink href={item.link}>{item.name}</BoundLink> : <BoundLink to={item.link}>{item.name}</BoundLink>}</li>
-                    ))}
-                  </ul>
-                </Col>
-              ))}
-            </Row>
-          </Col>
-          
-          <Col sm={24} md={8} className={classNameContainerMainRight}>
-            <BoundLink to={'/'}>
-              <div className={classNameContainerMainRightLogo}>
-                <div className={classNameContainerMainRightLogoImage}>
-                  <img src={logoImageUrl} alt="DevGroup"/>
+    <div className={styles.wrapper}>
+      <Container className={styles.container}>
+        <div className={styles.main}>
+          <div className={styles.main_left}>
+            {data.map((column, columnIndex) => (
+              <div key={columnIndex} className={styles.main_left_column}>
+                <div className={styles.main_left_column_title}>
+                  {column.name}
                 </div>
-                <div className={classNameContainerMainRightLogoText}>
-                  DevGroup
-                </div>
+                <ul className={styles.main_left_column_list}>
+                  {column.items.map((item, itemIndex) => (
+                    <li key={itemIndex}>{item.outbound ? <MyLink href={item.link}>{item.name}</MyLink> : <MyLink to={item.link}>{item.name}</MyLink>}</li>
+                  ))}
+                </ul>
               </div>
-            </BoundLink>
-            <div className={classNameContainerMainRightSocials}>
+            ))}
+          </div>
+          <div className={styles.main_right}>
+            <div className={styles.main_right_socials}>
               <Socials type="follow" />
             </div>
-          </Col>
-        </Row>
-        
-        <div className={classNameContainerCopyright}>
-          {copyrightNode}
+            <div className={styles.main_right_brand}>
+              <div className={styles.main_right_brand_logo}>
+                <MyLink to={'/'}>
+                  <img src={logoImageUrl} alt="TiDB Developer Group"/>
+                </MyLink>
+              </div>
+              <div className={styles.main_right_brand_copyright}>
+                {copyrightNode}
+              </div>
+            </div>
+          </div>
         </div>
       </Container>
     </div>

@@ -1,8 +1,12 @@
-<svg id="Group_1780" data-name="Group 1780" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
-  <g id="Group_1773" data-name="Group 1773" transform="translate(15.2 16)">
-    <rect id="Rectangle_2378" data-name="Rectangle 2378" width="6.246" height="19.769" transform="translate(0 8.325)" fill="#3351ff"/>
-    <circle id="Ellipse_388" data-name="Ellipse 388" cx="3.122" cy="3.122" r="3.122" transform="translate(0.001)" fill="#3351ff"/>
-    <path id="Path_6322" data-name="Path 6322" d="M510.228,62.911c0-5.2-1.124-9.188-7.207-9.188a6.316,6.316,0,0,0-5.684,3.114h-.082V54.2h-5.764V73.49H497.5V63.948c0-2.514.477-4.953,3.6-4.953,3.079,0,3.123,2.877,3.123,5.117V73.49h6Z" transform="translate(-481.08 -45.398)" fill="#3351ff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="40.884" height="40.884" viewBox="0 0 40.884 40.884">
+  <g id="组_5253" data-name="组 5253" transform="translate(21394 9516.924)">
+    <g id="组_1780" data-name="组 1780" transform="translate(-21394 -9516.924)">
+      <g id="组_1773" data-name="组 1773" transform="translate(10.357 10.902)">
+        <rect id="矩形_2378" data-name="矩形 2378" width="4.256" height="13.471" transform="translate(0 5.672)" fill="#3d3fea"/>
+        <circle id="椭圆_388" data-name="椭圆 388" cx="2.127" cy="2.127" r="2.127" transform="translate(0)" fill="#3d3fea"/>
+        <path id="路径_6322" data-name="路径 6322" d="M504.258,59.984c0-3.54-.766-6.261-4.911-6.261a4.3,4.3,0,0,0-3.873,2.122h-.056v-1.8h-3.927V67.192h4.093v-6.5c0-1.713.325-3.375,2.455-3.375,2.1,0,2.128,1.961,2.128,3.486v6.391h4.091Z" transform="translate(-484.397 -48.05)" fill="#3d3fea"/>
+      </g>
+      <path id="路径_6331" data-name="路径 6331" d="M446.437,49.2a18.743,18.743,0,1,1-18.745,18.743A18.765,18.765,0,0,1,446.437,49.2m0-1.7a20.442,20.442,0,1,0,20.441,20.442A20.442,20.442,0,0,0,446.437,47.5Z" transform="translate(-425.994 -47.501)" fill="#3d3fea"/>
+    </g>
   </g>
-  <path id="Path_6331" data-name="Path 6331" d="M456,49.994A27.507,27.507,0,1,1,428.486,77.5,27.538,27.538,0,0,1,456,49.994m0-2.493a30,30,0,1,0,30,30,30,30,0,0,0-30-30Z" transform="translate(-425.994 -47.501)" fill="#3351ff"/>
 </svg>

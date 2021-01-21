@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { followSocials, shareSocials } from 'src/data/socials'
-import './Socials.scss'
+import styles from './Socials.module.scss'
 import {Row, Col} from "antd";
 
 const Socials = ({type, title }) => {
@@ -16,28 +16,22 @@ const Socials = ({type, title }) => {
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  const className = `Socials`
-  const classNameItem = `${className}-item`
   
   return (
-    <div className={className}>
+    <div className={styles.wrapper}>
       <Row gutter={[24, 16]}>
-        {data && data.map(social => {
-          return (
-            <Col span={8}>
-              <a
-                key={social.name}
-                className={classNameItem}
-                target="_blank"
-                rel="noopener noreferrer"
-                href={social.href}
-              >
-                <div className={social.name}/>
-              </a>
-            </Col>
-          )
-        })}
+        {data && data.map(social =>
+          <Col span={8}>
+            <a
+              key={social.name}
+              className={styles.item}
+              target="_blank"
+              rel="noopener noreferrer"
+              href={social.href}
+            >
+              <div className={styles[social.name]}/>
+            </a>
+          </Col>)}
       </Row>
     </div>
   )

@@ -10,11 +10,14 @@ import {useDebounce} from 'ahooks'
 import Container from "src/components/Container/Container";
 import {MenuOutlined} from "@material-ui/icons";
 
-export default function Navbar(props) {
+export default function NavBar(props) {
   const imageData = useStaticQuery(
     graphql`
       query {
-        logo: file(relativePath: { eq: "TiDB-logo-red.svg" }) {
+        logoWithText: file(relativePath: { eq: "logo-with-text.svg" }) {
+          publicURL
+        }
+        logoWithWhiteText: file(relativePath: { eq: "logo-with-white-text.svg" }) {
           publicURL
         }
       }
@@ -54,12 +57,12 @@ export default function Navbar(props) {
           <div className={styles.left}>
             <div className={styles.logo}>
               <Link to="/">
-                <img src={imageData.logo.publicURL} alt="TiDB DevGroup"/>
+                {transparentDebounced ? <img src={imageData.logoWithWhiteText.publicURL} alt="TiDB DevGroup"/> : <img src={imageData.logoWithText.publicURL} alt="TiDB DevGroup"/>}
               </Link>
             </div>
-            <div className={classNames(styles.title, {[styles.title_transparent]: transparentDebounced})}>
-              {data.navbar.title}
-            </div>
+            {/*<div className={classNames(styles.title, {[styles.title_transparent]: transparentDebounced})}>*/}
+            {/*  {data.navbar.title}*/}
+            {/*</div>*/}
           </div>
         </Link>
 

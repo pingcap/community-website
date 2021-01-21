@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import styles from './Navbar.module.scss'
+import styles from './NavBar.module.scss'
 import classNames from 'classnames'
 import {graphql, Link, useStaticQuery} from "gatsby";
 import {Dropdown, Menu} from 'antd';

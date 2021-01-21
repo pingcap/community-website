@@ -23,19 +23,21 @@ const Socials = ({type, title }) => {
   return (
     <div className={className}>
       <Row gutter={[24, 16]}>
-        {data && data.map(social => (
-          <Col span={8}>
-            <a
-              key={social.name}
-              className={classNameItem}
-              target="_blank"
-              rel="noopener noreferrer"
-              href={social.href}
-            >
-              {social.icon}
-            </a>
-          </Col>
-        ))}
+        {data && data.map(social => {
+          return (
+            <Col span={8}>
+              <a
+                key={social.name}
+                className={classNameItem}
+                target="_blank"
+                rel="noopener noreferrer"
+                href={social.href}
+              >
+                <div className={social.name}/>
+              </a>
+            </Col>
+          )
+        })}
       </Row>
     </div>
   )

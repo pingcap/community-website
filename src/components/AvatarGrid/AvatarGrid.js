@@ -11,8 +11,6 @@ export default function AvatarGrid({members}) {
   members = members.slice(0, 9)
   const node = members.map(item => {
     const avatarUrl = `/cache/github-avatar/${item}.png`
-    console.log('avatarUrl', avatarUrl)
-    // console.log('avatarPath', avatarPath)
     return <img src={avatarUrl} alt=""/>
   })
   const className = `AvatarGrid`

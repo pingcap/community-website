@@ -2,7 +2,7 @@
 
 .wrapper {
   width: 100%;
-  padding: 4rem 0 6rem 0;
+  padding: 4rem 0 3rem 0;
   background-color: $M2;
 }
 
@@ -18,6 +18,12 @@
   text-align: center;
 }
 
+//.tooltip_icon {
+//  color: rgba($F2, .5);
+//  margin-left: .5rem;
+//  font-size: 1rem;
+//}
+
 .summary {
   @include P1;
   margin-top: 2rem;
@@ -29,6 +35,7 @@ $size-avatar: 6rem;
 .list {
   margin-top: 4rem;
   text-align: center;
+  width: 100%;
   &_item {
     display: flex;
     flex-direction: column;
@@ -50,43 +57,5 @@ $size-avatar: 6rem;
     &_content {
       @include P1;
     }
-  }
-}
-
-@mixin quoto {
-  color: $B1;
-  font: {
-    size: 10rem;
-  };
-  position: absolute;
-  user-select: none;
-}
-
-$opinion-margin-top: 1.5rem;
-
-.opinion {
-  @include P1;
-  @include transition;
-  background-color: #fff;
-  margin-top: $opinion-margin-top;
-  padding: 2rem 4rem;
-  transform: scale(1, 1);
-  &_quoto {
-    &_left {
-      @include quoto;
-      left: 1rem;
-      top: 1rem;
-    }
-    &_right {
-      @include quoto;
-      right: 1rem;
-      bottom: -3rem;
-    }
-  }
-  &_hidden {
-    height: 0;
-    opacity: 0;
-    //transform: scale(0, 0);
-    //overflow: hidden;
   }
 }

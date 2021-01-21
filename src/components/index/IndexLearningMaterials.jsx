@@ -12,7 +12,7 @@ export default function IndexLearningMaterials({data}) {
           {data.title}
         </div>
         <div className={styles.list}>
-          <Row gutter={[32, 32]}>
+          <Row justify={'space-around'} gutter={[32, 32]}>
             {data.items.map(item =>
               <Col sm={24} xs={24} md={24} lg={12}>
                 <LearningItem {...item} />

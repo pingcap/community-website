@@ -1,7 +1,6 @@
 import React from 'react'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import Link from 'src/components/IntlLink'
-// import Link from 'gatsby'
 import styles from './linkWithArrow.module.scss'
 
 const LinkWithArrow = ({ to, children, isOutbound }) => {

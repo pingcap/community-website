@@ -24,6 +24,7 @@
 
 .list {
   margin-top: 4rem;
+  width: 100%;
   &_item {
     display: flex;
     flex-direction: column;
@@ -31,9 +32,14 @@
     &_image {
       height: 6rem;
     }
-    &_text {
+    &_title {
+      @include H2;
       text-align: center;
       margin-top: 2rem;
+    }
+    &_summary {
+      text-align: center;
+      margin-top: 1rem;
     }
   }
 }

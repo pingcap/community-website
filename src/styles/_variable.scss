@@ -55,7 +55,7 @@ $T4: #7D3F98; // tag
 $T5: #F8C200; // tag
 $T6: #F15A24; // tag
 
-$family-sans-serif: 'Titillium Web', 'Helvetica Neue', 'Arial', 'Source Han Sans SC', 'Source Han Sans CN', 'Source Han Sans', 'Noto Sans SC', 'Noto Sans CJK', 'Noto Sans', -apple-system, sans-serif;
+$family-sans-serif: 'pingfang SC','helvetica neue',arial,'hiragino sans gb','microsoft yahei ui','microsoft yahei',simsun,sans-serif;
 
 $primary: $B1;
 $button-hover-color: #5051C9;
@@ -96,10 +96,11 @@ $mobile-section-padding: 1rem;
 }
 
 @mixin shadow {
-  @include transition(box-shadow);
+  @include transition;
   box-shadow: $shadow;
   &:hover {
     box-shadow: $shadow-hover;
+    transform: translate(0, -4px);
   }
 }
 

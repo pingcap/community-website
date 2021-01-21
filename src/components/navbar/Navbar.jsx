@@ -48,7 +48,7 @@ export default function Navbar(props) {
 
   return (
     <div className={classNames(styles.wrapper, {[styles.wrapper_transparent]: transparentDebounced})}>
-      <Container className={styles.container}>
+      <Container fluid className={styles.container}>
   
         <Link to="/">
           <div className={styles.left}>

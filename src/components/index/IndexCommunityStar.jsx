@@ -1,8 +1,9 @@
 import React from 'react'
 import styles from './IndexCommunityStar.module.scss'
-import {Row, Col} from "antd";
+import {Row, Col, Tooltip} from "antd";
 import Container from "src/components/Container/Container"
 import BoundLink from "src/components/BoundLink";
+import ResponsiveRow from "src/components/ResponsiveRow/ResponsiveRow";
 
 export default function IndexCommunityStar({data}) {
   
@@ -10,7 +11,12 @@ export default function IndexCommunityStar({data}) {
     <div className={styles.wrapper}>
       <Container className={styles.container}>
         <div className={styles.title}>
-          {data.title}
+          <Tooltip
+            title="We will show the new community contributors of Committer level and above here."
+            // className={styles.tooltip_icon}
+          >
+            {data.title}
+          </Tooltip>
         </div>
         <Row justify="space-around">
           <Col sm={24} md={20}>
@@ -20,16 +26,16 @@ export default function IndexCommunityStar({data}) {
           </Col>
         </Row>
         <div className={styles.list}>
-          <Row justify="space-around" gutter={[192, 64]}>
+          <ResponsiveRow justify="space-around" gutter={[0, 64]}>
             {data.items.map(((item, index) =>
-                <Col xs={24} sm={12} md={6}
-                  // onMouseOver={() => setOpinionDebounced.run(index)}
-                  // onMouseOut={() => setOpinionDebounced.run(-1)}
-                >
-                  <IndexCommunityStarItem {...item} />
-                </Col>
+              <Col xs={20} sm={8} md={2}
+                // onMouseOver={() => setOpinionDebounced.run(index)}
+                // onMouseOut={() => setOpinionDebounced.run(-1)}
+              >
+                <IndexCommunityStarItem {...item} />
+              </Col>
             ))}
-          </Row>
+          </ResponsiveRow>
         </div>
         
       </Container>

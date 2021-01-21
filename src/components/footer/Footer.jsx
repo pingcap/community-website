@@ -37,7 +37,7 @@ export default function Footer() {
   
   return (
     <div className={className}>
-      <Container className={classNameContainer}>
+      <Container fluid className={classNameContainer}>
         <Row gutter={[16, 16]} className={classNameContainerMain}>
           <Col sm={24} md={16}>
             <Row className={classNameContainerMainLeft}>

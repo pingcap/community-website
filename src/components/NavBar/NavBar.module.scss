@@ -58,44 +58,44 @@
   };
 }
 
-@media screen and (max-width: $md) {
-  .menu {
+.menu {
+  @media screen and (max-width: $md) {
     display: none;
   }
-  .menu_mobile {
-    display: block;
-    &_popup {
-      @include H3;
-      background-color: rgba($M2, 1);
-      box-shadow: $shadow;
-      &_item {
-        padding: 1rem 2rem;
-      }
+  @media screen and (min-width: $md + 1px) {
+    display: flex;
+  }
+  &_item {
+    @include text;
+    margin: 0 1.5rem;
+    padding: .5rem 0;
+
+    @include transition;
+    @include H3;
+    display: inline-block;
+    border: {
+      bottom: 3px solid rgba($B1, 0);
+    };
+    &:hover {
+      border-bottom-color: $B1;
     }
   }
 }
 
-@media screen and (min-width: $md + 1px) {
-  .menu {
+.menu_mobile {
+  @media screen and (max-width: $md) {
     display: flex;
-    align-items: center;
-    &_item {
-      @include text;
-      margin: 0 1.5rem;
-      padding: .5rem 0;
-
-      @include transition;
-      @include H3;
-      display: inline-block;
-      border: {
-        bottom: 3px solid rgba($B1, 0);
-      };
-      &:hover {
-        border-bottom-color: $B1;
-      }
-    }
   }
-  .menu_mobile {
+  @media screen and (min-width: $md + 1px) {
     display: none;
+  }
+  align-items: center;
+  &_popup {
+    @include H3;
+    background-color: rgba($M2, 1);
+    box-shadow: $shadow;
+    &_item {
+      padding: 1rem 2rem;
+    }
   }
 }

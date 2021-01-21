@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from "./NavBar/NavBar";
-import Footer from "./Footer/Footer";
+import Footer from "./footer/Footer";
 
 
 export default function Layout({children, ...rest}) {

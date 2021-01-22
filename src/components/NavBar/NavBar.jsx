@@ -108,7 +108,7 @@ export default function NavBar(props) {
         <div className={styles.menu_mobile_popup}>
           {data.navbar.linkList.map(item => item.children ? (
             <div className={styles.menu_mobile_popup_item}>
-              <Dropdown overlayStyle={{zIndex: 99999}} overlay={
+              <Dropdown getPopupContainer={() => ref.current} overlayStyle={{zIndex: 99999}} overlay={
                 <Menu className={styles.menu_container}>
                   {item.children.map(menuItem => (
                     <Menu.Item>

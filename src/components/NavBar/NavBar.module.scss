@@ -20,8 +20,7 @@
     a {
       @include P1;
       color: $B4;
-      padding: 18px 1.5rem;
-      //line-height: 2.5rem;
+      padding: .5rem 1.5rem;
     }
     a:hover {
       color: $T2;

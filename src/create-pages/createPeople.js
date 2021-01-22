@@ -1,6 +1,5 @@
 const path = require('path')
 const axios = require('axios')
-const {cacheGitHubAvatar} = require("./apiHelper");
 
 module.exports = async ({ graphql, createPage, createRedirect }) => {
   const component = path.resolve(`${__dirname}/templates/people/PeopleDetail.jsx`)
@@ -50,8 +49,6 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
 
   const members = response.data.data.contributors || []
   
-  await cacheGitHubAvatar(members.map(member => member.githubName))
-  
   createPage({
     path: url,
     component,
@@ -75,8 +72,6 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
   const urlMaintainer = `${urlPrefix}/maintainer`
   const responseMaintainer = require('../data/people/maintainers.json')
   const membersMaintainer = responseMaintainer.data.members || []
-  
-  await cacheGitHubAvatar(membersMaintainer.map(member => member.githubName))
   
   createPage({
     path: urlMaintainer,

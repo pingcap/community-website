@@ -22,9 +22,7 @@ async function getGitHubNamesBySigId(sigId) {
     const dataMember = responseMember.data.data || {}
     const {members} = dataMember
     const subMember = members.slice(0, 9)
-    const subMemberUsernames = subMember.map(member => member.githubName)
-    await cacheGitHubAvatar(subMemberUsernames)
-    return subMemberUsernames
+    return subMember.map(member => member.githubName)
   } catch (e) {
     console.error('getGitHubNamesBySigId error, ', sigId)
     return []

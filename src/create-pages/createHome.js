@@ -33,10 +33,10 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
     }
   })
   
-  const apiCommunityStar = `https://bots.tidb.io/ti-community-bot/contributors?pageSize=4&current=1`
+  const apiCommunityStar = `https://bots.tidb.io/ti-community-bot/members?level=committer&pageSize=4&current=1`
   const responseCommunityStar = await axios.get(apiCommunityStar)
   const dataCommunityStar = responseCommunityStar.data.data || {}
-  const itemsCommunityStar = dataCommunityStar.contributors
+  const itemsCommunityStar = dataCommunityStar.members
   
   createPage({
     path: url,

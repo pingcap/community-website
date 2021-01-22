@@ -11,7 +11,7 @@ function writeFile(path, filename, content) {
   if (!fs.existsSync(path)) {
     fs.mkdirSync(path, { recursive: true })
   }
-  fs.writeFile(`${path}/${filename}`, content, { 'flag': 'a' }, err => err && console.error('fs.writeFile err: ', err))
+  fs.writeFile(`${path}/${filename}`, content, {}, err => err && console.error('fs.writeFile err: ', err))
 }
 
 

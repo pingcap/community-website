@@ -16,7 +16,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "jest",
-    "download": "node ./src/create-pages/downloadSIGLearningMaterials.js"
+    "download": "node src/create-pages/downloadSIGReadme.js"
   },
   "license": "0BSD",
   "dependencies": {

@@ -55,8 +55,9 @@ $size-avatar: 6rem;
       @include P1;
       margin-top: .5rem;
     }
-    &_content {
+    &_level {
       @include P1;
+      margin-top: .5rem;
     }
   }
 }

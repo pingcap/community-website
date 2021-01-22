@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './IndexCommunityStar.module.scss'
-import {Row, Col, Tooltip} from "antd";
+import {Col} from "antd";
 import Container from "src/components/Container/Container"
 import BoundLink from "src/components/BoundLink";
 import ResponsiveRow from "src/components/ResponsiveRow/ResponsiveRow";
@@ -11,12 +11,7 @@ export default function IndexCommunityStar({data}) {
     <div className={styles.wrapper}>
       <Container className={styles.container}>
         <div className={styles.title}>
-          <Tooltip
-            title="We will show the new community contributors of Committer level and above here."
-            // className={styles.tooltip_icon}
-          >
-            {data.title}
-          </Tooltip>
+          {data.title}
         </div>
         <div className={styles.summary}>
           {data.summary}
@@ -39,7 +34,7 @@ export default function IndexCommunityStar({data}) {
   )
 }
 
-function IndexCommunityStarItem({githubName}) {
+function IndexCommunityStarItem({githubName, level}) {
   const avatarUrl = `/cache/github-avatar/${githubName}.png`
   return (
     <div className={styles.list_item}>
@@ -51,6 +46,9 @@ function IndexCommunityStarItem({githubName}) {
       <BoundLink href={`https://github.com/${githubName}`}>
         <div className={styles.list_item_name}>
           {githubName}
+        </div>
+        <div className={styles.list_item_level}>
+          {level}
         </div>
       </BoundLink>
     </div>

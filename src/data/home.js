@@ -45,7 +45,7 @@ export default {
   
     feature: {
       title: 'Community Value',
-      summary: 'The TiDB Community Organization brings together development enthusiasts interested in TiDB and surrounding open source software to explore the future of distributed databases using TiDB as a hands-on project.',
+      // summary: 'The TiDB Community Organization brings together development enthusiasts interested in TiDB and surrounding open source software to explore the future of distributed databases using TiDB as a hands-on project.',
       items: [
         {
           title: 'Building',
@@ -68,7 +68,7 @@ export default {
     
     star: {
       title: 'Community Star',
-      summary: 'The TiDB Community Organization brings together development enthusiasts interested in TiDB and surrounding open source software to explore the future of distributed databases using TiDB as a hands-on project.',
+      summary: 'We will show the new community contributors of Committer level and above here.',
       items: [
         {
           imageUrl: `${imagesDir}star-icon.svg`,

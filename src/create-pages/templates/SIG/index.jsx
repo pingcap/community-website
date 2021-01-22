@@ -14,7 +14,7 @@ export default function SIG({ data, pageContext}) {
   const imageData = useStaticQuery(
     graphql`
       query {
-        banner: file(relativePath: { eq: "banner-sig@2x.png" }) {
+        banner: file(relativePath: { eq: "banner-sig@1x.png" }) {
           publicURL
         }
         memberIcon: file(relativePath: { eq: "member-icon.svg" }) {

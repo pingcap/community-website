@@ -16,7 +16,7 @@ export default function Detail({ data, pageContext }) {
   const imageData = useStaticQuery(
     graphql`
     query {
-      banner: file(relativePath: { eq: "banner-sig-detail@2x.png" }) {
+      banner: file(relativePath: { eq: "banner-sig-detail@1x.png" }) {
         publicURL
       }
       slack: file(relativePath: { eq: "home/button-icon-slack.svg" }) {

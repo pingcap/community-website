@@ -15,7 +15,7 @@ export default function Ranking({ data, pageContext, location }) {
   const graphqlData = useStaticQuery(
     graphql`
       query {
-        banner: file(relativePath: { eq: "banner-ranking@2x.png" }) {
+        banner: file(relativePath: { eq: "banner-ranking@1x.png" }) {
           publicURL
         }
         rankingDescription: markdownRemark(fileAbsolutePath: {regex: "//ranking.md$/"}) {

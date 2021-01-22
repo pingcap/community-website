@@ -18,17 +18,13 @@ export default function IndexCommunityStar({data}) {
             {data.title}
           </Tooltip>
         </div>
-        <Row justify="space-around">
-          <Col sm={24} md={20}>
-            <div className={styles.summary}>
-              {data.summary}
-            </div>
-          </Col>
-        </Row>
+        <div className={styles.summary}>
+          {data.summary}
+        </div>
         <div className={styles.list}>
           <ResponsiveRow justify="space-around" gutter={[0, 64]}>
             {data.items.map(((item, index) =>
-              <Col xs={20} sm={8} md={2}
+              <Col key={index} xs={20} sm={6}
                 // onMouseOver={() => setOpinionDebounced.run(index)}
                 // onMouseOut={() => setOpinionDebounced.run(-1)}
               >

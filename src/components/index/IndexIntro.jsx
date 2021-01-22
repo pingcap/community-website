@@ -34,13 +34,9 @@ export default function IndexIntro({data}) {
         <div className={styles.title}>
           {data.title}
         </div>
-        <Row justify="space-around">
-          <Col sm={24} md={20}>
-            <div className={styles.summary}>
-              {data.summary}
-            </div>
-          </Col>
-        </Row>
+        <div className={styles.summary}>
+          {data.summary}
+        </div>
         <div className={styles.list}>
           <Row justify="space-around" gutter={[32, 32]}>
             {data.items.map((item =>

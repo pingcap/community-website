@@ -17,14 +17,16 @@ import {useIntl} from "react-intl";
 
 export default function Index({pageContext}) {
   console.log('pageContext', pageContext)
-  const {sigTop3, itemsCommunityStar} = pageContext
+  const {sigTop, itemsCommunityStar} = pageContext
   
   const intl = useIntl()
   const locale = intl.locale
   const data = i18n[locale]
   
-  data.SIG.items = sigTop3
+  data.SIG.items = sigTop
   data.star.items = itemsCommunityStar
+  
+  console.log('pageContext', pageContext)
   
   return (
     <Layout>

@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './IndexPopularSIG.module.scss'
-import {Row, Col} from 'antd'
+import {Col} from 'antd'
 import LinkWithArrow from "src/components/LinkWithArrow";
 import Container from "src/components/Container/Container";
 import AvatarGrid from "src/components/AvatarGrid/AvatarGrid";
@@ -18,9 +18,9 @@ export default function IndexPopularSIG({data}) {
           {data.summary}
         </div>
         <div className={styles.list}>
-          <ResponsiveRow justify="space-around" gutter={[0, 32]}>
+          <ResponsiveRow justify="space-around" gutter={[32, 32]}>
             {data.items.map(item =>
-              <Col xs={24} sm={16} md={16} lg={8}>
+              <Col xs={24} sm={16} md={16} lg={6}>
                 <IndexPopularSIGItem {...item} />
               </Col>
             )}
@@ -40,20 +40,25 @@ export default function IndexPopularSIG({data}) {
 
 function IndexPopularSIGItem({title, summary, sigSubMemberNames}) {
   return (
-    <div className={styles.list_item}>
-      <BoundLink href={`/SIG/${title}`}>
-        <div className={styles.list_item_image}>
-          <AvatarGrid members={sigSubMemberNames}/>
+    <BoundLink to={`/SIG/${title}`}>
+      <div className={styles.list_item}>
+        <div className={styles.list_item_top}>
+          <div className={styles.list_item_top_image}>
+            <AvatarGrid members={sigSubMemberNames}/>
+          </div>
+          <div className={styles.list_item_top_title}>
+            {title}
+          </div>
         </div>
-      </BoundLink>
-      <BoundLink href={`/SIG/${title}`}>
-        <div className={styles.list_item_title}>
-          {title}
+        <div className={styles.split_line}>
+          <div/>
         </div>
-      </BoundLink>
-      <div className={styles.list_item_summary}>
-        {summary}
+        <div className={styles.list_item_bottom}>
+          <div className={styles.list_item_summary}>
+            {summary}
+          </div>
+        </div>
       </div>
-    </div>
+    </BoundLink>
   )
 }

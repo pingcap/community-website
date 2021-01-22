@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styles from './NavBar.module.scss'
 import classNames from 'classnames'
 import {graphql, Link, useStaticQuery} from "gatsby";
@@ -48,17 +48,17 @@ export default function NavBar(props) {
       window.removeEventListener(eventName, scrollListener)
     }
   }, [])
+  
+  const ref = useRef()
 
   return (
-    <div className={classNames(styles.wrapper, {[styles.wrapper_transparent]: transparentDebounced})}>
+    <div ref={ref} className={classNames(styles.wrapper, {[styles.wrapper_transparent]: transparentDebounced})}>
       <Container fluid className={styles.container}>
   
         <Link to="/">
           <div className={styles.left}>
             <div className={styles.logo}>
-              <Link to="/">
-                {transparentDebounced ? <img src={imageData.logoWithWhiteText.publicURL} alt="TiDB DevGroup"/> : <img src={imageData.logoWithText.publicURL} alt="TiDB DevGroup"/>}
-              </Link>
+              {transparentDebounced ? <img src={imageData.logoWithWhiteText.publicURL} alt="TiDB DevGroup"/> : <img src={imageData.logoWithText.publicURL} alt="TiDB DevGroup"/>}
             </div>
             {/*<div className={classNames(styles.title, {[styles.title_transparent]: transparentDebounced})}>*/}
             {/*  {data.navbar.title}*/}
@@ -71,8 +71,8 @@ export default function NavBar(props) {
           <div className={styles.menu}>
             {data.navbar.linkList.map(item => item.children ? (
               <div className={classNames(styles.menu_item, {[styles.menu_item_transparent]: transparentDebounced})}>
-                <Dropdown overlayStyle={{zIndex: 99999}} overlay={
-                  <Menu style={{right: 12}}>
+                <Dropdown getPopupContainer={() => ref.current} overlayStyle={{zIndex: 99999}} overlay={
+                  <Menu className={styles.menu_container}>
                     {item.children.map(menuItem => (
                       <Menu.Item>
                         <Link to={menuItem.link}>
@@ -109,7 +109,7 @@ export default function NavBar(props) {
           {data.navbar.linkList.map(item => item.children ? (
             <div className={styles.menu_mobile_popup_item}>
               <Dropdown overlayStyle={{zIndex: 99999}} overlay={
-                <Menu>
+                <Menu className={styles.menu_container}>
                   {item.children.map(menuItem => (
                     <Menu.Item>
                       <Link to={menuItem.link}>

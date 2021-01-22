@@ -14,8 +14,8 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
   const {sigs} = data
   
   const sigSubMemberNames = {}
-  const sigTop3 = sigs.slice(0, 3)
-  for (const sig of sigTop3) {
+  const sigTop = sigs.slice(0, 4)
+  for (const sig of sigTop) {
     const {id} = sig
     const gitHubNames = await apiHelper.getGitHubNamesBySigId(id)
     console.log('gitHubNames in createHome', gitHubNames)
@@ -25,7 +25,7 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
   
   const url = `/`
   
-  const sigTop3Items = sigTop3.map(item => {
+  const sigTopItems = sigTop.map(item => {
     return {
       title: item.name,
       summary: item.info,
@@ -42,7 +42,7 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
     path: url,
     component,
     context: {
-      sigTop3: sigTop3Items,
+      sigTop: sigTopItems,
       itemsCommunityStar,
     },
   })

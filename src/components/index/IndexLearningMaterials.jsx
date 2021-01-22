@@ -1,8 +1,9 @@
 import React from 'react'
 import styles from './IndexLearningMaterials.module.scss'
-import {Row, Col} from "antd";
+import {Col} from "antd";
 import Container from "src/components/Container/Container";
 import BoundLink from "src/components/BoundLink";
+import ResponsiveRow from "src/components/ResponsiveRow/ResponsiveRow";
 
 export default function IndexLearningMaterials({data}) {
   return (
@@ -12,15 +13,14 @@ export default function IndexLearningMaterials({data}) {
           {data.title}
         </div>
         <div className={styles.list}>
-          <Row justify={'space-around'} gutter={[32, 32]}>
+          <ResponsiveRow justify={'space-around'} gutter={[32, 32]}>
             {data.items.map(item =>
               <Col sm={24} xs={24} md={24} lg={12}>
                 <LearningItem {...item} />
               </Col>
             )}
-          </Row>
+          </ResponsiveRow>
         </div>
-        
       </Container>
     </div>
   )
@@ -33,7 +33,7 @@ function LearningItem({title, summary, link}) {
         <div className={styles.list_item_title}>
           {title}
         </div>
-        <div className={styles.list_item_split_line}>
+        <div className={styles.split_line}>
           <div/>
         </div>
         <div className={styles.list_item_summary}>

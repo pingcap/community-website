@@ -55,7 +55,7 @@ $T4: #7D3F98; // tag
 $T5: #F8C200; // tag
 $T6: #F15A24; // tag
 
-$family-sans-serif: 'pingfang SC','helvetica neue',arial,'hiragino sans gb','microsoft yahei ui','microsoft yahei',simsun,sans-serif;
+$family-sans-serif: Titillium Web, Helvetica Neue, Arial, 'pingfang SC','helvetica neue','hiragino sans gb','microsoft yahei ui','microsoft yahei', simsun, sans-serif;
 
 $primary: $B1;
 $button-hover-color: #5051C9;
@@ -75,8 +75,8 @@ $card-shadow: $shadow;
 
 // navbar
 $navbar-item-hover-background-color: #e9ecef;
-$height-navbar: 5.25rem; // 84px
-$height-navbar-mobile: 4.25rem; // 68px
+$height-navbar: 4.5rem; // 84px
+$height-navbar-mobile: 4.5rem; // 68px
 
 // promotion
 $height-promotion: 4rem;
@@ -108,4 +108,24 @@ $mobile-section-padding: 1rem;
   @include shadow;
   border-radius: 0;
   border: 1px solid $T2;
+}
+
+@mixin split-line($margin: 1rem 0, $size: 1px, $color: $T2, $hover-color: $B1, $transition: all .5s) {
+  &:hover {
+    width: 100%;
+    .split_line>div {
+      width: 100%;
+    }
+  }
+  .split_line {
+    margin: $margin;
+    height: $size;
+    background-color: $color;
+    &>div {
+      transition: all .5s;
+      width: 0;
+      height: 1px;
+      background-color: $hover-color;
+    }
+  }
 }

@@ -1,5 +1,7 @@
 @import "src/styles/common";
 
+$color-background: #516195;
+
 .wrapper {
   padding: 6rem 0;
 }
@@ -25,35 +27,19 @@
 .list {
   margin-top: 4rem;
   &_item {
-    &:hover {
-      width: 100%;
-      .list_item_split_line>div {
-        width: 100%;
-      }
-    }
+    @include split-line($hover-color: $color-background);
     height: 100%;
-    //width: 800px;
-    //margin: 20px 0;
-    //display: flex;
     padding: 2rem 3rem;
     border: 1px solid #E9EAEE;
+    background-color: $color-background;
     @include card;
     &_title {
       @include H1;
-    }
-    &_split_line {
-      margin: 1rem 0;
-      height: 1px;
-      background-color: $T2;
-      &>div {
-        transition: all .5s;
-        width: 0;
-        height: 1px;
-        background-color: $B1;
-      }
+      color: $T2;
     }
     &_summary {
       @include P1;
+      color: $T2;
     }
   }
 }

@@ -27,12 +27,15 @@
   margin-top: 4rem;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  & > div {
-    margin-bottom: 2rem;
+  @include responsive-lte-lg {
+    flex-direction: column;
   }
   &_arrow {
-    padding: 0 1rem;
+    margin: 1rem;
+    width: 26px;
+    @include responsive-lte-lg {
+      transform: rotate(90deg);
+    }
   }
   &_item {
     @include shadow;

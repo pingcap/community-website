@@ -16,7 +16,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "jest",
-    "download": "node src/create-pages/downloadSIGReadme.js"
+    "download": "node src/create-pages/downloadSIGReadme.js",
+    "cache": "node src/create-pages/cacheGithubAvatar.js"
   },
   "license": "0BSD",
   "dependencies": {

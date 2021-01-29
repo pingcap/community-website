@@ -50,4 +50,4 @@ jobs:
           name: 'Publish Website Could HK_1_HOST'
           command:
             ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null;
-            sshpass -p ${HOST_JP_1_PASSWORD}  rsync -avz -e 'ssh -p 22' --delete --exclude css --exclude js --exclude images public/ "${HOST_JP_1_USER}@${HOST_HK_1_IP}:${DEPLOY_PATH}";
+            sshpass -p ${HOST_JP_1_PASSWORD}  rsync -avz -e 'ssh -p 22' public/ "${HOST_JP_1_USER}@${HOST_HK_1_IP}:${DEPLOY_PATH}";

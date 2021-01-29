@@ -4,6 +4,13 @@ workflows:
   build:
     jobs:
       - build:
+          triggers:
+            - schedule:
+                cron: "0 0 0/2 * *"
+                filters:
+                  branches:
+                    only:
+                      - main
           filters:
             branches:
               only:

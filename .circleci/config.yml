@@ -65,18 +65,14 @@ jobs:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "yarn.lock" }}
-            - v1-cache
+      - run:
+          command: yarn run cache
+          no_output_timeout: 10m
       - run: yarn install
       - save_cache:
           key: v1-dependencies-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
-      - run:
-          command: yarn run cache
-          no_output_timeout: 10m
-      - save_cache:
-          key: v1-cache
-          paths:
             - public/cache
       - deploy:
           name: 'Send Cache To Could HK_1_HOST'

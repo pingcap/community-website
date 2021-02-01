@@ -161,17 +161,28 @@ gatsby.js 框架支持直接在 `src/pages` 目录中存放通过 React 组件�
 
 该站点当前 nginx 配置如下
 
-        server {
-            listen       80;
-            listen       [::]:80;
-            server_name  developer.tidb.io;
-            root         /usr/share/nginx/html/dev-group;
-    
-            # Load configuration files for the default server block.
-            include /etc/nginx/default.d/*.conf;
-    
-            location / {
-            }
+    server {
+        listen          80;
+        listen          [::]:80;
+        server_name     developer.tidb.io;
+        rewrite ^(.*)$  https://$host$1 permanent; 
+        # return 302 https://$host$request_uri;
+    }
+
+    server {
+        listen       443 ssl;
+        server_name  developer.tidb.io;
+        root         /usr/share/nginx/html/dev-group;
+
+        ssl_certificate "******";
+        ssl_certificate_key "******";
+        (more ssl config ...)
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        location / {
         }
+    }
 
 实际配置以生产环境服务器中的配置文件为准

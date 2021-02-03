@@ -1,4 +1,5 @@
 
+import imageTiDBIncubatorProgram from '../../images/events/event-TiDB-Incubator-Program.svg'
 import imageHackathon from '../../images/events/event-tidb-hackathon2020.svg'
 import imageHPTC from '../../images/events/event-high-performance-tidb-challenge.svg'
 import imageInfraMeetup from '../../images/events/event-pingcap-infra-meetup.svg'
@@ -6,6 +7,12 @@ import imageInfraMeetup from '../../images/events/event-pingcap-infra-meetup.svg
 export default {
   en: {
     items: [
+      {
+        imageUrl: imageTiDBIncubatorProgram,
+        title: 'TiDB Incubator Program',
+        summary: 'TiDB Incubator Program is designed to ensure that new projects in the TiDB ecosystem can obtain resources and help from the community towards their desired maturity level.',
+        link: 'https://github.com/pingcap/community/tree/master/incubator',
+      },
       {
         imageUrl: imageHackathon,
         title: 'TiDB Hackathon 2020',

@@ -5,8 +5,10 @@ import i18n from '../../data/footer'
 import MyLink from 'src/components/MyLink'
 import { useIntl } from 'react-intl'
 import Container from "src/components/Container/Container";
-
-import logoImageUrl from 'images/logo-with-text.svg'
+import {Select} from "antd";
+import langConfig from 'lang.config.js'
+import {navigate} from "gatsby";
+import helper from "src/helper";
 
 
 export default function Footer() {
@@ -17,6 +19,16 @@ export default function Footer() {
   const data = i18n[locale]
   
   const copyrightNode = `©${new Date().getFullYear()} TiDB Community.`
+  
+  const onChangeLanguage = (value) => {
+    if (value === 'en') {
+      navigate(`/`)
+    } else {
+      navigate(`/${value}`)
+    }
+  }
+  
+  const logoImageUrl = helper.getLogoByLocale(locale)
   
   return (
     <div className={styles.wrapper}>
@@ -40,6 +52,11 @@ export default function Footer() {
             <div className={styles.main_right_socials}>
               <Socials type="follow" />
             </div>
+            {/*<div className={styles.main_right_language}>*/}
+            {/*  <Select defaultValue={locale} style={{ width: 120 }} bordered={true} onChange={onChangeLanguage}>*/}
+            {/*    {Object.keys(langConfig.languages).map((value) => <Select.Option value={value}>{langConfig.languages[value].langName}</Select.Option>)}*/}
+            {/*  </Select>*/}
+            {/*</div>*/}
             <div className={styles.main_right_brand}>
               <div className={styles.main_right_brand_logo}>
                 <MyLink to={'/'}>

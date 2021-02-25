@@ -3,6 +3,7 @@ const apiHelper = require('./apiHelper')
 
 const path = require('path')
 const axios = require('axios')
+const langConfig = require("../../lang.config.js");
 
 module.exports = async ({ graphql, createPage, createRedirect }) => {
   const component = path.resolve(`${__dirname}/templates/home/index.jsx`)
@@ -44,6 +45,17 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
     context: {
       sigTop: sigTopItems,
       itemsCommunityStar,
+    },
+  })
+  
+  createPage({
+    path: `/zh${url}`,
+    component,
+    context: {
+      sigTop: sigTopItems,
+      itemsCommunityStar,
+      language: 'zh',
+      ...langConfig.languages['zh'],
     },
   })
   

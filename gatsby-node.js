@@ -2,6 +2,7 @@ const createHome = require('./src/create-pages/createHome')
 const createSIG = require('./src/create-pages/createSIG')
 const createPeople = require('./src/create-pages/createPeople')
 const createRanking = require('./src/create-pages/createRanking')
+const createIntlPages = require("./src/create-pages/intl");
 
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
   actions.setWebpackConfig({
@@ -31,4 +32,8 @@ exports.createPages = async ({ actions, graphql }) => {
     createSIG({ graphql, createPage, createRedirect }),
     createRanking({ graphql, createPage, createRedirect }),
   ])
+}
+
+exports.onCreatePage = ({ page, actions }) => {
+  createIntlPages({ page, actions })
 }

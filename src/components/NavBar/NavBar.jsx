@@ -9,6 +9,7 @@ import {useIntl} from "react-intl";
 import {useDebounce} from 'ahooks'
 import Container from "src/components/Container/Container";
 import {MenuOutlined} from "@material-ui/icons";
+import helper from "src/helper";
 
 export default function NavBar(props) {
   const imageData = useStaticQuery(
@@ -31,6 +32,8 @@ export default function NavBar(props) {
   
   const [transparent, setTransparent] = useState(props.transparent)
   const transparentDebounced = useDebounce(transparent, {wait: 100})
+  
+  const logoImageUrl = helper.getLogoByLocale(locale, transparentDebounced)
   
   const [isPopup, setIsPopup] = useState(false)
   
@@ -55,10 +58,10 @@ export default function NavBar(props) {
     <div ref={ref} className={classNames(styles.wrapper, {[styles.wrapper_transparent]: transparentDebounced})}>
       <Container fluid className={styles.container}>
   
-        <Link to="/">
+        <Link to={data.navbar.homeLink}>
           <div className={styles.left}>
             <div className={styles.logo}>
-              {transparentDebounced ? <img src={imageData.logoWithWhiteText.publicURL} alt="TiDB DevGroup"/> : <img src={imageData.logoWithText.publicURL} alt="TiDB DevGroup"/>}
+              <img src={logoImageUrl} alt="TiDB DevGroup"/>
             </div>
             {/*<div className={classNames(styles.title, {[styles.title_transparent]: transparentDebounced})}>*/}
             {/*  {data.navbar.title}*/}

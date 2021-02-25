@@ -16,7 +16,6 @@ import SEO from "src/components/SEO";
 import {useIntl} from "react-intl";
 
 export default function Index({pageContext}) {
-  console.log('pageContext', pageContext)
   const {sigTop, itemsCommunityStar} = pageContext
   
   const intl = useIntl()
@@ -25,8 +24,6 @@ export default function Index({pageContext}) {
   
   data.SIG.items = sigTop
   data.star.items = itemsCommunityStar
-  
-  console.log('pageContext', pageContext)
   
   return (
     <Layout>

@@ -4,6 +4,7 @@ export default {
   en: {
     navbar: {
       title: 'DevGroup',
+      homeLink: '/',
       linkList: [
         {
           title: 'People',
@@ -58,6 +59,7 @@ export default {
   zh: {
     navbar: {
       title: '开发者社区',
+      homeLink: '/zh',
       linkList: [
         {
           title: '开发者',

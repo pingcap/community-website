@@ -65,9 +65,13 @@ $size-logo: 2rem;
   &_right {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
-    text-align: center;
+    //text-align: center;
+    &_language {
+      width: 120px;
+      margin: 1rem 0;
+    }
     &_brand {
       &_logo {
         width: 100%;

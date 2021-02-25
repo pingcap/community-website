@@ -14,15 +14,15 @@
 * TiDB 社区会对毕业项目提供全面的市场支持，帮助这些项目快速获得社区的广泛参与和外界的关注。
 
 ## 孵化中的项目
-由知乎发起的 incubator 项目 [TiBigData](https://github.com/tidb-incubator/TiBigData)，旨在解决企业大数据场景中各项技术栈对接 TiDB 的整合问题。目前已提供 TiDB 与 Apache Flink 和 Presto 的整合能力，并已应用在知乎的数据集成平台和 OLAP 分析场景中。
+[TiBigData](https://github.com/tidb-incubator/TiBigData) 是由知乎发起的 Incubator 项目，旨在解决企业大数据场景中各项技术栈对接 TiDB 的整合问题。目前已提供 TiDB 与 Apache Flink 和 Presto 的整合能力，并已应用在知乎的数据集成平台和 OLAP 分析场景中。
 
 > “TiBigData 项目由知乎发起并属于整个 TiDB 社区，一方面希望 TiBigData 能够惠及社区内有类似需求的用户，另一方面也希望发动社区的力量补全 TiDB 在大数据各项技术栈的支持能力，将 TiBigData 打造为 TiDB 在大数据领域的一站式解决方案。”  
-> —— TiDB Community TOC 主席 孙晓光  
+> —— 孙晓光，TiDB Community TOC 主席
 
 [Weir](https://github.com/tidb-incubator/weir) 是伴鱼发起的面向分布式数据库的数据库中间件平台，现已完成 MySQL 协议支持、多租户管理、连接池、后端负载均衡、配置热加载、平台化管理等功能，在伴鱼内部开始推进业务接入。
 
 > “优秀的工程师都有通过技术改变世界的技术理想，而参与开源是非常高效的一种方式。通过参与 TiDB 社区的 Incubator 项目可以快速找到志同道合的朋友，大家一起分享想法，一起协作，让开源变得更简单和有趣。”  
-> —— TiDB Community TOC 成员、伴鱼技术中台负责人 陈现麟  
+> —— 陈现麟，TiDB Community TOC 成员、伴鱼技术中台负责人 
 
 ## 如何加入孵化器？
 如果你也想在 TiDB 生态中孵化一个新项目，请按照“[项目孵化流程](https://github.com/pingcap/community/tree/master/incubator#projects-incubation-process)”加入 TiDB 孵化器。

@@ -58,10 +58,23 @@
   }
 }
 
+@mixin blockquote {
+  blockquote {
+    color: $B3;
+    border: {
+      left: .5rem solid $T2;
+    };
+    padding: {
+      left: 1rem;
+    };
+  }
+}
+
 @mixin markdown {
   @include anchor;
   @include table;
   @include title;
   @include paragraph;
   @include list;
+  @include blockquote;
 }

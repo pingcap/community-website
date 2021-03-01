@@ -19,6 +19,35 @@ Its content likes
         zh: {...},
     }
 
+## copy-writing
+
+### /
+- src/data/home.js
+
+### /people/${people_level}
+#### people list
+- https://bots.tidb.io/ti-community-bot/members?level=${people_level}
+#### markdown
+- src/data/people/${people_level}.md
+
+### /SIG
+- https://bots.tidb.io/ti-community-bot/sigs
+
+### /SIG/${sig_name}
+- https://bots.tidb.io/ti-community-bot/sigs/${sig_name}
+
+### /incubator
+- src/data/en/incubator
+### /zh/incubator
+- src/data/zh/incubator
+
+### /events
+- src/data/events.js
+
+### /ranking
+- src/data/ranking.md
+- https://bots.tidb.io/ti-community-bot/statistics/contributions?startDate=${startDate}&endDate=${endDate}
+
 ## Directory Structure
 
 ### images 

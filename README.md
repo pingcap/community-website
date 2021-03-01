@@ -20,6 +20,12 @@ Its content likes
     }
 
 ## copy-writing
+## navbar
+- src/data/navbar.js
+
+## footer
+- src/data/footer.js
+- src/data/socials.js
 
 ### /
 - src/data/home.js
@@ -35,6 +41,7 @@ Its content likes
 
 ### /SIG/${sig_name}
 - https://bots.tidb.io/ti-community-bot/sigs/${sig_name}
+- markdown-pages/SIGReadme/${sig_name}.md ( download from https://raw.githubusercontent.com/pingcap/community/master/special-interest-groups/sig-${sig_name}/README.md )
 
 ### /incubator
 - src/data/en/incubator

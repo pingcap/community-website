@@ -16,7 +16,7 @@ export default function Layout({children, ...rest}) {
   const transparentDebounced = useDebounce(false, {wait: 100})
   const logoImageUrl = helper.getLogoByLocale(locale, transparentDebounced)
 
-  const { footer: footerData, header: headerData } = getData('contributor.tidb.io', '', locale === 'zh' ? 'cn' : '')
+  const { footer: footerData, header: headerData } = getData('contributor.tidb.io', '', locale === 'zh' ? 'zh' : '')
 
   const Logo = () => (<>
     <div className={styles.logo}>

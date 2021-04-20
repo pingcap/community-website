@@ -1,26 +1,25 @@
-const path = require('path')
-const axios = require('axios')
-const apiHelper = require('./apiHelper')
+const path = require("path");
+const axios = require("axios");
+const apiHelper = require("./apiHelper");
 
 module.exports = async ({ graphql, createPage, createRedirect }) => {
-  
-  const component = path.resolve(`${__dirname}/templates/SIG/index.jsx`)
-  const urlPrefix = '/SIG'
-  const url = `${urlPrefix}`
-  
-  const api = 'https://bots.tidb.io/ti-community-bot/sigs'
-  const response = await axios.get(api)
-  const items = response.data.data.sigs || []
-  
-  console.log('items', items)
-  const sigSubMember = {}
+  const component = path.resolve(`${__dirname}/templates/SIG/index.jsx`);
+  const urlPrefix = "/SIG";
+  const url = `${urlPrefix}`;
+
+  const api = "https://bots.tidb.io/ti-community-bot/sigs";
+  const response = await axios.get(api);
+  const items = response.data.data.sigs || [];
+
+  console.log("items", items);
+  const sigSubMember = {};
   for (const item of items) {
-    const {id} = item
-    const gitHubNames = await apiHelper.getGitHubNamesBySigId(id)
-    sigSubMember[id] = gitHubNames
+    const { id } = item;
+    const gitHubNames = await apiHelper.getGitHubNamesBySigId(id);
+    sigSubMember[id] = gitHubNames;
   }
-  console.log('create sigSubMember', sigSubMember)
-  
+  console.log("create sigSubMember", sigSubMember);
+
   createPage({
     path: url,
     component,
@@ -28,26 +27,26 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
       items,
       sigSubMember,
     },
-  })
-  
+  });
+
   for (const item of items) {
-    const component = path.resolve(`${__dirname}/templates/SIG/detail.jsx`)
-    const url = `${urlPrefix}/${item.name}`
-    const api = `https://bots.tidb.io/ti-community-bot/sigs/${item.name}`
-  
+    const component = path.resolve(`${__dirname}/templates/SIG/detail.jsx`);
+    const url = `${urlPrefix}/${item.name}`;
+    const api = `https://bots.tidb.io/ti-community-bot/sigs/${item.name}`;
+
     const graphqlData = await graphql(`
       query {
         summary: markdownRemark(fileAbsolutePath: {regex: "//${item.name}.md$/"}) {
           html
         }
       }
-    `)
-    
+    `);
+
     try {
-      const response = await axios.get(api)
-      console.log(item.name, response.data.status)
-      const apiData = response.data.data || {}
-    
+      const response = await axios.get(api);
+      console.log(item.name, response.data.status);
+      const apiData = response.data.data || {};
+
       createPage({
         path: url,
         component,
@@ -57,10 +56,9 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
           graphqlData,
         },
         data: graphqlData,
-      })
+      });
     } catch (e) {
-      console.error('download SIG detail error', item.name)
+      console.error("download SIG detail error", item.name);
     }
   }
-}
-
+};

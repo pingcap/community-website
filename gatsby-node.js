@@ -24,7 +24,7 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
           if (_.test?.toString().includes("svg|")) {
             return {
               ..._,
-              test: new RegExp(_.test.source.replace("svg|", "")),
+              exclude: /node_modules/,
             };
           }
           return _;
@@ -33,6 +33,7 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
         {
           test: /\.svg$/,
           use: ["@svgr/webpack"],
+          include: /node_modules/,
         },
       ],
     },

@@ -2221,10 +2221,10 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
-"@tidb-community/datasource@0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@tidb-community/datasource/-/datasource-0.1.0.tgz#01e1a80bddc21e161f5495b2cf2a3a486bf17155"
-  integrity sha512-/DcBhMVm4hYKP955HcOHeB2KfhSzuIgzpVaqSJjzI9v6gU9umk8nf8GVbuPUl4IdxdeNJ2qIT2UBUvxWIBoz/A==
+"@tidb-community/datasource@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@tidb-community/datasource/-/datasource-0.1.1.tgz#38a98fdb0176d6222d62eb2cbf28b1859ca2e80f"
+  integrity sha512-uJfn/VpVUhtwxW+nMDMJExOHDqIeRcdTQa1/poCSR6jbSGNpA5GcsiBFkSdyUFNVVk5zVwOSD135rxS6xYqhiw==
   dependencies:
     "@babel/runtime" "7.13.10"
 

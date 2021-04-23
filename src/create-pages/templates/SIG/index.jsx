@@ -1,14 +1,14 @@
-import React from "react";
-import styles from "./index.module.scss";
-import Layout from "src/components/Layout";
+import React from 'react';
+import styles from './index.module.scss';
+import Layout from 'src/components/Layout';
 
-import Section from "src/components/section/Section";
-import SEO from "src/components/SEO";
-import Container from "src/components/Container/Container";
-import { Space, Row, Col } from "antd";
-import Banner from "src/components/Banner/Banner";
-import { graphql, Link, useStaticQuery } from "gatsby";
-import AvatarGrid from "src/components/AvatarGrid/AvatarGrid";
+import Section from 'src/components/section/Section';
+import SEO from 'src/components/SEO';
+import Container from 'src/components/Container/Container';
+import { Space, Row, Col } from 'antd';
+import Banner from 'src/components/Banner/Banner';
+import { graphql, Link, useStaticQuery } from 'gatsby';
+import AvatarGrid from 'src/components/AvatarGrid/AvatarGrid';
 
 export default function SIG({ data, pageContext }) {
   const imageData = useStaticQuery(
@@ -25,8 +25,8 @@ export default function SIG({ data, pageContext }) {
   );
 
   const { items, sigSubMember } = pageContext;
-  console.log("pageContext", pageContext);
-  console.log("template sigSubMember", sigSubMember);
+  console.log('pageContext', pageContext);
+  console.log('template sigSubMember', sigSubMember);
   return (
     <Layout>
       <SEO
@@ -43,35 +43,28 @@ export default function SIG({ data, pageContext }) {
           <div className={styles.summary}>
             <h1>What is special interest group?</h1>
             <p>
-              The TiDB project is organized primarily into Special Interest
-              Groups (SIG). Each SIG is comprised of members from multiple
-              companies and organizations, with a common purpose of advancing
-              the project with respect to a specific topic, such as
-              Parser/Expression/Planner.
+              The TiDB project is organized primarily into Special Interest Groups (SIG). Each SIG is comprised of
+              members from multiple companies and organizations, with a common purpose of advancing the project with
+              respect to a specific topic, such as Parser/Expression/Planner.
             </p>
 
             <h1>Goal</h1>
             <p>
-              Our goal is to enable a distributed decision structure and code
-              ownership, as well as providing focused forums for getting work
-              done, making decisions, and onboarding new contributors.
+              Our goal is to enable a distributed decision structure and code ownership, as well as providing focused
+              forums for getting work done, making decisions, and onboarding new contributors.
             </p>
 
             <h1>Scope</h1>
             <p>
-              Every identifiable subpart of the project (e.g., github org,
-              repository, subdirectory, API, test, issue, PR) is intended to be
-              owned by some SIG.
+              Every identifiable subpart of the project (e.g., github org, repository, subdirectory, API, test, issue,
+              PR) is intended to be owned by some SIG.
             </p>
 
             <h1>Goverance</h1>
             <p>
-              For more details about sig governance, you can read this doc{" "}
-              <a href="https://github.com/pingcap/community/blob/master/governance/sig-governance.md">
-                sig governance
-              </a>
-              . And if you are new to tidb, and want to find a sig to start,
-              this{" "}
+              For more details about sig governance, you can read this doc{' '}
+              <a href="https://github.com/pingcap/community/blob/master/governance/sig-governance.md">sig governance</a>
+              . And if you are new to tidb, and want to find a sig to start, this{' '}
               <a href="https://github.com/pingcap/tidb-map/blob/master/maps/contribution-map.md#sig---special-interest-group">
                 contribution map
               </a>
@@ -82,11 +75,7 @@ export default function SIG({ data, pageContext }) {
             <Col sm={24} md={16}>
               <Section name="All Special Interest Groups">
                 {items.map((item) => (
-                  <SIGItem
-                    {...item}
-                    imageData={imageData}
-                    sigSubMember={sigSubMember[item.id]}
-                  />
+                  <SIGItem {...item} imageData={imageData} sigSubMember={sigSubMember[item.id]} />
                 ))}
               </Section>
             </Col>
@@ -106,16 +95,8 @@ export default function SIG({ data, pageContext }) {
   );
 }
 
-function SIGItem({
-  name,
-  info,
-  createTime,
-  updateTime,
-  imageData,
-  sigSubMember,
-  membersCount,
-}) {
-  if (info === "" || info === null || info === undefined) {
+function SIGItem({ name, info, createTime, updateTime, imageData, sigSubMember, membersCount }) {
+  if (info === '' || info === null || info === undefined) {
     info = `There is no description of sig - ${name}`;
   }
   return (
@@ -131,8 +112,7 @@ function SIGItem({
             <Link to={`/SIG/${name}`}>{name}</Link>
           </div>
           <div className={styles.item_right_member_count}>
-            <img src={imageData.memberIcon.publicURL} alt="membersCount" />{" "}
-            {membersCount}
+            <img src={imageData.memberIcon.publicURL} alt="membersCount" /> {membersCount}
           </div>
         </div>
         <div className={styles.item_right_summary}>{info}</div>

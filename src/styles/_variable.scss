@@ -31,10 +31,10 @@ $W1-EN: 500;
 $W2-EN: 600;
 $W3-EN: 700;
 
-$M1: #FFFFFF; // Card Backround
-$M2: #F7F8F9; // Main Background
+$M1: #ffffff; // Card Backround
+$M2: #f7f8f9; // Main Background
 
-$F1: #2C2C2C; // Text - 1 Title，H0，H1，H2
+$F1: #2c2c2c; // Text - 1 Title，H0，H1，H2
 $F2: #505050; // Text - 2 General，P1，P2，H3
 
 $C1: #e7f0fc;
@@ -43,22 +43,23 @@ $C3: #b8c4d6;
 $C4: #9fa8b9;
 $C5: #5d6d86;
 
-$B1: #3D3FEA; // Theme，Button, highlight, link
-$B2: #27BBE0; // Blue，Minor
-$B3: #4C5470; // Dark 100%，dark bg
-$B4: #2D3758; // Dark 85%， bg
+$B1: #3d3fea; // Theme，Button, highlight, link
+$B2: #27bbe0; // Blue，Minor
+$B3: #4c5470; // Dark 100%，dark bg
+$B4: #2d3758; // Dark 85%， bg
 
-$T1: #A9D359; // tag，Success
-$T2: #E9EAEE; // line，divider, 10 % B3
-$T3: #F9746C; // tag, Warning, Notice, Attention
-$T4: #7D3F98; // tag
-$T5: #F8C200; // tag
-$T6: #F15A24; // tag
+$T1: #a9d359; // tag，Success
+$T2: #e9eaee; // line，divider, 10 % B3
+$T3: #f9746c; // tag, Warning, Notice, Attention
+$T4: #7d3f98; // tag
+$T5: #f8c200; // tag
+$T6: #f15a24; // tag
 
-$family-sans-serif: Titillium Web, Helvetica Neue, Arial, 'pingfang SC','helvetica neue','hiragino sans gb','microsoft yahei ui','microsoft yahei', simsun, sans-serif;
+$family-sans-serif: 'Titillium Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+  'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
 $primary: $B1;
-$button-hover-color: #5051C9;
+$button-hover-color: #5051c9;
 
 // widescreen false
 $widescreen-enabled: false;
@@ -90,8 +91,7 @@ $title-line-height: 1.2;
 // mobile section
 $mobile-section-padding: 1rem;
 
-
-@mixin transition($property: all, $duration: .25s) {
+@mixin transition($property: all, $duration: 0.25s) {
   transition: $property $duration;
 }
 
@@ -110,10 +110,10 @@ $mobile-section-padding: 1rem;
   border: 1px solid $T2;
 }
 
-@mixin split-line($margin: 1rem 0, $size: 1px, $color: $T2, $hover-color: $B1, $transition: all .5s) {
+@mixin split-line($margin: 1rem 0, $size: 1px, $color: $T2, $hover-color: $B1, $transition: all 0.5s) {
   &:hover {
     width: 100%;
-    .split_line>div {
+    .split_line > div {
       width: 100%;
     }
   }
@@ -121,8 +121,8 @@ $mobile-section-padding: 1rem;
     margin: $margin;
     height: $size;
     background-color: $color;
-    &>div {
-      transition: all .5s;
+    & > div {
+      transition: all 0.5s;
       width: 0;
       height: 1px;
       background-color: $hover-color;

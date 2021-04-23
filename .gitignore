@@ -72,3 +72,6 @@ yarn-error.log
 
 # ignore the downloaded markdown file
 markdown-pages/
+
+# Custom
+package-lock.json

@@ -1,16 +1,40 @@
-const createHome = require("./src/create-pages/createHome");
-const createSIG = require("./src/create-pages/createSIG");
-const createPeople = require("./src/create-pages/createPeople");
-const createRanking = require("./src/create-pages/createRanking");
-const createIntlPages = require("./src/create-pages/intl");
+const createHome = require('./src/create-pages/createHome');
+const createSIG = require('./src/create-pages/createSIG');
+const createPeople = require('./src/create-pages/createPeople');
+const createRanking = require('./src/create-pages/createRanking');
+const createIntlPages = require('./src/create-pages/intl');
 
-exports.onCreateWebpackConfig = ({ stage, actions }) => {
-  actions.setWebpackConfig({
+exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
+  const config = getConfig();
+  const { module, resolve } = config;
+
+  actions.replaceWebpackConfig({
+    ...config,
+
     resolve: {
-      modules: [
-        // path.resolve(__dirname, "src"),
-        __dirname,
-        "node_modules",
+      ...resolve,
+      modules: [__dirname, 'node_modules'],
+    },
+
+    module: {
+      ...module,
+      rules: [
+        // https://github.com/Negan1911/storybook-svgr-react-component/blob/master/index.js
+        ...module.rules.map((_) => {
+          if (_.test?.toString().includes('svg|')) {
+            return {
+              ..._,
+              exclude: /node_modules/,
+            };
+          }
+          return _;
+        }),
+
+        {
+          test: /\.svg$/,
+          use: ['@svgr/webpack'],
+          include: /node_modules/,
+        },
       ],
     },
   });
@@ -18,13 +42,6 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions;
-
-  // createRedirect({
-  //   fromPath: '/download/community/',
-  //   toPath: '/download',
-  //   redirectInBrowser: true,
-  //   isPermanent: true,
-  // })
 
   await Promise.all([
     createHome({ graphql, createPage, createRedirect }),

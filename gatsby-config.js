@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: 'TiDB DevGroup',
-    description: 'TiDB Developer Group',
-    author: 'PingCAP FE Team',
-    siteUrl: 'https://tidb.io/',
+    title: "TiDB DevGroup",
+    description: "TiDB Developer Group",
+    author: "PingCAP FE Team",
+    siteUrl: "https://tidb.io/",
   },
   plugins: [
     // {
@@ -19,8 +19,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "./images/TiDB-logo-red.svg"
-      }
+        icon: "./images/TiDB-logo-red.svg",
+      },
     },
     "gatsby-transformer-remark",
     "gatsby-plugin-mdx",
@@ -57,6 +57,6 @@ module.exports = {
       },
       __key: "pages",
     },
-    `gatsby-plugin-sass`
+    "gatsby-plugin-sass",
   ],
 };

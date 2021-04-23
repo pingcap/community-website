@@ -1,12 +1,13 @@
-import React from "react";
-import { useIntl } from "react-intl";
-import { Location } from "@reach/router";
-import { Footer, Header, getData, utils } from "@tidb-community/ui";
-import { useDebounce } from "ahooks";
-import { navigate } from "gatsby";
+import React from 'react';
+import { Footer, Header, utils } from '@tidb-community/ui';
+import { Location } from '@reach/router';
+import { getData } from '@tidb-community/datasource';
+import { navigate } from 'gatsby';
+import { useDebounce } from 'ahooks';
+import { useIntl } from 'react-intl';
 
-import helper from "../../helper";
-import styles from "./layout.module.scss";
+import helper from '../../helper';
+import styles from './layout.module.scss';
 
 export default function Layout({ children, ...rest }) {
   const intl = useIntl();
@@ -15,11 +16,10 @@ export default function Layout({ children, ...rest }) {
   const transparentDebounced = useDebounce(false, { wait: 100 });
   const logoImageUrl = helper.getLogoByLocale(locale, transparentDebounced);
 
-  const { footer: footerData, header: headerData } = getData(
-    "contributor.tidb.io",
-    "",
-    locale === "zh" ? "zh" : ""
-  );
+  const { header: headerData, footer: footerData } = getData({
+    domain: 'contributor.tidb.io',
+    locale,
+  }).nav;
 
   const Logo = () => (
     <>
@@ -30,35 +30,33 @@ export default function Layout({ children, ...rest }) {
   );
 
   const onNavClick = (link) => {
-    if (/^http/.test(link)) {
-      window.open(link);
+    if (link.startsWith('http')) {
+      window.open(link, '_blank').focus();
     } else {
       navigate(link);
     }
   };
 
   const onTitleClick = () => {
-    navigate("/");
-  };
-
-  const footerProps = {
-    logo: <Logo />,
-    navItems: footerData.navItems,
-    title: "",
-    onNavClick,
+    navigate('/');
   };
 
   const headerProps = ({ location }) => ({
     logo: <Logo />,
     navItems: headerData.navItems,
-    title: "",
-    currentNav: utils.header.getCurrentNav(
-      headerData.navItems,
-      location.pathname
-    ),
+    title: '',
+    currentNav: utils.header.getCurrentNav(headerData.navItems, location.pathname),
     onNavClick,
     onTitleClick,
   });
+
+  const footerProps = {
+    logo: <Logo />,
+    navItems: footerData.navItems,
+    title: '',
+    icons: footerData.icons,
+    onNavClick,
+  };
 
   return (
     <Location>

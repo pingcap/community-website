@@ -2221,10 +2221,17 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
-"@tidb-community/ui@0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@tidb-community/ui/-/ui-0.1.3.tgz#7324fb74c4069f13b5091b8f92975c67a859d5d7"
-  integrity sha512-0Ng8B/559cuZrEj82MDsonzoq3ElEeWUsRM1F+tFG0qmv/IRHw+rvad3/lG81Qe3P01l46gLYjMZZyf0YU6hRQ==
+"@tidb-community/datasource@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@tidb-community/datasource/-/datasource-0.1.0.tgz#01e1a80bddc21e161f5495b2cf2a3a486bf17155"
+  integrity sha512-/DcBhMVm4hYKP955HcOHeB2KfhSzuIgzpVaqSJjzI9v6gU9umk8nf8GVbuPUl4IdxdeNJ2qIT2UBUvxWIBoz/A==
+  dependencies:
+    "@babel/runtime" "7.13.10"
+
+"@tidb-community/ui@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@tidb-community/ui/-/ui-0.2.0.tgz#d6dbe9f49711f0bd3be607184d8f828766ad7a82"
+  integrity sha512-2dA8ojUeLmVA08DCCYe24PMRXqg0Z/d/CqwUzj3DF5zrNkWfql4DQfLei+/5F3FpT/1D+J5IGA1cK9CnfF48IA==
   dependencies:
     "@babel/runtime" "7.13.10"
 

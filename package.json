@@ -1,12 +1,6 @@
 {
   "name": "website-community",
-  "version": "1.0.0",
   "private": true,
-  "description": "website-community",
-  "author": "PingCAP FE Team",
-  "keywords": [
-    "gatsby"
-  ],
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
@@ -19,6 +13,8 @@
     "download": "node src/create-pages/downloadSIGReadme.js",
     "cache": "node src/create-pages/cacheGithubAvatar.js"
   },
+  "description": "website-community",
+  "author": "PingCAP FE Team",
   "license": "0BSD",
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
@@ -26,7 +22,8 @@
     "@material-ui/icons": "^4.11.2",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
-    "@tidb-community/ui": "0.1.3",
+    "@tidb-community/datasource": "0.1.0",
+    "@tidb-community/ui": "0.2.0",
     "ahooks": "^2.9.2",
     "antd": "4.15.2",
     "bulma": "^0.9.1",

@@ -4,7 +4,7 @@ workflows:
   build:
     triggers:
       - schedule:
-          cron: "0 * * * *"
+          cron: '0 * * * *'
           filters:
             branches:
               only:
@@ -19,7 +19,7 @@ workflows:
   cache:
     triggers:
       - schedule:
-          cron: "0 * * * *"
+          cron: '0 * * * *'
           filters:
             branches:
               only:
@@ -49,11 +49,9 @@ jobs:
       - run:
           command: yarn download && GATSBY_CPU_COUNT=1 yarn build
           no_output_timeout: 10m
-
       - deploy:
           name: 'Publish Website Could HK_1_HOST'
-          command:
-            ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null;
+          command: ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null;
             sshpass -p ${HOST_JP_1_PASSWORD}  rsync -avz -e 'ssh -p 22' public/ "${HOST_JP_1_USER}@${HOST_HK_1_IP}:${DEPLOY_PATH}";
 
   cache:
@@ -65,10 +63,10 @@ jobs:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "yarn.lock" }}
+      - run: yarn install
       - run:
           command: yarn run cache
           no_output_timeout: 10m
-      - run: yarn install
       - save_cache:
           key: v1-dependencies-{{ checksum "yarn.lock" }}
           paths:
@@ -76,6 +74,5 @@ jobs:
             - public/cache
       - deploy:
           name: 'Send Cache To Could HK_1_HOST'
-          command:
-            ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null;
+          command: ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null;
             sshpass -p ${HOST_JP_1_PASSWORD}  rsync -avz -e 'ssh -p 22' public/cache/ "${HOST_JP_1_USER}@${HOST_HK_1_IP}:${DEPLOY_PATH}/cache";

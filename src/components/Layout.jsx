@@ -28,7 +28,7 @@ export default function Layout({ children, ...rest }) {
   };
 
   const onTitleClick = () => {
-    navigate('/');
+    window.open('https://tidb.io', '_blank').focus();
   };
 
   const headerProps = ({ location }) => ({

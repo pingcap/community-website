@@ -5,7 +5,7 @@ import { getData } from '@tidb-community/datasource';
 import { navigate } from 'gatsby';
 import { useIntl } from 'react-intl';
 
-import communityLogo from '../../../images/community-logo.svg';
+import communityLogo from '../../images/community-logo.svg';
 
 export default function Layout({ children, ...rest }) {
   const intl = useIntl();

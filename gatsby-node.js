@@ -1,8 +1,8 @@
-const createHome = require("./src/create-pages/createHome");
-const createSIG = require("./src/create-pages/createSIG");
-const createPeople = require("./src/create-pages/createPeople");
-const createRanking = require("./src/create-pages/createRanking");
-const createIntlPages = require("./src/create-pages/intl");
+const createHome = require('./src/create-pages/createHome');
+const createSIG = require('./src/create-pages/createSIG');
+const createPeople = require('./src/create-pages/createPeople');
+const createRanking = require('./src/create-pages/createRanking');
+const createIntlPages = require('./src/create-pages/intl');
 
 exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
   const config = getConfig();
@@ -13,7 +13,7 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
 
     resolve: {
       ...resolve,
-      modules: [__dirname, "node_modules"],
+      modules: [__dirname, 'node_modules'],
     },
 
     module: {
@@ -21,7 +21,7 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
       rules: [
         // https://github.com/Negan1911/storybook-svgr-react-component/blob/master/index.js
         ...module.rules.map((_) => {
-          if (_.test?.toString().includes("svg|")) {
+          if (_.test?.toString().includes('svg|')) {
             return {
               ..._,
               exclude: /node_modules/,
@@ -32,7 +32,7 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
 
         {
           test: /\.svg$/,
-          use: ["@svgr/webpack"],
+          use: ['@svgr/webpack'],
           include: /node_modules/,
         },
       ],

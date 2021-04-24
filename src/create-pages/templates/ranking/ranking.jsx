@@ -88,7 +88,7 @@ export default function Ranking({ data, pageContext, location }) {
       render: (text) => (
         <Space>
           {text?.split(',').map((item) => (
-            <Link to={`/SIG/${item}`}>
+            <Link to={`/sig/${item}`}>
               <Button size={'small'}>{item}</Button>
             </Link>
           ))}

@@ -1,24 +1,24 @@
-const path = require("path");
-const axios = require("axios");
-const apiHelper = require("./apiHelper");
+const path = require('path');
+const axios = require('axios');
+const apiHelper = require('./apiHelper');
 
 module.exports = async ({ graphql, createPage, createRedirect }) => {
   const component = path.resolve(`${__dirname}/templates/SIG/index.jsx`);
-  const urlPrefix = "/SIG";
+  const urlPrefix = '/sig';
   const url = `${urlPrefix}`;
 
-  const api = "https://bots.tidb.io/ti-community-bot/sigs";
+  const api = 'https://bots.tidb.io/ti-community-bot/sigs';
   const response = await axios.get(api);
   const items = response.data.data.sigs || [];
 
-  console.log("items", items);
+  console.log('items', items);
   const sigSubMember = {};
   for (const item of items) {
     const { id } = item;
     const gitHubNames = await apiHelper.getGitHubNamesBySigId(id);
     sigSubMember[id] = gitHubNames;
   }
-  console.log("create sigSubMember", sigSubMember);
+  console.log('create sigSubMember', sigSubMember);
 
   createPage({
     path: url,
@@ -58,7 +58,7 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
         data: graphqlData,
       });
     } catch (e) {
-      console.error("download SIG detail error", item.name);
+      console.error('download SIG detail error', item.name);
     }
   }
 };

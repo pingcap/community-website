@@ -46,11 +46,11 @@ Its content likes
 
 - src/data/people/${people_level}.md
 
-### /SIG
+### /sig
 
 - https://bots.tidb.io/ti-community-bot/sigs
 
-### /SIG/${sig_name}
+### /sig/${sig_name}
 
 - https://bots.tidb.io/ti-community-bot/sigs/${sig_name}
 - markdown-pages/SIGReadme/${sig_name}.md ( download from https://raw.githubusercontent.com/pingcap/community/master/special-interest-groups/sig-${sig_name}/README.md )

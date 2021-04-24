@@ -109,7 +109,7 @@ function SIGItem({ name, info, createTime, updateTime, imageData, sigSubMember, 
       <div className={styles.item_right}>
         <div className={styles.item_right_header}>
           <div className={styles.item_right_header_title}>
-            <Link to={`/SIG/${name}`}>{name}</Link>
+            <Link to={`/sig/${name}`}>{name}</Link>
           </div>
           <div className={styles.item_right_member_count}>
             <img src={imageData.memberIcon.publicURL} alt="membersCount" /> {membersCount}
@@ -123,7 +123,7 @@ function SIGItem({ name, info, createTime, updateTime, imageData, sigSubMember, 
 
 function SIGPopularItem({ children }) {
   return (
-    <Link to={`/SIG/${children}`} className={styles.popular_item}>
+    <Link to={`/sig/${children}`} className={styles.popular_item}>
       {children}
     </Link>
   );

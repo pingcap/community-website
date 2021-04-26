@@ -1,18 +1,13 @@
 version: 2.1
 
 workflows:
-  merge:
+  commit:
     jobs:
       - build:
-        filters:
-          branches:
-            only:
-              - main
-      - cache:
-        filters:
-          branches:
-            only:
-              - main
+          filters:
+            branches:
+              only:
+                - main
 
   build:
     triggers:

@@ -45,7 +45,7 @@ jobs:
       - image: circleci/node:14.13.0
     steps:
       - checkout
-      - run: sudo apt update && sudo apt install rsync sshpass
+      - run: sudo apt update && sudo apt install rsync
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "yarn.lock" }}
@@ -59,15 +59,16 @@ jobs:
           no_output_timeout: 10m
       - deploy:
           name: 'Publish Website Could HK_1_HOST'
-          command: ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null;
-            sshpass -p ${HOST_JP_1_PASSWORD}  rsync -avz -e 'ssh -p 22' public/ "${HOST_JP_1_USER}@${HOST_HK_1_IP}:${DEPLOY_PATH}";
+          command: |
+            ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null;
+            rsync -avz -e 'ssh -p 22' public/ "${HOST_JP_1_USER}@${HOST_HK_1_IP}:${DEPLOY_PATH}";
 
   cache:
     docker:
       - image: circleci/node:14.13.0
     steps:
       - checkout
-      - run: sudo apt update && sudo apt install rsync sshpass
+      - run: sudo apt update && sudo apt install rsync
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "yarn.lock" }}
@@ -82,5 +83,6 @@ jobs:
             - public/cache
       - deploy:
           name: 'Send Cache To Could HK_1_HOST'
-          command: ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null;
-            sshpass -p ${HOST_JP_1_PASSWORD}  rsync -avz -e 'ssh -p 22' public/cache/ "${HOST_JP_1_USER}@${HOST_HK_1_IP}:${DEPLOY_PATH}/cache";
+          command: |
+            ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null;
+            rsync -avz -e 'ssh -p 22' public/cache/ "${HOST_JP_1_USER}@${HOST_HK_1_IP}:${DEPLOY_PATH}/cache";

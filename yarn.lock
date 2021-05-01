@@ -2228,10 +2228,10 @@
   dependencies:
     "@babel/runtime" "7.13.10"
 
-"@tidb-community/ui@0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@tidb-community/ui/-/ui-0.2.1.tgz#8248d16dfc5b2cd8896778c0732140b1797a6dbb"
-  integrity sha512-bcW42T5IjKcXMWAVZgRZ5jiDiGOe/oH2fUMuUO5YNhJVKGyZ89JzsU/jdUaeCrGzYXlJGh3aq7aCDtK2qboaVQ==
+"@tidb-community/ui@0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@tidb-community/ui/-/ui-0.2.3.tgz#6207ce72cde30fd5779d63fc32e5f2fe9609d77e"
+  integrity sha512-GZNPvR+fiSyvgeq5NCkZLzGkGBV0nXromKYpfuUNrzAJTT+18D6vQlS6dkEremIK7MxIzs/ENac3R3ZgiOcQ1Q==
   dependencies:
     "@babel/runtime" "7.13.10"
 

@@ -19,7 +19,7 @@ export default function Layout({ children, ...rest }) {
   const title = 'TiDB Community';
   const logo = <img alt={title} src={communityLogo} />;
 
-  const onNavClick = (link) => {
+  const onNavClick = ({ link }) => {
     if (link.startsWith('http')) {
       window.open(link, '_blank').focus();
     } else {
@@ -43,7 +43,7 @@ export default function Layout({ children, ...rest }) {
   const footerProps = {
     logo,
     title,
-    onNavClick,
+    onNavClick: (link) => onNavClick({ link }),
     icons: footerData.icons,
     navItems: footerData.navItems,
   };

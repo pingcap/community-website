@@ -23,7 +23,7 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@tidb-community/datasource": "0.1.4",
-    "@tidb-community/ui": "0.2.1",
+    "@tidb-community/ui": "0.2.3",
     "ahooks": "^2.9.2",
     "antd": "4.15.2",
     "bulma": "^0.9.1",

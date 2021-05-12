@@ -55,7 +55,12 @@ jobs:
           paths:
             - node_modules
       - run:
-          command: yarn download && GATSBY_CPU_COUNT=1 yarn build
+          environment:
+            ENABLE_SENTRY: 'true'
+            SENTRY_NO_PROGRESS_BAR: '1'
+          command: |
+            export SENTRY_RELEASE=${SENTRY_PROJECT}@${CIRCLE_SHA1}
+            yarn download && GATSBY_CPU_COUNT=1 yarn build
           no_output_timeout: 10m
       - deploy:
           name: 'Publish Website Could HK_1_HOST'

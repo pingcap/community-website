@@ -45,7 +45,7 @@ export default function IndexBanner({data}) {
             number="1.2 K"
           />
         </div>
-        <Space size={32} className={styles.buttons}>
+        <Space size={32} className={styles.buttons} onClick={() => { throw new Error('sentry test');}}>
           <Button
             className={styles.join_slack}
             icon={<img src={imageData.slack.publicURL} alt="slack"/>}

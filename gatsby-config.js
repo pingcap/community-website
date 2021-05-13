@@ -52,5 +52,12 @@ module.exports = {
       __key: 'pages',
     },
     'gatsby-plugin-sass',
-  ],
+    process.env.ENABLE_SENTRY === 'true' && {
+      resolve: "@sentry/gatsby",
+      options: {
+        dsn: "https://f06bb2c7279b4ffb8fb10a1e7b74fafe@o226447.ingest.sentry.io/5761377",
+        release: process.env.SENTRY_RELEASE,
+      },
+    },
+  ].filter(Boolean),
 };

@@ -1,12 +1,14 @@
+const SentryWebpackPlugin = require("@sentry/webpack-plugin");
+
 const createHome = require('./src/create-pages/createHome');
 const createSIG = require('./src/create-pages/createSIG');
 const createPeople = require('./src/create-pages/createPeople');
 const createRanking = require('./src/create-pages/createRanking');
 const createIntlPages = require('./src/create-pages/intl');
 
-exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
+exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
   const config = getConfig();
-  const { module, resolve } = config;
+  const { module, resolve, plugins } = config;
 
   actions.replaceWebpackConfig({
     ...config,
@@ -37,6 +39,20 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
         },
       ],
     },
+
+    plugins: [
+      ...plugins,
+      process.env.ENABLE_SENTRY === 'true' && stage === "build-javascript" && new SentryWebpackPlugin({
+        authToken: process.env.SENTRY_AUTH_TOKEN,
+        org: "pingcap",
+        project: "community-website",
+        setCommits: {
+          auto: true,
+        },
+        release: process.env.SENTRY_RELEASE,
+        include: "./public",
+      }),
+    ].filter(Boolean),
   });
 };
 

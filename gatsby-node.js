@@ -46,7 +46,7 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
         authToken: process.env.SENTRY_AUTH_TOKEN,
         org: "pingcap",
         project: "community-website",
-        setCommits: {
+        setCommits: process.env.ENABLE_SET_COMMITS === 'true' && {
           auto: true,
         },
         release: process.env.SENTRY_RELEASE,

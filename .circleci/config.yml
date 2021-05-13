@@ -4,6 +4,8 @@ workflows:
   commit:
     jobs:
       - build:
+          context:
+            - enable-set-commits
           filters:
             branches:
               only:

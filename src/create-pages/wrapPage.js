@@ -1,6 +1,7 @@
 import React from 'react'
 import { IntlProvider } from 'react-intl'
 import langConfig from '../../lang.config'
+import { createAppGlobalStyle } from '@tidb-community/ui'
 
 const toPairs = (obj) => Object.keys(obj).map((key) => [key, obj[key]])
 const fromPairs = (pairs) => {
@@ -18,16 +19,21 @@ const flatten = (messages) => {
   )
 }
 
+const GlobalStyles = createAppGlobalStyle()
+
 export const wrapPageElement = ({ element, props }) => {
   const {
     pageContext: { language = langConfig.defaultLang },
   } = props
   const messages = require(`src/data/i18n/${language}.json`)
   const flattened = fromPairs(flatten(messages))
-  
+
   return (
-    <IntlProvider locale={language} messages={flattened}>
-      {element}
-    </IntlProvider>
+    <>
+      <GlobalStyles/>
+      <IntlProvider locale={language} messages={flattened}>
+        {element}
+      </IntlProvider>
+    </>
   )
 }

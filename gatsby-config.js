@@ -59,5 +59,12 @@ module.exports = {
         release: process.env.SENTRY_RELEASE,
       },
     },
+    'gatsby-plugin-styled-components',
+    {
+      resolve: 'gatsby-plugin-env-variables',
+      options: {
+        allowList: ['NEXT_PUBLIC_RUNTIME_ENV', 'NEXT_PUBLIC_API_BASE_URL']
+      },
+    },
   ].filter(Boolean),
 };

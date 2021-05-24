@@ -7,7 +7,7 @@ module.exports = (shipit) => {
   shipit.initConfig({
     default: {
       workspace: '.',
-      deployTo: process.env.DEPLOY_SERVICE_PATH,
+      deployTo: process.env.DEPLOY_PATH,
 
       keepReleases: 5,
 
@@ -22,7 +22,7 @@ module.exports = (shipit) => {
 
     production: {
       servers: {
-        user: process.env.HOST_HK_1_USER,
+        user: process.env.HOST_JP_1_USER,
         host: process.env.HOST_HK_1_IP,
       },
     },

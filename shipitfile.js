@@ -3,6 +3,7 @@
 // https://www.digitalocean.com/community/tutorials/how-to-automate-your-node-js-production-deployments-with-shipit-on-centos-7
 module.exports = (shipit) => {
   require('shipit-deploy')(shipit);
+  require('shipit-shared')(shipit);
 
   shipit.initConfig({
     default: {
@@ -19,6 +20,11 @@ module.exports = (shipit) => {
       shallowClone: false,
       branch: 'HEAD',
       copy: false,
+
+      shared: {
+        overwrite: true,
+        dirs: ['public/cache/github-avatar'],
+      },
     },
 
     production: {
@@ -29,7 +35,7 @@ module.exports = (shipit) => {
     },
   });
 
-  shipit.on('published', () => {
+  shipit.on('sharedEnd', () => {
     shipit.start('server:reload');
   });
 

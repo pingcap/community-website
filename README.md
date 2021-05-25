@@ -67,11 +67,6 @@ Its content likes
 
 - src/data/events.js
 
-### /ranking
-
-- src/data/ranking.md
-- https://bots.tidb.io/ti-community-bot/statistics/contributions?startDate=${startDate}&endDate=${endDate}
-
 ## Directory Structure
 
 ### images

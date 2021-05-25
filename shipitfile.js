@@ -35,7 +35,7 @@ module.exports = (shipit) => {
     },
   });
 
-  shipit.on('sharedEnd', () => {
+  shipit.on('published', () => {
     shipit.start('server:reload');
   });
 

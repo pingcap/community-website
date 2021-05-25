@@ -1047,17 +1047,17 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@7.13.17", "@babel/runtime@^7.10.0", "@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.3", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7":
-  version "7.13.17"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.17.tgz#8966d1fc9593bf848602f0662d6b4d0069e3a7ec"
-  integrity sha512-NCdgJEelPTSh+FEFylhnP1ylq848l1z9t9N0j1Lfbcw0+KXGjsTvUmkxy+voLLXB5SOKMbLLx4jxYliGrYQseA==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
 "@babel/runtime@7.14.0":
   version "7.14.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.0.tgz#46794bc20b612c5f75e62dd071e24dfd95f1cbe6"
   integrity sha512-JELkvo/DlpNdJ7dlyw/eY7E0suy5i5GQH+Vlxaq1nsNJ+H7f4Vtv3jMeCEgRhZZQFXTjldYfQgv2qmM6M1v5wA==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
+"@babel/runtime@^7.10.0", "@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.3", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7":
+  version "7.13.17"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.17.tgz#8966d1fc9593bf848602f0662d6b4d0069e3a7ec"
+  integrity sha512-NCdgJEelPTSh+FEFylhnP1ylq848l1z9t9N0j1Lfbcw0+KXGjsTvUmkxy+voLLXB5SOKMbLLx4jxYliGrYQseA==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -2323,18 +2323,18 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
-"@tidb-community/datasource@0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@tidb-community/datasource/-/datasource-0.2.0.tgz#906995103c3ee8f9b8d9fc9289bac514033a304f"
-  integrity sha512-Qx+aUns7LYdmPLtexCYtW2sEgyxwurb3hdEkb9KigNPfZDiBp1PbXq+7ZsFZ8lhg7a3/Rfo7Q/8LxJSBvdlGPQ==
+"@tidb-community/datasource@0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@tidb-community/datasource/-/datasource-0.2.2.tgz#94b3414714cb6191146e3692bb91c87d863ffd22"
+  integrity sha512-3MCbIWa1oV1n8VxajNEwImP8TVnuAsV3el7nTtoUlkgoOY8GHxJiAPdEBBb3ySECKBi3salxDJEO4nf0ehKAwA==
   dependencies:
-    "@babel/runtime" "7.13.17"
+    "@babel/runtime" "7.14.0"
     js-cookie "2.2.1"
 
-"@tidb-community/ui@0.2.5":
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/@tidb-community/ui/-/ui-0.2.5.tgz#0af4652f2ca2587e906d0bec14dbaaf1c8a249b2"
-  integrity sha512-Y49PWlfoFjSRt58lWbZrCGlhrPPTIk+kfMhFWC+WZaTCf4XUFMJM2eD9FOIaM0EZ6Fkqvv8nBOW5lzvEL8g12g==
+"@tidb-community/ui@0.2.6":
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/@tidb-community/ui/-/ui-0.2.6.tgz#7129a98a172279407d98ad24cf6d08f7de006763"
+  integrity sha512-00OZQ6+VlWbuIW85RjrZtzKDILOOag8rFzLEUtj/RvIQ1gkkh5Y9qwiIEAB/N2v/kjkINgDq7I9V0EyMnDx24Q==
   dependencies:
     "@babel/runtime" "7.14.0"
 

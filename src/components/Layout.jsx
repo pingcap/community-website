@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Footer, Header, UserProfile, utils } from '@tidb-community/ui';
+import { Footer, Header, UserProfile, ActivityBanner, utils } from '@tidb-community/ui';
 import { Location } from '@reach/router';
 import { getData, api } from '@tidb-community/datasource';
 import { navigate } from 'gatsby';
@@ -7,17 +7,31 @@ import { useIntl } from 'react-intl';
 
 import communityLogo from '../../images/community-logo.svg';
 
+const renderActivityBanner = ({ meData, isMeValidating }, { link, ...data }, onNavClick) => {
+  // do not render if:
+  // - already in org
+  // - meData is validating
+  // - already at the page
+  if (meData?.org || isMeValidating) {
+    return undefined;
+  }
+
+  return <ActivityBanner {...data} onClick={() => onNavClick({ link, target: '_blank' })} />;
+};
+
 export default function Layout({ children, ...rest }) {
   const intl = useIntl();
   const { locale } = intl;
 
   const [meData, setData] = useState(undefined)
+  const [isMeValidating, setIsMeValidating] = useState(false)
 
   useEffect(() => {
-    api.me().then(({data}) => setData(data)).catch(() => {})
+    setIsMeValidating(true)
+    api.me().then(({data}) => setData(data)).catch(() => {}).finally(() => setIsMeValidating(false))
   }, [children])
 
-  const { header: headerData, footer: footerData } = getData({
+  const { header: headerData, footer: footerData, activity: activityData } = getData({
     domain: 'contributor.tidb.io',
     locale,
     env: process.env.NEXT_PUBLIC_RUNTIME_ENV,
@@ -87,6 +101,7 @@ export default function Layout({ children, ...rest }) {
       {(location) => (
         <>
           <div className='tidb-community-ui'>
+            {renderActivityBanner({meData, isMeValidating}, activityData, onNavClick)}
             <Header {...headerProps(location)} />
           </div>
           <main>{children}</main>

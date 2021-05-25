@@ -2331,10 +2331,10 @@
     "@babel/runtime" "7.14.0"
     js-cookie "2.2.1"
 
-"@tidb-community/ui@0.2.6":
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/@tidb-community/ui/-/ui-0.2.6.tgz#7129a98a172279407d98ad24cf6d08f7de006763"
-  integrity sha512-00OZQ6+VlWbuIW85RjrZtzKDILOOag8rFzLEUtj/RvIQ1gkkh5Y9qwiIEAB/N2v/kjkINgDq7I9V0EyMnDx24Q==
+"@tidb-community/ui@0.2.7":
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/@tidb-community/ui/-/ui-0.2.7.tgz#7c6abb14f86465b09904ac5340050b377824a675"
+  integrity sha512-GQF7JkUsNILtQUSLHVxgvjqPATaNTFV0FkHzKQuUfe8Gpk24S6b9UOdjBedPXfE/2Vn8kvmmSVYyK4NKP+I6Ng==
   dependencies:
     "@babel/runtime" "7.14.0"
 

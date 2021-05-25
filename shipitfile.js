@@ -18,6 +18,7 @@ module.exports = (shipit) => {
       // because the current context is already up to date(CI/ CD)
       shallowClone: false,
       branch: 'HEAD',
+      copy: false,
     },
 
     production: {

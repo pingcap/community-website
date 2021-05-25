@@ -39,6 +39,7 @@ export default function Layout({ children, ...rest }) {
   }).nav;
 
   const { loginUrl, logoutUrl, userProfileNavItems } = headerData
+  alert(JSON.stringify(headerData))
 
   const title = 'TiDB Community';
   const logo = <img alt={title} src={communityLogo} />;

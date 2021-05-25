@@ -13,7 +13,10 @@ module.exports = {
       // https://pm2.keymetrics.io/docs/tutorials/capistrano-like-deployments#the-main-issue
       // Otherwise, PM2 will readlink first and break the server reload.
       cwd: process.env.PWD,
-      instances: 2,
+      // gatsby serve does not support cluster mode, running multiple instances
+      // might result in total service failure upon reload.
+      // TODO: find a workaround.
+      instances: 1,
       exec_mode: 'cluster',
     },
   ],

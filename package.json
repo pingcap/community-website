@@ -14,7 +14,7 @@
     "cache": "node src/create-pages/cacheGithubAvatar.js",
     "deploy": "shipit production deploy",
     "server:start": "pm2 start pm2.config.js",
-    "server:reload": "pm2 reload pm2.config.js"
+    "server:reload": "pm2 restart pm2.config.js"
   },
   "description": "website-community",
   "author": "PingCAP FE Team",

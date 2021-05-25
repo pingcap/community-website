@@ -2,7 +2,6 @@ const fs = require('fs')
 const path = require('path')
 const axios = require('axios')
 const dayjs = require('dayjs')
-const pLimit = require('p-limit');
 
 const sleep = (millisecond) => new Promise((resolve => {
   setTimeout(() => resolve(), millisecond)
@@ -33,13 +32,9 @@ async function getGitHubNamesBySigId(sigId) {
 
 async function cacheGitHubAvatar(username) {
   if (Array.isArray(username)) {
-    const limit = pLimit(50);
-    const input = username.map(
-      (usernameElement) => limit(
-        () => cacheOneGitHubAvatar(usernameElement)
-      )
-    );
-    await Promise.all(input);
+    for (const usernameElement of username) {
+      await cacheOneGitHubAvatar(usernameElement)
+    }
   } else {
     await cacheOneGitHubAvatar(username)
   }
@@ -65,9 +60,10 @@ async function cacheOneGitHubAvatar(username) {
       const {data} = response
       writeFile(targetDir, fileName, data)
     } catch (e) {
-      // don't print error since axios error is very very large
-      console.error('cacheGitHubAvatar error, username:', username)
+      console.error('cacheGitHubAvatar error, username: ', username, e)
     }
+    /* sleep 1s */
+    await sleep(1 * 1000)
   }
 }
 

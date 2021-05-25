@@ -2323,10 +2323,10 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
-"@tidb-community/datasource@0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@tidb-community/datasource/-/datasource-0.2.2.tgz#94b3414714cb6191146e3692bb91c87d863ffd22"
-  integrity sha512-3MCbIWa1oV1n8VxajNEwImP8TVnuAsV3el7nTtoUlkgoOY8GHxJiAPdEBBb3ySECKBi3salxDJEO4nf0ehKAwA==
+"@tidb-community/datasource@0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@tidb-community/datasource/-/datasource-0.2.3.tgz#eecc8561741059c1e94d999b8cb6cc02539dd0b1"
+  integrity sha512-AA7np8993xB7yaYnNUGJSdQYb1EmBE+q/x9rmnARDvP8/QfMxw1SD4p/yYJJpsxGqNsE13NXqCM701fS4MkhDA==
   dependencies:
     "@babel/runtime" "7.14.0"
     js-cookie "2.2.1"

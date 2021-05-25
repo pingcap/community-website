@@ -91,4 +91,4 @@ jobs:
           name: 'Send Cache To Could HK_1_HOST'
           command: |
             ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null;
-            rsync -avz -e 'ssh -p 22' public/cache/ "${HOST_JP_1_USER}@${HOST_HK_1_IP}:${DEPLOY_SHARED_PATH}/public/cache";
+            rsync -avz -e 'ssh -p 22' public/cache/ "${HOST_JP_1_USER}@${HOST_HK_1_IP}:${DEPLOY_SHARED_PATH}/project/public/cache";

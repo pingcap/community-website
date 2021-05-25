@@ -23,7 +23,7 @@ module.exports = (shipit) => {
 
       shared: {
         overwrite: true,
-        dirs: ['public/cache/github-avatar'],
+        dirs: ['project/public/cache/github-avatar'],
       },
     },
 

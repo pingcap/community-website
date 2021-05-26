@@ -68,5 +68,8 @@
     "shipit-cli": "5.3.0",
     "shipit-deploy": "5.3.0",
     "shipit-shared": "4.4.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }

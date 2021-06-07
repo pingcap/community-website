@@ -26,7 +26,7 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@tidb-community/datasource": "0.3.1",
-    "@tidb-community/ui": "0.3.1",
+    "@tidb-community/ui": "0.3.2",
     "ahooks": "2.9.2",
     "antd": "4.15.2",
     "axios": "0.21.1",

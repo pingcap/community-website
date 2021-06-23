@@ -10,7 +10,7 @@ module.exports = (shipit) => {
       workspace: '.',
       deployTo: process.env.DEPLOY_SERVICE_PATH,
 
-      keepReleases: 5,
+      keepReleases: 3,
 
       // The workspace dir won't be removed after deploy
       keepWorkspace: true,

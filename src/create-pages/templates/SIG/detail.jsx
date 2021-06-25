@@ -1,16 +1,17 @@
+import _ from 'lodash';
 import React from 'react';
-import styles from './detail.module.scss';
-import Section from 'src/components/section/Section';
+import { Row, Col } from 'antd';
+import { graphql, Link, useStaticQuery } from 'gatsby';
+
+import Banner from 'src/components/Banner/Banner';
+import Button from 'src/components/Button';
+import Container from 'src/components/Container/Container';
+import GitHubUserItem from 'src/components/GithubUserItem/GitHubUserItem';
 import Layout from 'src/components/Layout';
 import SEO from 'src/components/SEO';
-import Banner from 'src/components/Banner/Banner';
-import Container from 'src/components/Container/Container';
-import { graphql, Link, useStaticQuery } from 'gatsby';
-import GitHubUserItem from 'src/components/GithubUserItem/GitHubUserItem';
-import { Row, Col } from 'antd';
-import Button from 'src/components/Button';
+import Section from 'src/components/section/Section';
+import styles from './detail.module.scss';
 import { GithubOutlined, SlackOutlined } from '@ant-design/icons';
-import { convertToUpperCamelCase } from 'src/helper';
 
 export default function Detail({ data, pageContext }) {
   const imageData = useStaticQuery(
@@ -30,10 +31,10 @@ export default function Detail({ data, pageContext }) {
   );
 
   const { name, sig_url, channel, apiData, graphqlData } = pageContext;
-  console.log('graphqlData', graphqlData);
+  const summary = graphqlData.data.summary?.html || '';
 
-  const learningMaterialsNode = graphqlData.data.summary ? (
-    <div className={styles.markdown} dangerouslySetInnerHTML={{ __html: graphqlData.data.summary.html }} />
+  const learningMaterialsNode = summary ? (
+    <div className={styles.markdown} dangerouslySetInnerHTML={{ __html: summary }} />
   ) : (
     <div className={styles.markdown}>There is no description of this special interest group.</div>
   );
@@ -43,11 +44,11 @@ export default function Detail({ data, pageContext }) {
   for (const membershipKey in membership) {
     const membershipValue = membership[membershipKey];
     memberNode.push(
-      <div className={styles.member_section}>
+      <div key={membershipKey} className={styles.member_section}>
         <h3 className={styles.member_section_title}>{membershipKey}</h3>
         <Row gutter={[0, 48]}>
-          {membershipValue.map((item) => (
-            <Col xs={24} sm={12} md={6} lg={6} xl={6}>
+          {membershipValue.map((item, idx) => (
+            <Col key={idx} xs={24} sm={12} md={6} lg={6} xl={6}>
               <GitHubUserItem {...item} />
             </Col>
           ))}
@@ -56,16 +57,20 @@ export default function Detail({ data, pageContext }) {
     );
   }
 
+  let description = summary.replace(/<[^>]+>/g, '');
+  if (description.length > 100) {
+    description = description.substr(0, 100) + '...';
+  }
+
   return (
     <Layout>
-      <SEO title={`${name} - SIG`} description="description" />
+      <SEO title={`${name} - SIG`} description={description} />
 
       <Banner backgroundImage={imageData.banner.publicURL} className={styles.banner}>
-        <h1 className={styles.banner_title}>Special Interest Group - {convertToUpperCamelCase(name)}</h1>
+        <h1 className={styles.banner_title}>Special Interest Group - {_.startCase(name)}</h1>
         <div className={styles.banner_action}>
           <Button
             className={styles.banner_action_github}
-            // icon={<img src={imageData.slack.publicURL} alt="slack"/>}
             icon={<GithubOutlined />}
             type="ghost"
             size="small"
@@ -76,7 +81,6 @@ export default function Detail({ data, pageContext }) {
           </Button>
           <Button
             className={styles.banner_action_slack}
-            // icon={<img src={imageData.sub.publicURL} alt="subgroups"/>}
             icon={<SlackOutlined />}
             type="ghost"
             size="small"

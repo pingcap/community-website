@@ -1,25 +1,25 @@
-import React from "react";
-import styles from "./GitHubUserItem.module.scss";
-import BoundLink from "src/components/BoundLink";
-import {convertToUpperCamelCase} from 'src/helper'
+import React from 'react';
+import _ from 'lodash';
 
-export default function GitHubUserItem({githubName, level, sigName, community}) {
-  const avatarUrl = `/cache/github-avatar/${githubName}.png`
+import styles from './GitHubUserItem.module.scss';
+import BoundLink from 'src/components/BoundLink';
+
+export default function GitHubUserItem({ githubName, level, sigName, community }) {
+  const avatarUrl = `/cache/github-avatar/${githubName}.png`;
+
   return (
     <div className={styles.item}>
       <div className={styles.item_icon}>
         <BoundLink href={`https://github.com/${githubName}`}>
-          <img src={avatarUrl} alt={githubName}/>
+          <img src={avatarUrl} alt={githubName} />
         </BoundLink>
       </div>
       <div className={styles.item_name}>
-        <BoundLink href={`https://github.com/${githubName}`}>
-          {githubName}
-        </BoundLink>
+        <BoundLink href={`https://github.com/${githubName}`}>{githubName}</BoundLink>
       </div>
       <div className={styles.item_level}>
-        {convertToUpperCamelCase(level)} {(sigName || community) && ('@' + (sigName || community))}
+        {_.startCase(level)} {(sigName || community) && '@' + (sigName || community)}
       </div>
     </div>
-  )
+  );
 }

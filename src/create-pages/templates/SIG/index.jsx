@@ -1,14 +1,14 @@
 import React from 'react';
-import styles from './index.module.scss';
-import Layout from 'src/components/Layout';
-
-import Section from 'src/components/section/Section';
-import SEO from 'src/components/SEO';
-import Container from 'src/components/Container/Container';
 import { Space, Row, Col } from 'antd';
-import Banner from 'src/components/Banner/Banner';
 import { graphql, Link, useStaticQuery } from 'gatsby';
+
 import AvatarGrid from 'src/components/AvatarGrid/AvatarGrid';
+import Banner from 'src/components/Banner/Banner';
+import Container from 'src/components/Container/Container';
+import Layout from 'src/components/Layout';
+import SEO from 'src/components/SEO';
+import Section from 'src/components/section/Section';
+import styles from './index.module.scss';
 
 export default function SIG({ data, pageContext }) {
   const imageData = useStaticQuery(
@@ -25,8 +25,7 @@ export default function SIG({ data, pageContext }) {
   );
 
   const { items, sigSubMember } = pageContext;
-  console.log('pageContext', pageContext);
-  console.log('template sigSubMember', sigSubMember);
+
   return (
     <Layout>
       <SEO
@@ -74,16 +73,16 @@ export default function SIG({ data, pageContext }) {
           <Row gutter={[64, 64]} className={styles.list}>
             <Col sm={24} md={16}>
               <Section name="All Special Interest Groups">
-                {items.map((item) => (
-                  <SIGItem {...item} imageData={imageData} sigSubMember={sigSubMember[item.id]} />
+                {items.map((item, idx) => (
+                  <SIGItem key={idx} {...item} imageData={imageData} sigSubMember={sigSubMember[item.id]} />
                 ))}
               </Section>
             </Col>
             <Col sm={24} md={8}>
               <Section name="Popular Groups">
                 <Space size={[16, 16]} wrap className={styles.popular}>
-                  {items.slice(0, 5).map((item) => (
-                    <SIGPopularItem>{item.name}</SIGPopularItem>
+                  {items.slice(0, 5).map((item, idx) => (
+                    <SIGPopularItem key={idx}>{item.name}</SIGPopularItem>
                   ))}
                 </Space>
               </Section>
@@ -99,6 +98,7 @@ function SIGItem({ name, info, createTime, updateTime, imageData, sigSubMember, 
   if (info === '' || info === null || info === undefined) {
     info = `There is no description of sig - ${name}`;
   }
+
   return (
     <div className={styles.item}>
       <div className={styles.item_left}>

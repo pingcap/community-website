@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {Row} from "antd";
+import React, { useEffect, useState } from 'react';
+import { Row } from 'antd';
 
 /**
  screen width <=  576 px , container width =  100  % , gutter = 16
@@ -11,31 +11,33 @@ import {Row} from "antd";
          < screen width <= 1920 px , container width = 1920 px , gutter = 44
  */
 
+export default function ResponsiveRow({ children, gutter, ...rest }) {
+  const [responsiveGutter, setResponsiveGutter] = useState(gutter);
 
-export default function ResponsiveRow({children, gutter, ...rest}) {
-  const [responsiveGutter, setResponsiveGutter] = useState(gutter)
-  const resizeHandle = () => {
-    if (window.matchMedia('(max-width: 992px)').matches) {
-      console.log(`matchMedia('(max-width: 992px)'`)
-      setResponsiveGutter([16, gutter[1]])
-    } else if (window.matchMedia('(min-width: 1600px)').matches) {
-      console.log(`window.matchMedia('(min-width: 1600px)'`)
-      setResponsiveGutter([44, gutter[1]])
-    } else if (window.matchMedia('(min-width: 1200px)').matches) {
-      console.log(`window.matchMedia('(min-width: 1200px)'`)
-      setResponsiveGutter([36, gutter[1]])
-    }
-  }
   useEffect(() => {
-    resizeHandle()
-    window.addEventListener('resize', resizeHandle)
+    const resizeHandle = () => {
+      if (window.matchMedia('(max-width: 992px)').matches) {
+        console.log(`matchMedia('(max-width: 992px)'`);
+        setResponsiveGutter([16, gutter[1]]);
+      } else if (window.matchMedia('(min-width: 1600px)').matches) {
+        console.log(`window.matchMedia('(min-width: 1600px)'`);
+        setResponsiveGutter([44, gutter[1]]);
+      } else if (window.matchMedia('(min-width: 1200px)').matches) {
+        console.log(`window.matchMedia('(min-width: 1200px)'`);
+        setResponsiveGutter([36, gutter[1]]);
+      }
+    };
+    resizeHandle();
+    window.addEventListener('resize', resizeHandle);
+
     return () => {
-      window.removeEventListener('resize', resizeHandle)
-    }
-  }, [])
+      window.removeEventListener('resize', resizeHandle);
+    };
+  }, [gutter]);
+
   return (
     <Row {...rest} gutter={responsiveGutter}>
       {children}
     </Row>
-  )
+  );
 }

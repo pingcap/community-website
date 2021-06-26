@@ -7,7 +7,7 @@
 
     git clone git@github.com:pingcap/community-website.git
     cd community-website
-    yarn start
+    npm start
 
 ## Data and i18n
 
@@ -221,10 +221,10 @@ gatsby.js 框架支持直接在 `src/pages` 目录中存放通过 React 组件�
 - 只构建 main 分支
 - 使用 node.js v14.13.0 版本
 - 安装 rsync 用于同步构建结果，sshpass 用于在 ssh 中传递密码
-- 执行 yarn install 安装依赖
-- 执行 yarn download 下载一些来自 github 的 markdown 的文件
+- 执行 npm install 安装依赖
+- 执行 npm run download 下载一些来自 github 的 markdown 的文件
 - 设置环境变量 GATSBY_CPU_COUNT 用于解决某些情况下的构建 BUG
-- 执行 yarn build 构建纯静态 HTML 页面文件
+- 执行 npm run build 构建纯静态 HTML 页面文件
 - 执行 rsync 命令将构建好的 HTML 页面文件同步到生产环境服务器中
 - 服务器使用 nginx ，配置文件在 `/etc/nginx/nginx.conf` ，
   根据配置文件中的 root 项，在 CircleCI 中将构建结果文件同步至对应路径。

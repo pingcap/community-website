@@ -74,4 +74,4 @@ yarn-error.log
 markdown-pages/
 
 # Custom
-package-lock.json
+yarn.lock

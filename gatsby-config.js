@@ -53,9 +53,9 @@ module.exports = {
     },
     'gatsby-plugin-sass',
     process.env.ENABLE_SENTRY === 'true' && {
-      resolve: "@sentry/gatsby",
+      resolve: '@sentry/gatsby',
       options: {
-        dsn: "https://f06bb2c7279b4ffb8fb10a1e7b74fafe@o226447.ingest.sentry.io/5761377",
+        dsn: 'https://f06bb2c7279b4ffb8fb10a1e7b74fafe@o226447.ingest.sentry.io/5761377',
         release: process.env.SENTRY_RELEASE,
       },
     },
@@ -63,7 +63,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-env-variables',
       options: {
-        allowList: ['NEXT_PUBLIC_RUNTIME_ENV', 'NEXT_PUBLIC_API_BASE_URL']
+        allowList: ['NEXT_PUBLIC_RUNTIME_ENV', 'NEXT_PUBLIC_API_BASE_URL'],
       },
     },
   ].filter(Boolean),

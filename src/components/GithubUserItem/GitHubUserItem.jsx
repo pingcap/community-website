@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import styles from './GitHubUserItem.module.scss';
 import BoundLink from 'src/components/BoundLink';
@@ -11,7 +12,7 @@ export default function GitHubUserItem({ githubName, level, sigName, community }
     <div className={styles.item}>
       <div className={styles.item_icon}>
         <BoundLink href={`https://github.com/${githubName}`}>
-          <img src={avatarUrl} alt={githubName} />
+          <LazyLoadImage alt={githubName} src={avatarUrl} />
         </BoundLink>
       </div>
       <div className={styles.item_name}>

@@ -1,4 +1,4 @@
-const SentryWebpackPlugin = require("@sentry/webpack-plugin");
+const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 
 const createHome = require('./src/create-pages/createHome');
 const createSIG = require('./src/create-pages/createSIG');
@@ -41,16 +41,18 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
 
     plugins: [
       ...plugins,
-      process.env.ENABLE_SENTRY === 'true' && stage === "build-javascript" && new SentryWebpackPlugin({
-        authToken: process.env.SENTRY_AUTH_TOKEN,
-        org: "pingcap",
-        project: "community-website",
-        setCommits: process.env.ENABLE_SET_COMMITS === 'true' && {
-          auto: true,
-        },
-        release: process.env.SENTRY_RELEASE,
-        include: "./public",
-      }),
+      process.env.ENABLE_SENTRY === 'true' &&
+        stage === 'build-javascript' &&
+        new SentryWebpackPlugin({
+          authToken: process.env.SENTRY_AUTH_TOKEN,
+          org: 'pingcap',
+          project: 'community-website',
+          setCommits: process.env.ENABLE_SET_COMMITS === 'true' && {
+            auto: true,
+          },
+          release: process.env.SENTRY_RELEASE,
+          include: './public',
+        }),
     ].filter(Boolean),
   });
 };

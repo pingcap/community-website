@@ -49,10 +49,10 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "yarn.lock" }}
-      - run: yarn install
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+      - run: npm install
       - save_cache:
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
       - run:
@@ -61,7 +61,7 @@ jobs:
             SENTRY_NO_PROGRESS_BAR: '1'
           command: |
             export SENTRY_RELEASE=${SENTRY_PROJECT}@${CIRCLE_SHA1}
-            yarn download && GATSBY_CPU_COUNT=1 yarn build
+            npm run download && GATSBY_CPU_COUNT=1 npm run build
           no_output_timeout: 10m
       - deploy:
           name: 'Publish Website Could HK_1_HOST'
@@ -77,13 +77,13 @@ jobs:
       - run: sudo apt update && sudo apt install rsync
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "yarn.lock" }}
-      - run: yarn install
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+      - run: npm install
       - run:
-          command: yarn run cache
+          command: npm run cache
           no_output_timeout: 10m
       - save_cache:
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
             - public/cache

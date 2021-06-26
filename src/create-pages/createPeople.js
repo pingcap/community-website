@@ -1,26 +1,26 @@
-const path = require('path')
-const axios = require('axios')
+const path = require('path');
+const axios = require('axios');
 
 module.exports = async ({ graphql, createPage, createRedirect }) => {
-  const component = path.resolve(`${__dirname}/templates/people/PeopleDetail.jsx`)
-  const urlPrefix = '/people'
-  
-  const people = ['committer', 'reviewer', 'active-contributor']
+  const component = path.resolve(`${__dirname}/templates/people/PeopleDetail.jsx`);
+  const urlPrefix = '/people';
+
+  const people = ['committer', 'reviewer', 'active-contributor'];
   for (const item of people) {
-    const api = `https://bots.tidb.io/ti-community-bot/members?level=${item}`
-    const response = await axios.get(api)
-    const members = response.data.data.members || []
-  
-    const url = `${urlPrefix}/${item}`
-  
+    const api = `https://bots.tidb.io/ti-community-bot/members?level=${item}`;
+    const response = await axios.get(api);
+    const members = response.data.data.members || [];
+
+    const url = `${urlPrefix}/${item}`;
+
     const graphqlData = await graphql(`
       query {
         summary: markdownRemark(fileAbsolutePath: {regex: "//${item}.md$/"}) {
           html
         }
       }
-    `)
-    
+    `);
+
     createPage({
       path: url,
       component,
@@ -29,15 +29,14 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
         members,
         graphqlData,
       },
-    })
+    });
   }
-  
-  
-  console.log('fetch contributors')
-  const item = 'contributor'
-  const api = `https://bots.tidb.io/ti-community-bot/contributors`
-  const response = await axios.get(api)
-  const url = `${urlPrefix}/contributor`
+
+  console.log('fetch contributors');
+  const item = 'contributor';
+  const api = `https://bots.tidb.io/ti-community-bot/contributors`;
+  const response = await axios.get(api);
+  const url = `${urlPrefix}/contributor`;
 
   const graphqlData = await graphql(`
       query {
@@ -45,10 +44,10 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
           html
         }
       }
-    `)
+    `);
 
-  const members = response.data.data.contributors || []
-  
+  const members = response.data.data.contributors || [];
+
   createPage({
     path: url,
     component,
@@ -57,22 +56,21 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
       members,
       graphqlData,
     },
-  })
-  
-  
-  console.log('fetch maintainers')
-  const itemMaintainer = 'maintainer'
+  });
+
+  console.log('fetch maintainers');
+  const itemMaintainer = 'maintainer';
   const graphqlDataMaintainer = await graphql(`
       query {
         summary: markdownRemark(fileAbsolutePath: {regex: "//${itemMaintainer}.md$/"}) {
           html
         }
       }
-    `)
-  const urlMaintainer = `${urlPrefix}/maintainer`
-  const responseMaintainer = require('../data/people/maintainers.json')
-  const membersMaintainer = responseMaintainer.data.members || []
-  
+    `);
+  const urlMaintainer = `${urlPrefix}/maintainer`;
+  const responseMaintainer = require('../data/people/maintainers.json');
+  const membersMaintainer = responseMaintainer.data.members || [];
+
   createPage({
     path: urlMaintainer,
     component,
@@ -81,6 +79,5 @@ module.exports = async ({ graphql, createPage, createRedirect }) => {
       members: membersMaintainer,
       graphqlData: graphqlDataMaintainer,
     },
-  })
-  
-}
+  });
+};

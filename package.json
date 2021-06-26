@@ -6,11 +6,12 @@
     "cache": "node src/create-pages/cacheGithubAvatar.js",
     "clean": "gatsby clean",
     "deploy": "shipit production deploy",
+    "dev": "gatsby develop",
     "download": "node src/create-pages/downloadSIGReadme.js",
     "serve": "gatsby serve",
     "server:reload": "pm2 restart pm2.config.js",
     "server:start": "pm2 start pm2.config.js",
-    "start": "gatsby develop",
+    "start": "gatsby serve",
     "test": "jest"
   },
   "description": "website-community",

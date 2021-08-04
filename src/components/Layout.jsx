@@ -1,10 +1,18 @@
 import Helmet from 'react-helmet';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useIntl } from 'react-intl';
 
 export default function Layout({ children }) {
+  const ref = useRef(null);
+  const [isReady, setIsReady] = useState(false);
   const intl = useIntl();
   const { locale } = intl;
+
+  useEffect(() => {
+    if (ref) {
+      setIsReady(true);
+    }
+  }, [ref]);
 
   return (
     <>
@@ -16,22 +24,20 @@ export default function Layout({ children }) {
         <link rel="stylesheet" href="https://tidb.io/scripts/fonts.css" />
         <link rel="stylesheet" href="https://tidb.io/scripts/header-footer.css" />
         <script src="https://tidb.io/scripts/header-footer.js" />
-        <script defer>{`
-          var headerEl = document.getElementById('header');
-          var footerEl = document.getElementById('footer');
-          if (headerEl && footerEl) {
+        {isReady && (
+          <script defer>{`
             _tidb.uiScripts.headerFooter.init({
-              headerEl: headerEl,
-              footerEl: footerEl,
+              headerEl: document.getElementById('header'),
+              footerEl: document.getElementById('footer'),
               locale: '${locale}'
             });
-          }
-        `}</script>
+          `}</script>
+        )}
       </Helmet>
 
       <div id="header" />
       <main>{children}</main>
-      <div id="footer" />
+      <div ref={ref} id="footer" />
     </>
   );
 }

@@ -1,39 +1,32 @@
-import React from 'react'
-import { IntlProvider } from 'react-intl'
-import langConfig from '../../lang.config'
-import { createAppGlobalStyle } from '@tidb-community/ui'
+import React from 'react';
+import { IntlProvider } from 'react-intl';
+import langConfig from '../../lang.config';
 
-const toPairs = (obj) => Object.keys(obj).map((key) => [key, obj[key]])
+const toPairs = (obj) => Object.keys(obj).map((key) => [key, obj[key]]);
 const fromPairs = (pairs) => {
-  const obj = {}
-  for (const [key, value] of pairs) obj[key] = value
-  return obj
-}
-const flatMap = (arr, mapper) =>
-  arr.map(mapper).reduce((a, b) => [...a, ...b], [])
+  const obj = {};
+  for (const [key, value] of pairs) obj[key] = value;
+  return obj;
+};
+const flatMap = (arr, mapper) => arr.map(mapper).reduce((a, b) => [...a, ...b], []);
 const flatten = (messages) => {
   return flatMap(toPairs(messages), ([key, value]) =>
     typeof value === 'object'
       ? flatten(value).map(([childKey, value]) => [`${key}.${childKey}`, value])
       : [[key, value]]
-  )
-}
-
-const GlobalStyles = createAppGlobalStyle()
+  );
+};
 
 export const wrapPageElement = ({ element, props }) => {
   const {
     pageContext: { language = langConfig.defaultLang },
-  } = props
-  const messages = require(`src/data/i18n/${language}.json`)
-  const flattened = fromPairs(flatten(messages))
+  } = props;
+  const messages = require(`src/data/i18n/${language}.json`);
+  const flattened = fromPairs(flatten(messages));
 
   return (
-    <>
-      <GlobalStyles/>
-      <IntlProvider locale={language} messages={flattened}>
-        {element}
-      </IntlProvider>
-    </>
-  )
-}
+    <IntlProvider locale={language} messages={flattened}>
+      {element}
+    </IntlProvider>
+  );
+};

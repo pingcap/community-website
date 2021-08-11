@@ -14,7 +14,7 @@ workflows:
   build:
     triggers:
       - schedule:
-          cron: '0 * * * *'
+          cron: '0 0 * * *'
           filters:
             branches:
               only:
@@ -29,7 +29,7 @@ workflows:
   cache:
     triggers:
       - schedule:
-          cron: '0 * * * *'
+          cron: '0 0 * * *'
           filters:
             branches:
               only:

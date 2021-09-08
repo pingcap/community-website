@@ -69,9 +69,5 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
-
-# ignore the downloaded markdown file
-markdown-pages/
-
 # Custom
 yarn.lock

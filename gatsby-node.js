@@ -1,7 +1,6 @@
 const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 
 const createHome = require('./src/create-pages/createHome');
-const createSIG = require('./src/create-pages/createSIG');
 const createPeople = require('./src/create-pages/createPeople');
 const createIntlPages = require('./src/create-pages/intl');
 
@@ -63,7 +62,6 @@ exports.createPages = async ({ actions, graphql }) => {
   await Promise.all([
     createHome({ graphql, createPage, createRedirect }),
     createPeople({ graphql, createPage, createRedirect }),
-    createSIG({ graphql, createPage, createRedirect }),
   ]);
 };
 

@@ -132,28 +132,6 @@ const en = {
     ]
   },
   
-  SIG: {
-    title: 'Popular SIG',
-      summary: 'Special Interest Groups (SIGs) are persistent open groups that focus on a module of TiDB. SIGs must have open and transparent proceedings. The purpose of a SIG is to own and develop a module of TiDB.',
-      items: [
-      {
-        imageUrl: `${imagesDir}sig-icon.svg`,
-        title: 'TiDB DDL Index',
-        summary: 'DDL Index covers the TiDB DDL and parser',
-      },
-      {
-        imageUrl: `${imagesDir}sig-icon.svg`,
-        title: 'TiDB DDL Index',
-        summary: 'DDL Index covers the TiDB DDL and parser',
-      },
-      {
-        imageUrl: `${imagesDir}sig-icon.svg`,
-        title: 'TiDB DDL Index',
-        summary: 'DDL Index covers the TiDB DDL and parser',
-      },
-    ]
-  },
-  
   // TODO: normal form, reference data from events
   events: {
     title: 'Upcoming Events',
